@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut Lao Sa semantic-card route. Reads the OpenAI-compatible key from the
+// OpenChatCut 老黑剪辑台 semantic-card route. Reads the OpenAI-compatible key from the
 // existing settings store and never returns that key to the browser.
 
 import type { IncomingMessage, ServerResponse } from 'node:http';

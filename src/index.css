@@ -2114,7 +2114,7 @@ button, input, select { font: inherit; }
   border-color:color-mix(in srgb, var(--cc-accent) 50%, var(--cc-border));
 }
 
-/* Lao Sa packaging desk. Tokens follow the selected style (--ls-* and --cc-*). */
+/* 老黑剪辑台 packaging desk. Tokens follow the selected style (--ls-* and --cc-*). */
 .cc-laosa-toprow {
   height:28px; display:flex; align-items:center; padding:0 8px; flex-shrink:0;
   border-top:0.5px solid var(--cc-border); background:var(--ls-bg, var(--cc-bg));

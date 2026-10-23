@@ -279,6 +279,18 @@ npm run dev
 http://localhost:5199
 ```
 
+### 老黑剪辑台
+
+编辑器上的包装台可以切换风格、中文/English 和卡型 S/M/F，不重生成口播内容，也不重渲 Remotion 画面。同一块台面还包括九宫格锚点、语义配卡、章节条，以及智能音乐 / 动效 / B-roll 轨道。
+
+打开内置演示工程（字幕和三条轨道随工程附带，不需要用户媒体文件）。这个地址会把界面语言切到中文：
+
+```text
+http://localhost:5199/#/laohei
+```
+
+截图、短录屏和已知缺口见 [docs/demo/README.md](docs/demo/README.md)。语义配卡需要在设置里填写 OpenAI 兼容密钥；没有密钥时只显示空态，不会请求模型。密钥只留在本机设置，不会写入仓库。`/api/laosa/` 这类路径和代码标识仍是实现名，不是界面上的产品名。
+
 编辑器需要浏览器的[安全上下文](https://developer.mozilla.org/zh-CN/docs/Web/Security/Defenses/Secure_Contexts)：请在运行 OpenChatCut 的电脑上通过 `http://localhost` 或 `http://127.0.0.1` 访问，或通过 HTTPS 提供服务。从其他设备以普通 HTTP 访问（局域网 IP 或反向代理）时，浏览器会禁用 Web Crypto、WebCodecs 和剪贴板，工程列表仍可打开，但编辑器会显示这一要求而不会进入。
 
 `.env.local` 中只需填写你实际使用的模型或素材服务。没有配置的第三方能力会明确提示缺少对应 Key，不影响本地时间线编辑、内置素材和已配置的其他能力。

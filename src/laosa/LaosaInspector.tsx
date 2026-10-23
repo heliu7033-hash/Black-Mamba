@@ -44,7 +44,7 @@ export function LaosaInspector() {
   return (
     <div className="cc-laosa-inspector" data-laosa-desk="inspector">
       <div className="cc-laosa-inspector-head">
-        <strong>{t('老萨剪辑台')}</strong>
+        <strong>{t('老黑剪辑台')}</strong>
         <span>{desk.selectedName ?? t('工程默认')}</span>
       </div>
       <div className="cc-laosa-block">

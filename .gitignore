@@ -67,8 +67,11 @@ AGENTS.md
 # Impeccable design-hook state and configuration
 .impeccable/
 .browser4-cli/
-# Private working documents such as TODOs and design notes; publishable docs belong elsewhere
-docs/
+# Private working documents such as TODOs and design notes; publishable docs belong elsewhere.
+# docs/demo is the public 老黑剪辑台 walkthrough (screenshots and how to open it).
+docs/*
+!docs/demo/
+!docs/demo/**
 # Local model-optimization plan / notes (was mistakenly committed; keep out of the public repo)
 MODEL-OPT-PLAN.md
 /MODEL-OPT-PLAN*/
