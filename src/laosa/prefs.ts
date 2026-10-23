@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // OpenChatCut — 老黑剪辑台 preferences. Browser-local, same class of data as session chrome.
 
-import type { CardSize } from '../../shared/laosa-card';
 import { DEFAULT_LAOSA_STYLE, styleById } from './styles';
-import type { DeskLanguage, ItemPackaging, LaosaPrefs, NineAnchor, RailClip, RailKind } from './types';
+import type { CardSize, DeskLanguage, ItemPackaging, LaosaPrefs, NineAnchor, RailClip, RailKind, VoMedia } from './types';
 
 const ANCHORS: readonly NineAnchor[] = ['tl', 'tc', 'tr', 'ml', 'mc', 'mr', 'bl', 'bc', 'br'];
 const RAILS: readonly RailKind[] = ['music', 'motion', 'broll'];
@@ -21,6 +20,7 @@ export function defaultLaosaPrefs(language: DeskLanguage = 'zh'): LaosaPrefs {
     anchor: 'mc',
     byItem: {},
     rails: [],
+    voMedia: null,
   };
 }
 
@@ -79,10 +79,31 @@ function sanitizeRails(value: unknown): RailClip[] {
     if (!Number.isFinite(startFrame) || !Number.isFinite(durationInFrames)) continue;
     const label = typeof record.label === 'string' ? record.label.slice(0, 120) : '';
     if (!label) continue;
-    clips.push({ id: record.id.slice(0, 80), rail: record.rail, startFrame, durationInFrames, label });
+    const clip: RailClip = { id: record.id.slice(0, 80), rail: record.rail, startFrame, durationInFrames, label };
+    if (typeof record.src === 'string' && record.src.length > 0 && record.src.length < 2000) {
+      clip.src = record.src;
+    }
+    if (isSize(record.cardSize)) clip.cardSize = record.cardSize;
+    clips.push(clip);
     if (clips.length >= MAX_RAILS) break;
   }
   return clips;
+}
+
+function sanitizeVoMedia(value: unknown): VoMedia | null {
+  if (value == null) return null;
+  if (!value || typeof value !== 'object') return null;
+  const record = value as Record<string, unknown>;
+  if (typeof record.name !== 'string' || typeof record.src !== 'string') return null;
+  const name = record.name.trim().slice(0, 160);
+  const src = record.src.trim().slice(0, 2000);
+  if (!name || !src) return null;
+  const durationInFrames = Math.max(1, Math.floor(Number(record.durationInFrames)));
+  return {
+    name,
+    src,
+    ...(Number.isFinite(durationInFrames) ? { durationInFrames } : {}),
+  };
 }
 
 export function parseLaosaPrefs(raw: string | null, fallbackLanguage: DeskLanguage = 'zh'): LaosaPrefs {
@@ -106,6 +127,7 @@ export function parseLaosaPrefs(raw: string | null, fallbackLanguage: DeskLangua
       anchor: isAnchor(record.anchor) ? record.anchor : fallback.anchor,
       byItem,
       rails: sanitizeRails(record.rails),
+      voMedia: sanitizeVoMedia(record.voMedia),
     };
   } catch {
     return fallback;

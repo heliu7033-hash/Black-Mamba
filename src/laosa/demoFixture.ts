@@ -2,7 +2,7 @@
 // OpenChatCut — 老黑剪辑台 sample timeline. Captions, chapters, and rails
 // come from this fixture so the desk can be opened without user media.
 // Rail clips here are labeled demo packaging, not model output.
-// TODO(laosa): real 智能填充 still lives in rails.ts (stubSmartFill).
+// Smart fill is caption-aware in rails.ts (smartFill). Semantic size lands on the motion rail.
 
 import type { CaptionsData } from '../captions/types';
 import type { TimelineItem, TimelineState } from '../editor/types';
@@ -22,6 +22,8 @@ const LEAD_FRAMES = 22;
 
 /** Quiet generated bed served from public/. Not a music model. */
 export const LAOHEI_DEMO_BED_SRC = '/demo/laohei-bed.wav';
+/** License-safe VO placeholder (charcoal + amber card). Replace this file to swap the talking-head sample. */
+export const LAOHEI_DEMO_VO_SRC = '/demo/laohei-vo.mp4';
 
 export interface DemoCue {
   text: string;
@@ -205,6 +207,7 @@ export function laoheiDemoPrefs(): LaosaPrefs {
     byItem: {
       laohei_title: { size: 'M', anchor: 'tr' },
     },
+    voMedia: null,
     rails: [
       railClip({ id: 'laohei_music', label: '炭黑床乐', startFrame: 0, durationInFrames: DEMO_FRAMES }, 'music'),
       ...MOTION_SPANS.map((span) => railClip(span, 'motion')),
