@@ -39,6 +39,7 @@ import { SafeZoneOverlay } from './SafeZoneOverlay';
 import { PreviewTransformOverlay } from './preview/PreviewTransformOverlay';
 import { fitPreviewCanvasSize, previewPaddedClientSize, previewStageContentSize, type PreviewCanvasSize } from './preview/previewCanvasGeometry';
 import { LaosaCardFrame } from '../laosa/LaosaCardFrame';
+import { LaosaVoPreview } from '../laosa/LaosaVoPreview';
 import { LaosaChapterBar } from '../laosa/LaosaChapters';
 
 const MEDIA_LOADING_NOTICE_DELAY_MS = 160;
@@ -384,6 +385,7 @@ export const PreviewPanel = memo(function PreviewPanel({
               // No loop: playback stops at the final frame (editor convention).
               // Restart by pressing play again.
             />
+            <LaosaVoPreview />
             <LaosaCardFrame />
             {!fullscreen && hoverPreviewFrame !== null && (
               <div className="cc-preview-hover-frame" aria-label={t('时间线悬停预览')}>
