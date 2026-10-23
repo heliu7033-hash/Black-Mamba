@@ -32,7 +32,7 @@ function anchorLabel(anchor: NineAnchor, t: (text: string) => string): string {
 
 function errorText(code: SemanticErrorCode, t: (text: string) => string): string {
   if (code === 'empty_captions') return t('没有可用字幕');
-  if (code === 'missing_key') return t('未配置 OpenAI 兼容 API Key');
+  if (code === 'missing_key') return t('未配置 Claude/SSXZ（~/.claude/settings.json）');
   if (code === 'unreachable') return t('暂时无法确认 API Key，请稍后重试。');
   return t('推荐失败');
 }
@@ -212,9 +212,9 @@ export function LaosaInspector() {
         )}
         {missingKey && (
           <div className="cc-laosa-empty" data-laosa-key="missing">
-            <p>{t('未配置 OpenAI 兼容 API Key')}</p>
-            <p>{t('在设置里填写 OpenAI 或兼容网关的密钥后再推荐。密钥只保存在本机设置，不会写入仓库。')}</p>
-            <button type="button" onClick={desk.openSettings}>{t('打开 OpenAI 设置')}</button>
+            <p>{t('未配置 Claude/SSXZ（~/.claude/settings.json）')}</p>
+            <p>{t('本机 ~/.claude/settings.json 需有 ANTHROPIC_BASE_URL 与 ANTHROPIC_AUTH_TOKEN。密钥不会写入仓库。')}</p>
+            <button type="button" onClick={desk.openSettings}>{t('打开设置')}</button>
             <DemoSuggestBlock />
           </div>
         )}
@@ -223,7 +223,7 @@ export function LaosaInspector() {
             <button type="button" onClick={() => void desk.recommend()} disabled={desk.recommendation.status === 'loading' || desk.lines.length === 0}>
               {desk.recommendation.status === 'loading' ? t('正在阅读字幕…') : t('按语义推荐')}
             </button>
-            <button type="button" onClick={desk.openSettings}>{t('打开 OpenAI 设置')}</button>
+            <button type="button" onClick={desk.openSettings}>{t('打开设置')}</button>
             {desk.lines.length === 0 && <p className="cc-laosa-note">{t('没有可用字幕')}</p>}
             {desk.recommendation.status === 'empty' && <p className="cc-laosa-note">{t('没有可用字幕')}</p>}
             {desk.recommendation.status === 'error' && <p className="cc-laosa-note">{errorText(desk.recommendation.code, t)}</p>}
