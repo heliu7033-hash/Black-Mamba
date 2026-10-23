@@ -9,6 +9,7 @@ import { ALL_LOCALES, getLocale, setLocale, useT } from '../i18n/locale';
 import { invokeAction, bindAction } from '../shortcuts/actionRegistry';
 import { DesktopWindowControls } from './DesktopWindowControls';
 import { TopBarIconButton } from './TopBarIconButton';
+import { LaosaTopSwitches } from '../laosa/LaosaTopSwitches';
 
 // Lazy, like the dashboard's copy of this dialog. A static import here put the
 // whole MCP guide into the editor's eager chunk and made every lazy() built on
@@ -62,7 +63,8 @@ export function TopBar({ projectId, projectName, canUndo, canRedo, exporting, ex
   const commit = () => { setEditing(false); if (onRename && draft.trim() && draft.trim() !== projectName) onRename(draft.trim()); };
 
   return (
-    <header className={`cc-topbar cc-window-titlebar${isMacDesktop ? ' cc-window-titlebar--mac' : ''}`} style={{ gridColumn: '1 / -1', gridRow: 1, position: 'relative', height: '100%', display: 'flex', alignItems: 'center', padding: '0 6px', borderBottom: `0.5px solid ${theme.border}`, background: theme.panel, gap: 4 }}>
+    <header className={`cc-topbar cc-window-titlebar${isMacDesktop ? ' cc-window-titlebar--mac' : ''}`} style={{ gridColumn: '1 / -1', gridRow: 1, position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'stretch', padding: 0, borderBottom: `0.5px solid ${theme.border}`, background: theme.panel, gap: 0 }}>
+      <div className="cc-topbar-row" style={{ position: 'relative', flex: '1 1 auto', minHeight: 0, display: 'flex', alignItems: 'center', padding: '0 6px', gap: 4 }}>
       <DesktopWindowControls />
       {/* home in a rounded chip + a vertical divider */}
       <button className="cc-tip" data-tip={t('返回工程列表')} aria-label={t('返回工程列表')} onClick={onHome}
@@ -108,6 +110,10 @@ export function TopBar({ projectId, projectName, canUndo, canRedo, exporting, ex
         {exporting ? t('{n} 个导出', { n: Math.max(1, exportJobCount) }) : t('导出')}
       </button>
       <div title={t('账户')} style={{ width: 20, height: 20, borderRadius: '50%', marginLeft: 2, background: 'conic-gradient(from 210deg, #6d6cff, #ff5f9e, #ffb35f, #6d6cff)', flexShrink: 0 }} />
+      </div>
+      </div>
+      <div className="cc-laosa-toprow">
+        <LaosaTopSwitches />
       </div>
       {/* No fallback: a dialog that is still loading shows nothing, exactly as it
           did before it was opened — the same treatment the other overlays get. */}

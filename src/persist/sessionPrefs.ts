@@ -1,3 +1,4 @@
+import { clearLaosaPrefs } from '../laosa/prefs';
 import {
   clearTimelineViewStates,
   loadTimelineViewState,
@@ -130,6 +131,7 @@ export function clearProjectSessionPrefs(projectId: string): void {
     autoApplyKey(projectId),
     playheadKey(projectId),
   ]) removeRaw(key);
+  clearLaosaPrefs(projectId);
   const storage = browserViewStorage();
   if (storage) clearTimelineViewStates(storage, projectId);
 }

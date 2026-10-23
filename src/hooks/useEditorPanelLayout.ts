@@ -1,6 +1,7 @@
 import { usePersistedState } from './usePersistedState';
 
-const HEADER_HEIGHT = 41;
+// 41px toolbar plus the 28px Lao Sa packaging row.
+const HEADER_HEIGHT = 69;
 const COLLAPSED_CHAT_WIDTH = 46;
 const BASELINE_WIDTH = 1463;
 const BASELINE_CONTENT_HEIGHT = 761;

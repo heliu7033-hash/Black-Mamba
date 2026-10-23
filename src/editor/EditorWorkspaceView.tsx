@@ -1,5 +1,7 @@
-import { Suspense, type ComponentProps } from 'react';
+import { Suspense, type ComponentProps, type CSSProperties } from 'react';
 import { theme } from '../theme';
+import { useLaosaDesk } from '../laosa/LaosaContext';
+import { laosaStyleVars } from '../laosa/styles';
 import { TopBar } from '../components/TopBar';
 import { ChatPanel } from '../components/chat/ChatPanel';
 import { LibraryPanel } from '../library/LibraryPanel';
@@ -65,19 +67,24 @@ function renderTimeline(props: EditorWorkspaceViewProps) {
 
 export function EditorWorkspaceView(props: EditorWorkspaceViewProps) {
   useWorkspaceDialogPrefetch();
+  const desk = useLaosaDesk();
+  const shellStyle: CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: props.gridTemplateColumns,
+    gridTemplateRows: props.gridTemplateRows,
+    height: '100vh',
+    overflow: 'hidden',
+    background: theme.bg,
+    color: theme.text,
+    fontFamily: 'Geist, system-ui, -apple-system, sans-serif',
+    colorScheme: desk.style.colorScheme,
+    ...(laosaStyleVars(desk.style) as CSSProperties),
+  };
   return (
     <div
       className="cc-editor-shell"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: props.gridTemplateColumns,
-        gridTemplateRows: props.gridTemplateRows,
-        height: '100vh',
-        overflow: 'hidden',
-        background: theme.bg,
-        color: theme.text,
-        fontFamily: 'Geist, system-ui, -apple-system, sans-serif',
-      }}
+      data-laosa-style={desk.style.id}
+      style={shellStyle}
     >
       <TopBar {...props.topBar} />
       {/* No fallback: an overlay that is still loading shows nothing, exactly as

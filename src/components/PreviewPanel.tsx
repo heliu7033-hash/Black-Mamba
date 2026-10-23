@@ -38,6 +38,8 @@ import { PREVIEW_SHARED_AUDIO_TAGS } from './previewAudioPool';
 import { SafeZoneOverlay } from './SafeZoneOverlay';
 import { PreviewTransformOverlay } from './preview/PreviewTransformOverlay';
 import { fitPreviewCanvasSize, previewPaddedClientSize, previewStageContentSize, type PreviewCanvasSize } from './preview/previewCanvasGeometry';
+import { LaosaCardFrame } from '../laosa/LaosaCardFrame';
+import { LaosaChapterBar } from '../laosa/LaosaChapters';
 
 const MEDIA_LOADING_NOTICE_DELAY_MS = 160;
 
@@ -316,8 +318,7 @@ export const PreviewPanel = memo(function PreviewPanel({
               {t('安全框')}
             </button>
           )}
-          {selectedItem && (
-            <button type="button" onClick={onToggleInspector} aria-pressed={inspectorOpen}
+          <button type="button" onClick={onToggleInspector} aria-pressed={inspectorOpen}
               title={inspectorOpen ? t('收起属性') : t('展开属性')}
               style={{
                 fontSize: 11, lineHeight: 1, padding: '3px 8px', borderRadius: 5, cursor: 'pointer',
@@ -326,9 +327,9 @@ export const PreviewPanel = memo(function PreviewPanel({
               }}>
               {t('属性')}
             </button>
-          )}
         </div>
       </div>
+      <LaosaChapterBar fps={state.fps} durationFrames={duration} />
       <div ref={stageRef} className="cc-preview-stage"
         // Suppress the browser's native <video> context menu (download / picture-in-picture
         // / loop) because the preview is a canvas, not an exposed HTML5 video element.
@@ -383,6 +384,7 @@ export const PreviewPanel = memo(function PreviewPanel({
               // No loop: playback stops at the final frame (editor convention).
               // Restart by pressing play again.
             />
+            <LaosaCardFrame />
             {!fullscreen && hoverPreviewFrame !== null && (
               <div className="cc-preview-hover-frame" aria-label={t('时间线悬停预览')}>
                 <Thumbnail

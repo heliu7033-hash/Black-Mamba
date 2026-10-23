@@ -28,6 +28,7 @@ import {
 } from '../../captions/captionSelectionInteraction';
 import type { TimelineProps } from './timelineTypes';
 import { useTimelineController } from './useTimelineController';
+import { LaosaRails } from '../../laosa/LaosaRails';
 
 export function Timeline(props: TimelineProps) {
   const {
@@ -124,6 +125,12 @@ The playhead line/triangle is pointerEvents:none, click it to click the ruler - 
             rulerTimecodeRef={rulerTimecodeRef} playheadFrame={playheadRef.current}
             zoneIn={zoneIn} zoneOut={zoneOut} markers={markers} onEditMarker={setEditMarker}
             pinnedMarkerId={editMarker}
+          />
+          <LaosaRails
+            px={px}
+            headerWidth={HEADER_W}
+            frameFromClientX={frameFromClientX}
+            playheadFrame={() => playerRef.current?.getCurrentFrame() ?? playheadRef.current}
           />
 
           {/* tracks */}
