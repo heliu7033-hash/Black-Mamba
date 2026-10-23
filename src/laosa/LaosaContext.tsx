@@ -15,6 +15,7 @@ import type { CardRecommendation } from '../../shared/laosa-card';
 import { getLocale, setLocale } from '../i18n/locale';
 import type { TimelineState } from '../editor/types';
 import { detectChapters } from './chapters';
+import { demoCardSuggestion } from './demoSuggest';
 import { defaultLaosaPrefs, ensureLaosaPrefs, saveLaosaPrefs } from './prefs';
 import { autoLandClip, stubSmartFill } from './rails';
 import { readOpenAiCompatibleKey, requestSemanticCard, SemanticCardError, type SemanticErrorCode } from './semanticClient';
@@ -28,7 +29,7 @@ export type RecommendationState =
   | { status: 'idle' }
   | { status: 'loading' }
   | { status: 'empty' }
-  | { status: 'ready'; result: CardRecommendation }
+  | { status: 'ready'; result: CardRecommendation; demo?: boolean }
   | { status: 'error'; code: SemanticErrorCode };
 
 export interface LaosaDeskValue {
@@ -51,6 +52,8 @@ export interface LaosaDeskValue {
   landRail: (rail: RailKind, frame: number, label: string) => void;
   stubFill: (rail: RailKind, frame: number) => void;
   recommend: () => Promise<void>;
+  /** Offline deterministic suggestion. Does not check or call a model. */
+  suggestDemo: () => void;
   applyRecommendation: () => void;
   openSettings: () => void;
   seekFrame: (frame: number) => void;
@@ -91,6 +94,7 @@ const FALLBACK_DESK: LaosaDeskValue = {
   landRail: () => {},
   stubFill: () => {},
   recommend: async () => {},
+  suggestDemo: () => {},
   applyRecommendation: () => {},
   openSettings: () => {},
   seekFrame: () => {},
@@ -208,6 +212,11 @@ export function LaosaProvider({ projectId, state, playerRef, onOpenSettings, chi
         if (code === 'missing_key') setKeyPresence('missing');
         setRecommendation({ status: 'error', code });
       }
+    },
+    suggestDemo: () => {
+      const playheadMs = (playheadFrame / Math.max(1, state.fps)) * 1000;
+      const result = demoCardSuggestion(lines, playheadMs);
+      setRecommendation(result ? { status: 'ready', result, demo: true } : { status: 'empty' });
     },
     applyRecommendation: () => {
       if (recommendation.status === 'ready') updatePackaging({ size: recommendation.result.size });

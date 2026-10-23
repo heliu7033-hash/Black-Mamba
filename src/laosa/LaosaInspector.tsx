@@ -96,6 +96,24 @@ export function LaosaInspector() {
             <p>{t('未配置 OpenAI 兼容 API Key')}</p>
             <p>{t('在设置里填写 OpenAI 或兼容网关的密钥后再推荐。密钥只保存在本机设置，不会写入仓库。')}</p>
             <button type="button" onClick={desk.openSettings}>{t('打开 OpenAI 设置')}</button>
+            <button
+              type="button"
+              data-laosa-demo="suggest"
+              onClick={desk.suggestDemo}
+              disabled={desk.lines.length === 0}
+            >
+              {t('演示模式')}
+            </button>
+            <p>{t('不联网，按当前字幕给一个演示建议。')}</p>
+            {desk.recommendation.status === 'empty' && <p>{t('没有可用字幕')}</p>}
+            {desk.recommendation.status === 'ready' && desk.recommendation.demo && (
+              <div className="cc-laosa-reason" data-laosa-demo="result">
+                <b>{desk.recommendation.result.size}</b>
+                <span>{t(desk.recommendation.result.reason)}</span>
+                <em data-laosa-demo="badge">{t('演示')}</em>
+                <button type="button" onClick={desk.applyRecommendation}>{t('采用')}</button>
+              </div>
+            )}
           </div>
         )}
         {desk.keyPresence === 'ready' && !missingKey && (

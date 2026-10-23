@@ -7,7 +7,9 @@ import {
   semanticUserPrompt,
 } from '../../shared/laosa-card';
 import { packagingLines } from './captionLines';
-import { LAOHEI_DEMO_CUES, laoheiDemoPrefs, laoheiDemoTimeline } from './demoFixture';
+import { statSync } from 'node:fs';
+import { LAOHEI_DEMO_BED_SRC, LAOHEI_DEMO_CUES, laoheiDemoPrefs, laoheiDemoTimeline } from './demoFixture';
+import { demoCardSuggestion } from './demoSuggest';
 import { docFromTimeline } from '../persist/projectStore';
 import { packagingLinesFromTimeline } from './timelineLines';
 import { chapterAt, detectChapters, joinCaptionText } from './chapters';
@@ -152,6 +154,36 @@ assert.equal(demoPrefs.styleId, 'blackmamba');
 assert.equal(demoPrefs.language, 'zh');
 assert.equal(demoPrefs.cardSize, 'M');
 assert.equal(demoPrefs.anchor, 'tr');
-assert.deepEqual(demoPrefs.rails.map((clip) => clip.rail), ['music', 'motion', 'broll']);
+assert.deepEqual([...new Set(demoPrefs.rails.map((clip) => clip.rail))], ['music', 'motion', 'broll']);
+assert.equal(demoPrefs.rails.filter((clip) => clip.rail === 'music').length, 1);
+assert.equal(demoPrefs.rails.filter((clip) => clip.rail === 'motion').length >= 4, true);
+assert.equal(demoPrefs.rails.filter((clip) => clip.rail === 'broll').length >= 3, true);
+assert.equal(demoPrefs.rails.every((clip) => clip.label.length > 0 && !clip.label.startsWith('laosa:')), true);
+assert.equal(demoPrefs.rails.find((clip) => clip.rail === 'music')?.durationInFrames, 24 * 30);
+for (const rail of ['music', 'motion', 'broll'] as const) {
+  const clips = demoPrefs.rails.filter((clip) => clip.rail === rail).slice().sort((a, b) => a.startFrame - b.startFrame);
+  for (let i = 1; i < clips.length; i += 1) {
+    const prev = clips[i - 1]!;
+    assert.equal(clips[i]!.startFrame >= prev.startFrame + prev.durationInFrames, true, `${rail} clips overlap`);
+  }
+}
+const rawTimeline = laoheiDemoTimeline();
+assert.equal(rawTimeline.items.some((item) => item.kind === 'audio' && item.src === LAOHEI_DEMO_BED_SRC), true);
+assert.equal(rawTimeline.items.some((item) => item.kind === 'text' && item.track === 'V3'), true);
+assert.equal(rawTimeline.items.find((item) => item.id === 'laohei_title')?.props?.text, '同一口播\n内容锁定');
+const bedStat = statSync(new URL(`../../public${LAOHEI_DEMO_BED_SRC}`, import.meta.url));
+assert.equal(bedStat.size > 1000, true, 'demo bed is a generated tone file');
+
+assert.equal(demoCardSuggestion([], 0), null);
+const atStart = demoCardSuggestion(demoZh, 0);
+assert.equal(atStart?.size, 'M');
+assert.match(atStart?.reason ?? '', /演示/);
+assert.equal(demoCardSuggestion(demoZh, 9500)?.size, 'S');
+assert.equal(demoCardSuggestion(demoZh, 12000)?.size, 'M');
+assert.match(demoCardSuggestion(demoZh, 12000)?.reason ?? '', /步骤/);
+assert.equal(demoCardSuggestion(demoZh, 16000)?.size, 'F');
+assert.match(demoCardSuggestion(demoZh, 16000)?.reason ?? '', /演示：完整框架/);
+assert.equal(demoCardSuggestion(demoEn, 9500)?.size, 'S', 'english keywords still pick a small card');
+assert.equal(demoCardSuggestion(demoEn, 16000)?.size, 'F');
 
 console.log('laosa.verify: styles, prefs, chapters, rails, semantic card, sample timeline');

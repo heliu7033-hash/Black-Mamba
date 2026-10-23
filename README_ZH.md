@@ -289,7 +289,7 @@ http://localhost:5199
 http://localhost:5199/#/laohei
 ```
 
-截图、短录屏和已知缺口见 [docs/demo/README.md](docs/demo/README.md)。语义配卡需要在设置里填写 OpenAI 兼容密钥；没有密钥时只显示空态，不会请求模型。密钥只留在本机设置，不会写入仓库。`/api/laosa/` 这类路径和代码标识仍是实现名，不是界面上的产品名。
+截图、短录屏和已知缺口见 [docs/demo/README.md](docs/demo/README.md)。语义配卡需要在设置里填写 OpenAI 兼容密钥；没有密钥时仍显示空态，并多一个离线的「演示模式」：按当前字幕给一个标明「演示」的 S/M/F，不请求模型。演示工程打开时，智能音乐 / 动效 / B-roll 轨道已经铺好标注片段。「智能填充」按钮本身仍只放下占位，等模型接入。密钥只留在本机设置，不会写入仓库。`/api/laosa/` 这类路径和代码标识仍是实现名，不是界面上的产品名。
 
 编辑器需要浏览器的[安全上下文](https://developer.mozilla.org/zh-CN/docs/Web/Security/Defenses/Secure_Contexts)：请在运行 OpenChatCut 的电脑上通过 `http://localhost` 或 `http://127.0.0.1` 访问，或通过 HTTPS 提供服务。从其他设备以普通 HTTP 访问（局域网 IP 或反向代理）时，浏览器会禁用 Web Crypto、WebCodecs 和剪贴板，工程列表仍可打开，但编辑器会显示这一要求而不会进入。
 
