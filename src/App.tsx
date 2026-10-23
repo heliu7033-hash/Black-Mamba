@@ -5,7 +5,7 @@ import {
   useAppRoute,
   useProjects,
 } from './app/appShell';
-import { AppSplash, DashboardRoute, EditorRoute } from './app/AppViews';
+import { AppSplash, DashboardRoute, EditorRoute, LaosaDemoRoute } from './app/AppViews';
 import { useInferenceWarmup } from './hooks/useInferenceWarmup';
 import { useUiScaleShortcuts } from './hooks/useUiScaleShortcuts';
 
@@ -19,6 +19,7 @@ export default function App() {
   const { projects, refresh } = useProjects();
 
   if (!projects) return <AppSplash text={t('加载中…')} />;
+  if (route.name === 'laosa') return <LaosaDemoRoute refresh={refresh} />;
   if (route.name === 'editor') {
     return <EditorRoute route={route} projects={projects} refresh={refresh} />;
   }

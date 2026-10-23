@@ -27,7 +27,7 @@ import { isServerVideoDecoder, ServerVideoDecoderContext, type ServerVideoDecode
 
 const GRID = 'repeating-conic-gradient(#242424 0% 25%, #1c1c1c 0% 50%) 50% / 40px 40px';
 
-function NestedSequenceLayer({ item, project, parentWidth, parentHeight, fit, frameOffset, browserRenderer, sequenceLimits, muted }: {
+function NestedSequenceLayer({ item, project, parentWidth, parentHeight, fit, frameOffset, browserRenderer, sequenceLimits, muted, packagingLanguage }: {
   item: TimelineItem;
   project?: ProjectDoc;
   parentWidth: number;
@@ -37,6 +37,7 @@ function NestedSequenceLayer({ item, project, parentWidth, parentHeight, fit, fr
   browserRenderer: boolean;
   sequenceLimits?: SequenceGraphLimits;
   muted: boolean;
+  packagingLanguage?: 'zh' | 'en';
 }) {
   const parentFrame = useCurrentFrame();
   const localFrame = parentFrame + frameOffset;
@@ -74,6 +75,7 @@ function NestedSequenceLayer({ item, project, parentWidth, parentHeight, fit, fr
             browserRenderer={browserRenderer}
             sequenceLimits={sequenceLimits}
             forceMuted={muted}
+            packagingLanguage={packagingLanguage}
           />
         </Sequence>
       </div>
@@ -99,6 +101,8 @@ export type TimelineCompositionProps = Record<string, unknown> & {
   /** The selected clip is the Player's explicit full-fidelity GL preview target. */
   selectedItemId?: string | null;
   onSelectedPreviewStatus?: SelectedPreviewStatusListener;
+  /** Lao Sa packaging language. English burns the stored translation; timing stays. */
+  packagingLanguage?: 'zh' | 'en';
 };
 
 function SelectedPreviewStatusReporter({ status, listener }: {
@@ -120,7 +124,7 @@ function SelectedPreviewStatusReporter({ status, listener }: {
   return null;
 }
 
-function TimelineContent({ state, project, transparent, browserRenderer = false, selectedItemId, onSelectedPreviewStatus, sequenceLimits, forceMuted = false }: TimelineCompositionProps) {
+function TimelineContent({ state, project, transparent, browserRenderer = false, selectedItemId, onSelectedPreviewStatus, sequenceLimits, forceMuted = false, packagingLanguage }: TimelineCompositionProps) {
   const [readyGlWindows, setReadyGlWindows] = useState<Set<string>>(() => new Set());
   const setGlWindowReady = useCallback((key: string, ready: boolean) => {
     setReadyGlWindows((current) => updateReadyGlWindows(current, key, ready));
@@ -330,7 +334,7 @@ function TimelineContent({ state, project, transparent, browserRenderer = false,
           <ClipWrapper item={item} frameOffset={-eb} hiddenByCaptions={hiddenByCaptions}>
             {(borderRadius) => item.kind === 'sequence'
               ? <VisualClipSurface item={item} fit={fit} canvasW={state.width} canvasH={state.height} borderRadius={borderRadius}>
-                  <NestedSequenceLayer item={item} project={project} parentWidth={state.width} parentHeight={state.height} fit={fit} frameOffset={-eb} browserRenderer={browserRenderer} sequenceLimits={sequenceLimits} muted={isMuted(item.track)} />
+                  <NestedSequenceLayer item={item} project={project} parentWidth={state.width} parentHeight={state.height} fit={fit} frameOffset={-eb} browserRenderer={browserRenderer} sequenceLimits={sequenceLimits} muted={isMuted(item.track)} packagingLanguage={packagingLanguage} />
                 </VisualClipSurface>
               : item.kind === 'motion-graphic'
               ? <ItemLayer item={item} canvasW={state.width} canvasH={state.height} fit={fit} borderRadius={borderRadius} />
@@ -403,7 +407,7 @@ function TimelineContent({ state, project, transparent, browserRenderer = false,
         />
       ))}
       {captionEntries.map(({ id, captions }) => captions?.enabled
-        ? <CaptionsLayer key={id} captions={captions} items={state.items} />
+        ? <CaptionsLayer key={id} captions={captions} items={state.items} packagingLanguage={packagingLanguage} />
         : null)}
       {state.watermark?.enabled && state.watermark.text
         && <WatermarkLayer watermark={state.watermark} canvasH={state.height} />}

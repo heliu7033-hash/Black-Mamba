@@ -250,8 +250,15 @@ export async function setKeys(patch: Record<string, unknown>): Promise<void> {
     },
   );
   const isolated = isIsolatedDevProfile(ACTIVE_PROFILE);
-  const merged = mergeEnvText(existing, clean, isolated);
-  await atomicWriteFile(ENV_PATH, merged, { mode: 0o600 });
+  // UI_LOCALE is posted on every page load. Writing it rewrites .env.local, and
+  // Vite treats that file as an env file: any mtime change full-restarts the
+  // dev server, the page reloads, and the next post writes again. The browser
+  // is the source of truth and sends the value after each start, so memory is
+  // enough. Identical writes of every other key are skipped for the same reason.
+  const persist = new Map(clean);
+  persist.delete("UI_LOCALE");
+  const merged = persist.size > 0 ? mergeEnvText(existing, persist, isolated) : existing;
+  if (persist.size > 0 && merged !== existing) await atomicWriteFile(ENV_PATH, merged, { mode: 0o600 });
   for (const [name, v] of clean) {
     if (v) {
       store.set(name, v);

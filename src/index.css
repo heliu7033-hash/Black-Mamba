@@ -2136,7 +2136,7 @@ button, input, select { font: inherit; }
   font-size:10px; font-weight:700; letter-spacing:0.02em; white-space:nowrap;
 }
 .cc-laosa-inspector {
-  flex:1 1 0; max-height:52%; min-height:160px; overflow:auto; padding:8px 10px 10px;
+  flex:1 1 auto; max-height:72%; min-height:180px; overflow:auto; padding:8px 10px 10px;
   border-bottom:0.5px solid var(--cc-border); background:var(--cc-panel);
 }
 .cc-laosa-inspector-head { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:8px; }

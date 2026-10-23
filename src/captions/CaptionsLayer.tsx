@@ -20,16 +20,39 @@ const CAPTION_WORD_RUN_STYLE = {
 
 // Renders the active caption page for the current frame. Lives inside the
 // Remotion composition, so it shows in the Player preview AND burns into export.
-export function CaptionsLayer({ captions, items }: { captions: CaptionsData; items: TimelineItem[] }) {
+export function CaptionsLayer({ captions, items, packagingLanguage }: {
+  captions: CaptionsData;
+  items: TimelineItem[];
+  /** Desk language. English shows the stored translation in the same time window. */
+  packagingLanguage?: 'zh' | 'en';
+}) {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const ms = (frame / fps) * 1000; // absolute timeline ms (words already re-timed)
   // Multi-lane scope(sourceEntries)→ lane engine; otherwise single-stream old path (bytes unchanged)
   if (captions.sourceEntries?.length) return <MultiLaneCaptions captions={captions} items={items} ms={ms} width={width} height={height} />;
-  return <SingleStreamCaptions captions={captions} items={items} ms={ms} width={width} height={height} fps={fps} />;
+  return (
+    <SingleStreamCaptions
+      captions={captions}
+      items={items}
+      ms={ms}
+      width={width}
+      height={height}
+      fps={fps}
+      packagingLanguage={packagingLanguage}
+    />
+  );
 }
 
-function SingleStreamCaptions({ captions, items, ms, width, height, fps }: { captions: CaptionsData; items: TimelineItem[]; ms: number; width: number; height: number; fps: number }) {
+function SingleStreamCaptions({ captions, items, ms, width, height, fps, packagingLanguage }: {
+  captions: CaptionsData;
+  items: TimelineItem[];
+  ms: number;
+  width: number;
+  height: number;
+  fps: number;
+  packagingLanguage?: 'zh' | 'en';
+}) {
   const preset = useMemo(() => effectivePreset(captions), [captions]);
 
   const pages = useMemo(() => buildCaptionPages(captions, items, fps), [captions, items, fps]);
@@ -37,12 +60,18 @@ function SingleStreamCaptions({ captions, items, ms, width, height, fps }: { cap
   if (!page) return null;
   const curIdx = currentWordIndex(page, ms);
   const translated = captions.bilingual && captions.translation ? activeTranslation(captions.translation, ms) : null;
+  // Packaging swap: the cue window stays on the source page. Only the letters change.
+  const packaged = packagingLanguage === 'en'
+    ? activeTranslation(captions.translation ?? [], ms)?.text.trim() ?? ''
+    : '';
 
   return (
     <AbsoluteFill style={CAPTION_OVERLAY_STYLE}>
       <div style={containerStyle(preset, captions.template, width, height, captions.layout)}>
         <div style={captionPageMotionStyle(captions.motionPreset, page, ms)}>
-          {preset.wholeLine ? (
+          {packaged ? (
+            <div style={{ ...captionTextStyle(preset, height, false, true), whiteSpace: 'pre-wrap' }}>{packaged}</div>
+          ) : preset.wholeLine ? (
             <WholeLineCaption
               page={page}
               preset={preset}
@@ -60,7 +89,7 @@ function SingleStreamCaptions({ captions, items, ms, width, height, fps }: { cap
               ms={ms}
             />
           )}
-          {translated?.text && <div style={translationStyle(captions.template)}>{translated.text}</div>}
+          {!packaged && translated?.text && <div style={translationStyle(captions.template)}>{translated.text}</div>}
         </div>
       </div>
     </AbsoluteFill>

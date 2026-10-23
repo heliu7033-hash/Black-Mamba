@@ -7,6 +7,7 @@ import {
   renameProject,
 } from '../persist/projectStore';
 import { buildProjectExport, importProjectPackage } from '../persist/projectTransfer';
+import { ensureLaosaDemoProject } from '../laosa/demoProject';
 import { emptyProjectDoc, navigateTo } from './appShell';
 
 type Translate = (zh: string, params?: Record<string, string | number>) => string;
@@ -14,6 +15,7 @@ type Translate = (zh: string, params?: Record<string, string | number>) => strin
 export interface DashboardActions {
   onOpen: (id: string) => void;
   onNew: () => Promise<void>;
+  onOpenLaosa: () => Promise<void>;
   onRename: (id: string, name: string) => Promise<void>;
   onDuplicate: (id: string) => Promise<void>;
   onDelete: (id: string) => Promise<void>;
@@ -66,6 +68,11 @@ export function useDashboardActions(refresh: () => Promise<void>): DashboardActi
     onOpen: (id) => navigateTo(`#/editor/${id}`),
     onNew: async () => {
       const project = await createProject(randomProjectName(), emptyProjectDoc());
+      await refresh();
+      navigateTo(`#/editor/${project.id}`);
+    },
+    onOpenLaosa: async () => {
+      const project = await ensureLaosaDemoProject();
       await refresh();
       navigateTo(`#/editor/${project.id}`);
     },

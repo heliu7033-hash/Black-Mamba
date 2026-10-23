@@ -15,6 +15,7 @@ import type { CardRecommendation } from '../../shared/laosa-card';
 import { getLocale, setLocale } from '../i18n/locale';
 import type { TimelineState } from '../editor/types';
 import { detectChapters } from './chapters';
+import { setActivePackagingLanguage } from './packagingLanguage';
 import { defaultLaosaPrefs, ensureLaosaPrefs, saveLaosaPrefs } from './prefs';
 import { autoLandClip, stubSmartFill } from './rails';
 import { readOpenAiCompatibleKey, requestSemanticCard, SemanticCardError, type SemanticErrorCode } from './semanticClient';
@@ -149,6 +150,10 @@ export function LaosaProvider({ projectId, state, playerRef, onOpenSettings, chi
       .then((ready) => setKeyPresence(ready ? 'ready' : 'missing'))
       .catch(() => setKeyPresence('unreachable'));
   };
+
+  useEffect(() => {
+    setActivePackagingLanguage(prefs.language);
+  }, [prefs.language]);
 
   useEffect(() => {
     refreshKeyPresence();

@@ -5,6 +5,7 @@ import { useT } from '../i18n/locale';
 import { loadProjectForEditing, renameProject } from '../persist/projectStore';
 import type { ProjectMeta } from '../persist/projectStoreCoordinators';
 import { theme } from '../theme';
+import { ensureLaosaDemoProject } from '../laosa/demoProject';
 import { emptyProjectDoc, navigateTo, type AppRoute } from './appShell';
 import { editorAccess } from './editorAccess';
 import { EditorErrorBoundary, SecureContextRequiredView } from './EditorGuards';
@@ -124,6 +125,19 @@ export function EditorRoute({ route, projects, refresh }: EditorRouteProps) {
       onRename={async (name) => { await renameProject(meta.id, name); refresh(); }}
     />
   );
+}
+
+export function LaosaDemoRoute({ refresh }: { refresh: () => Promise<void> }) {
+  const t = useT();
+  useEffect(() => {
+    let alive = true;
+    void ensureLaosaDemoProject().then(async (project) => {
+      await refresh();
+      if (alive) navigateTo(`#/editor/${project.id}`);
+    });
+    return () => { alive = false; };
+  }, [refresh]);
+  return <AppSplash text={t('正在打开老萨包装台…')} />;
 }
 
 export function DashboardRoute({

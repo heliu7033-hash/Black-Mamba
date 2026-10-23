@@ -40,6 +40,7 @@ import { PreviewTransformOverlay } from './preview/PreviewTransformOverlay';
 import { fitPreviewCanvasSize, previewPaddedClientSize, previewStageContentSize, type PreviewCanvasSize } from './preview/previewCanvasGeometry';
 import { LaosaCardFrame } from '../laosa/LaosaCardFrame';
 import { LaosaChapterBar } from '../laosa/LaosaChapters';
+import { useLaosaDesk } from '../laosa/LaosaContext';
 
 const MEDIA_LOADING_NOTICE_DELAY_MS = 160;
 
@@ -118,6 +119,7 @@ export const PreviewPanel = memo(function PreviewPanel({
   hoverPreviewFrame = null,
 }: PreviewPanelProps) {
   const t = useT();
+  const packagingLanguage = useLaosaDesk().prefs.language;
   const renderProject = useMemo<ProjectDoc>(() => ({
     ...project,
     timelines: project.timelines.map((timeline) => timeline.id === timelineId
@@ -132,12 +134,14 @@ export const PreviewPanel = memo(function PreviewPanel({
     timelineId,
     selectedItemId: selectedItem?.id,
     onSelectedPreviewStatus,
-  }), [preview.state, preview.project, timelineId, selectedItem?.id, onSelectedPreviewStatus]);
+    packagingLanguage,
+  }), [preview.state, preview.project, timelineId, selectedItem?.id, onSelectedPreviewStatus, packagingLanguage]);
   const thumbnailInputProps = useMemo(() => ({
     state: preview.state,
     project: preview.project,
     timelineId,
-  }), [preview.state, preview.project, timelineId]);
+    packagingLanguage,
+  }), [preview.state, preview.project, timelineId, packagingLanguage]);
   const inputRef = useRef<HTMLInputElement>(null);
   const videoBoxRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);

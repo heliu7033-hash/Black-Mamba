@@ -162,6 +162,10 @@ function ProjectGrid({ props, model }: { props: DashboardProps; model: Dashboard
   return (
     <>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(232px, 1fr))', alignItems: 'start', gap: 16 }}>
+        <button type="button" onClick={() => void props.onOpenLaosa()} style={newCard} title={t('打开老萨包装台')}>
+          <span style={{ fontSize: 18, color: theme.accent, fontWeight: 750, letterSpacing: 0.4, lineHeight: 1 }}>S·M·F</span>
+          <span style={{ fontSize: 13, color: theme.text }}>{t('打开老萨包装台')}</span>
+        </button>
         <button onClick={props.onNew} style={newCard} title={t('新建工程')}>
           <span style={{ fontSize: 30, color: theme.textDim, lineHeight: 1 }}>＋</span>
           <span style={{ fontSize: 13, color: theme.textDim }}>{t('新建工程')}</span>

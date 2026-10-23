@@ -7,6 +7,9 @@ import {
   semanticUserPrompt,
 } from '../../shared/laosa-card';
 import { packagingLines } from './captionLines';
+import { laosaDemoRails, laosaDemoTimeline } from './demoProject';
+import { packagingLinesFromTimeline } from './timelineLines';
+import { DEFAULT_SKIN, SKINS } from '../skins';
 import { chapterAt, detectChapters, joinCaptionText } from './chapters';
 import {
   clearLaosaPrefs,
@@ -133,4 +136,22 @@ assert.equal(
   '{"size":"F","reason":"框架"}',
 );
 
-console.log('laosa.verify: styles, prefs, chapters, rails, semantic card');
+const shell = SKINS.find((skin) => skin.id === DEFAULT_SKIN);
+assert.equal(DEFAULT_SKIN, 'blackmamba');
+assert.equal(shell?.tokens.bg, '#080808');
+assert.equal(shell?.tokens.accent, '#e18c21');
+assert.equal(shell?.tokens.text, '#fcfcfc');
+
+const demoState = laosaDemoTimeline();
+const zhLines = packagingLinesFromTimeline(demoState, 'zh');
+const enLines = packagingLinesFromTimeline(demoState, 'en');
+const demoChapters = detectChapters(zhLines);
+assert.equal(demoChapters.length, 5, 'the sample captions open five chapters');
+assert.equal(demoChapters[0]?.title.startsWith('同一个口播'), true);
+assert.equal(enLines[0]?.text, 'Same voiceover');
+assert.equal(enLines[0]?.startMs, zhLines[0]?.startMs, 'english packaging keeps the spoken window');
+assert.equal(detectChapters(enLines).length, 5);
+const demoRails = laosaDemoRails();
+assert.equal(new Set(demoRails.map((clip) => clip.rail)).size, 3, 'music, motion, and b-roll are all seeded');
+
+console.log('laosa.verify: styles, prefs, chapters, rails, semantic card, demo');

@@ -7,7 +7,7 @@ import type { ChapterMark, TimedLine } from './types';
 const GAP_MS = 1200;
 const MIN_CHAPTER_MS = 2500;
 const SENTENCE_SPLIT_MS = 8000;
-const TITLE_CHARS = 18;
+const TITLE_CHARS = 48;
 
 function cleanLines(lines: readonly TimedLine[]): TimedLine[] {
   return lines

@@ -50,7 +50,7 @@ export interface SkinDef {
   tokens: SkinTokens;
 }
 
-// Graphite = default skin (consistent with the look and feel before the skin-changing system was implemented).
+// Graphite = the pre-skin look. Black Mamba (炭黑琥珀) is the default shell.
 const GRAPHITE: SkinTokens = {
   bg: '#101010', inset: '#141414', panel: '#181818', panelAlt: '#212121', hover: '#2c2c2c',
   border: '#363636', borderLight: '#4a4a4a',
@@ -71,6 +71,19 @@ const GRAPHITE: SkinTokens = {
 // textDim/panel ≥ 4.5, onAccent/accent ≥ 4.5 (script skin-by-skin assertion, individual official grayscale
 // Fine-tune L to meet the standard). Pastel accent skin (Mocha/Arctic/Tokyo Night/Latte) onAccent uses dark fonts.
 export const SKINS: readonly SkinDef[] = [
+  {
+    id: 'blackmamba',
+    nameZh: '黑曼巴',
+    tokens: {
+      ...GRAPHITE,
+      bg: '#080808', inset: '#0c0c0c', panel: '#121212', panelAlt: '#1c1c1c', hover: '#2a2a2a',
+      border: '#333333', borderLight: '#4a4a4a',
+      text: '#fcfcfc', textMuted: '#d4d4d4', textDim: '#a3a3a3', textStrong: '#ffffff',
+      accent: '#e18c21', accentDeep: '#c47612', accentRgb: '225,140,33', onAccent: '#1a1208',
+      gold: '#e18c21',
+      tlTrack: '#141414', tlSidePanel: '#101010',
+    },
+  },
   { id: 'graphite', nameZh: '石墨', tokens: GRAPHITE },
   {
     id: 'midnight', nameZh: '墨黑',
@@ -139,7 +152,7 @@ export const SKINS: readonly SkinDef[] = [
 ];
 
 const STORAGE_KEY = 'cc.skin';
-export const DEFAULT_SKIN = 'graphite';
+export const DEFAULT_SKIN = 'blackmamba';
 
 const kebab = (name: string): string => name.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`);
 

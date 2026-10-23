@@ -1,6 +1,7 @@
 import type { RenderMediaOnWebProgress } from '@remotion/web-renderer';
 import type { ComponentType } from 'react';
 import type { TimelineCompositionProps } from '../editor/TimelineComposition';
+import { activePackagingLanguage } from '../laosa/packagingLanguage';
 import { timelineDuration, type ProjectDoc, type TimelineState } from '../editor/types';
 import { resolveTimelineRenderPlan } from '../editor/sequenceGraph';
 import { webScaledExportDimensions, type ExportResolution } from './mediaSettings';
@@ -239,7 +240,14 @@ async function executeBrowserRender(
   const { state, project, timelineId, codec, signal, onProgress } = options;
   // Invariant: loadBrowserRenderConfig rejected prores before any render config existed.
   if (codec === 'prores') throw new Error('prores must be rejected by loadBrowserRenderConfig');
-  const props: TimelineCompositionProps = { state, project, timelineId, transparent: false, browserRenderer: true };
+  const props: TimelineCompositionProps = {
+    state,
+    project,
+    timelineId,
+    transparent: false,
+    browserRenderer: true,
+    packagingLanguage: activePackagingLanguage(),
+  };
   try {
     const { TimelineComposition } = await (options.loadComposition ?? (() => import('../editor/TimelineComposition')))();
     throwIfAborted(signal);

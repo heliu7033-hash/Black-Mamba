@@ -1,5 +1,4 @@
 import { startUiLocaleSync } from '../i18n/localeSync';
-import { t } from '../i18n/locale';
 import { useCallback, useEffect, useState } from 'react';
 import { applyLiveCaps, applyLiveKeyStatus, applyLiveModels } from '../agent/capabilities';
 import { fetchCodexModels, fetchCodexStatus } from '../agent/codex/client';
@@ -9,7 +8,6 @@ import { applyAgentModelStatus, applyClaudeCodeAgentStatus, applyCodexAgentStatu
 import { loadAgentModelPref } from '../persist/sessionPrefs';
 import type { ProjectDoc, TimelineState } from '../editor/types';
 import {
-  createProject,
   docFromTimeline,
   hasProjectHistory,
   listProjects,
@@ -18,7 +16,7 @@ import type { ProjectMeta } from '../persist/projectStoreCoordinators';
 import { kvRemoteMode } from '../persist/sharedKv';
 import { projectStoreWriteCredential } from '../persist/projectStoreTransport';
 
-export type AppRoute = { name: 'dashboard' } | { name: 'editor'; id: string };
+export type AppRoute = { name: 'dashboard' } | { name: 'editor'; id: string } | { name: 'laosa' };
 
 interface LiveAgentStatus {
   readonly caps?: Record<string, boolean>;
@@ -37,10 +35,8 @@ const emptyState = (): TimelineState => ({
 });
 
 export const emptyProjectDoc = (): ProjectDoc => docFromTimeline(emptyState());
-// Keep the sample timeline out of established users' startup bundle; it is needed only on first run.
-const seedDoc = async (): Promise<ProjectDoc> => docFromTimeline((await import('../editor/initial')).INITIAL);
-
 function parseHash(): AppRoute {
+  if (window.location.hash === '#/laosa') return { name: 'laosa' };
   const match = window.location.hash.match(/^#\/editor\/(.+)$/);
   return match ? { name: 'editor', id: match[1] } : { name: 'dashboard' };
 }
@@ -173,7 +169,7 @@ const projectStartupSource: ProjectStartupSource = {
   list: listProjects,
   hasHistory: hasProjectHistory,
   canSeedDemo: () => kvRemoteMode() === 'local' || projectStoreWriteCredential(),
-  createDemo: async () => createProject(t('示例工程'), await seedDoc()),
+  createDemo: async () => (await import('../laosa/demoProject')).ensureLaosaDemoProject(),
 };
 
 export async function loadInitialProjects(

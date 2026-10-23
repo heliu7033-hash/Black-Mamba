@@ -53,4 +53,6 @@ export default {
   '动效占位': 'Motion placeholder',
   'B-roll 占位': 'B-roll placeholder',
   '未命名素材': 'Untitled asset',
+  '打开老萨包装台': 'Open the Lao Sa desk',
+  '正在打开老萨包装台…': 'Opening the Lao Sa desk…',
 } as Record<string, string>;
