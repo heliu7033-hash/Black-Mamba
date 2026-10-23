@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Lao Sa desk: style tokens, prefs, chapters, rail auto-land, and card JSON.
+// 老黑剪辑台: style tokens, prefs, chapters, rail auto-land, card JSON, and the sample timeline.
 import assert from 'node:assert/strict';
 import {
   extractModelText,
@@ -7,6 +7,9 @@ import {
   semanticUserPrompt,
 } from '../../shared/laosa-card';
 import { packagingLines } from './captionLines';
+import { LAOHEI_DEMO_CUES, laoheiDemoPrefs, laoheiDemoTimeline } from './demoFixture';
+import { docFromTimeline } from '../persist/projectStore';
+import { packagingLinesFromTimeline } from './timelineLines';
 import { chapterAt, detectChapters, joinCaptionText } from './chapters';
 import {
   clearLaosaPrefs,
@@ -133,4 +136,22 @@ assert.equal(
   '{"size":"F","reason":"框架"}',
 );
 
-console.log('laosa.verify: styles, prefs, chapters, rails, semantic card');
+const demoDoc = docFromTimeline(laoheiDemoTimeline(), '老黑剪辑台');
+const demoTimeline = demoDoc.timelines[0]!;
+const demoZh = packagingLinesFromTimeline(demoTimeline, 'zh');
+const demoEn = packagingLinesFromTimeline(demoTimeline, 'en');
+assert.equal(demoZh.length, LAOHEI_DEMO_CUES.length, 'sample captions survive project normalization');
+assert.equal(demoZh[0]?.text, '内容没有变');
+assert.equal(demoEn[0]?.text, 'Same content');
+assert.equal(demoZh[0]?.startMs, demoEn[0]?.startMs, 'sample language switch keeps timing');
+assert.equal(demoZh[0]?.endMs, demoEn[0]?.endMs);
+const demoChapters = detectChapters(demoZh);
+assert.equal(demoChapters.length >= 4, true, 'sample captions open several chapters');
+const demoPrefs = laoheiDemoPrefs();
+assert.equal(demoPrefs.styleId, 'blackmamba');
+assert.equal(demoPrefs.language, 'zh');
+assert.equal(demoPrefs.cardSize, 'M');
+assert.equal(demoPrefs.anchor, 'tr');
+assert.deepEqual(demoPrefs.rails.map((clip) => clip.rail), ['music', 'motion', 'broll']);
+
+console.log('laosa.verify: styles, prefs, chapters, rails, semantic card, sample timeline');

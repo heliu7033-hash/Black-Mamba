@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — Lao Sa desk preferences. Browser-local, same class of data as session chrome.
+// OpenChatCut — 老黑剪辑台 preferences. Browser-local, same class of data as session chrome.
 
 import type { CardSize } from '../../shared/laosa-card';
 import { DEFAULT_LAOSA_STYLE, styleById } from './styles';

@@ -1,4 +1,4 @@
-// EN dictionary for the Lao Sa editing desk. Keys are the Chinese source strings.
+// EN dictionary for 老黑剪辑台. Keys are the Chinese source strings.
 export default {
   '包装风格': 'Packaging style',
   '黑曼巴炭黑琥珀': 'Black Mamba charcoal amber',
@@ -13,7 +13,8 @@ export default {
   '全卡 F': 'Full F',
   '内容锁定': 'Content locked',
   '同一内容，只换包装': 'Same content, packaging only',
-  '老萨剪辑台': 'Lao Sa desk',
+  '老黑剪辑台': 'Lao Hei desk',
+  '正在打开老黑剪辑台…': 'Opening the Lao Hei desk…',
   '工程默认': 'Project default',
   '小卡': 'Small card',
   '中卡': 'Medium card',

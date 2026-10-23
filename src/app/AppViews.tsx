@@ -5,6 +5,7 @@ import { useT } from '../i18n/locale';
 import { loadProjectForEditing, renameProject } from '../persist/projectStore';
 import type { ProjectMeta } from '../persist/projectStoreCoordinators';
 import { theme } from '../theme';
+import { ensureLaoheiDemo } from '../laosa/openDemo';
 import { emptyProjectDoc, navigateTo, type AppRoute } from './appShell';
 import { editorAccess } from './editorAccess';
 import { EditorErrorBoundary, SecureContextRequiredView } from './EditorGuards';
@@ -124,6 +125,32 @@ export function EditorRoute({ route, projects, refresh }: EditorRouteProps) {
       onRename={async (name) => { await renameProject(meta.id, name); refresh(); }}
     />
   );
+}
+
+export function LaoheiDemoRoute({
+  projects,
+  refresh,
+}: {
+  projects: ProjectMeta[];
+  refresh: () => Promise<void>;
+}) {
+  const t = useT();
+  const [id, setId] = useState<string | null>(null);
+  useEffect(() => {
+    let alive = true;
+    void ensureLaoheiDemo().then((meta) => {
+      if (!alive) return;
+      setId(meta.id);
+      void refresh();
+    }).catch(() => {
+      if (alive) navigateTo('#/');
+    });
+    return () => { alive = false; };
+  }, [refresh]);
+  useEffect(() => {
+    if (id && projects.some((project) => project.id === id)) navigateTo(`#/editor/${id}`);
+  }, [id, projects]);
+  return <AppSplash text={t('正在打开老黑剪辑台…')} />;
 }
 
 export function DashboardRoute({

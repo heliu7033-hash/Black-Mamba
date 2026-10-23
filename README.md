@@ -279,6 +279,18 @@ Open:
 http://localhost:5199
 ```
 
+### 老黑剪辑台
+
+The editor’s packaging desk switches style, 中文/English, and card size S/M/F without regenerating the spoken content or the Remotion picture. The same desk includes the nine-grid anchor, semantic card recommendation, chapter scrub, and music / motion / B-roll rails.
+
+Open the sample project (captions and rails are built in; no user media file is required). This address also switches the interface language to Chinese:
+
+```text
+http://localhost:5199/#/laohei
+```
+
+Screenshots, the short recording, and known gaps: [docs/demo/README.md](docs/demo/README.md). Semantic card recommendation needs an OpenAI-compatible key in Settings. With no key, the desk shows an empty state and does not call a model. Keys stay in local settings and are never committed. Routes and code identifiers such as `/api/laosa/` stay as implementation names.
+
 The editor needs a browser [secure context](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Secure_Contexts): open OpenChatCut at `http://localhost` or `http://127.0.0.1` on the machine running it, or serve it over HTTPS. Over plain HTTP from another device (a LAN IP or reverse proxy), browsers disable Web Crypto, WebCodecs, and the clipboard, so the project list still loads but the editor shows this requirement instead of opening.
 
 Only add the model or media-service credentials you actually use to `.env.local`. Features without configured third-party credentials report the missing key explicitly; local timeline editing, built-in media, and other configured capabilities continue to work.
