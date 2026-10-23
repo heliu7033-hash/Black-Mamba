@@ -289,7 +289,7 @@ Open the sample project (captions and rails are built in; no user media file is 
 http://localhost:5199/#/laohei
 ```
 
-Screenshots, the short recording, and known gaps: [docs/demo/README.md](docs/demo/README.md). Semantic card recommendation needs an OpenAI-compatible key in Settings. With no key, the desk shows an empty state and does not call a model. Keys stay in local settings and are never committed. Routes and code identifiers such as `/api/laosa/` stay as implementation names.
+Screenshots, the short recording, and known gaps: [docs/demo/README.md](docs/demo/README.md). Semantic card recommendation needs an OpenAI-compatible key in Settings. With no key, the desk keeps that empty state and adds an offline Demo mode button: it applies a deterministic S/M/F suggestion labeled Demo and does not call a model. The sample project’s music, motion, and B-roll rails open already filled with labeled clips. The Smart fill button itself still drops a placeholder until a model is connected. Keys stay in local settings and are never committed. Routes and code identifiers such as `/api/laosa/` stay as implementation names.
 
 The editor needs a browser [secure context](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Secure_Contexts): open OpenChatCut at `http://localhost` or `http://127.0.0.1` on the machine running it, or serve it over HTTPS. Over plain HTTP from another device (a LAN IP or reverse proxy), browsers disable Web Crypto, WebCodecs, and the clipboard, so the project list still loads but the editor shows this requirement instead of opening.
 
