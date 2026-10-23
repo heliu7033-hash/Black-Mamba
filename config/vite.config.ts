@@ -151,6 +151,8 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 5199,
       strictPort: true,
+      // Allow Cloudflare Tunnel / ngrok hostnames for phone preview
+      allowedHosts: true,
       // Pre-transform the editor entry graph at startup so the first tab
       // (and chat hydration) renders without a multi-second compile stall.
       warmup: {

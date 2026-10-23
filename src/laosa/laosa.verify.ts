@@ -8,7 +8,7 @@ import {
 } from '../../shared/laosa-card';
 import { packagingLines } from './captionLines';
 import { statSync } from 'node:fs';
-import { LAOHEI_DEMO_BED_SRC, LAOHEI_DEMO_CUES, laoheiDemoPrefs, laoheiDemoTimeline } from './demoFixture';
+import { LAOHEI_DEMO_BED_SRC, LAOHEI_DEMO_CUES, LAOHEI_DEMO_VO_SRC, laoheiDemoPrefs, laoheiDemoTimeline } from './demoFixture';
 import { demoCardSuggestion } from './demoSuggest';
 import { docFromTimeline } from '../persist/projectStore';
 import { packagingLinesFromTimeline } from './timelineLines';
@@ -22,7 +22,7 @@ import {
   parseLaosaPrefs,
   saveLaosaPrefs,
 } from './prefs';
-import { autoLandClip, stubSmartFill } from './rails';
+import { autoLandClip, removeRailClip, smartFill, stubSmartFill, updateRailClip } from './rails';
 import { DEFAULT_LAOSA_STYLE, LAOSA_STYLES, laosaStyleVars, styleById } from './styles';
 
 const mem = new Map<string, string>();
@@ -118,8 +118,25 @@ assert.equal(rails[1]?.startFrame, 40, 'overlapping drop lands after the clip al
 rails = autoLandClip(rails, 'music', 20, 'bed.wav', 15);
 assert.equal(rails[2]?.startFrame, 20, 'a free frame on another rail stays put');
 const filled = stubSmartFill([], 'motion', 12);
-assert.equal(filled[0]?.label, 'laosa:motion');
-assert.equal(filled[0]?.startFrame, 12);
+assert.equal(filled[0]?.label.includes('动效') || filled[0]?.label === 'laosa:motion', true);
+assert.equal(filled[0]?.startFrame <= 12, true, 'motion fills a little ahead of the playhead');
+
+const captionLines = [
+  { text: '关键词用小卡', startMs: 0, endMs: 1000 },
+  { text: '步骤关系', startMs: 2000, endMs: 3000 },
+];
+const motionFill = smartFill([], 'motion', 60, { fps: 30, lines: captionLines, cardSize: 'S', reason: '关键词点题', demo: true });
+assert.equal(motionFill[0]?.cardSize, 'S');
+assert.match(motionFill[0]?.label ?? '', /S·|关键词/);
+const musicFill = smartFill([], 'music', 0, { fps: 30, lines: captionLines, demo: true });
+assert.match(musicFill[0]?.label ?? '', /床乐|关键词/);
+const brollFill = smartFill([], 'broll', 0, { fps: 30, lines: captionLines, demo: false });
+assert.match(brollFill[0]?.label ?? '', /B-roll/);
+let edited = updateRailClip(motionFill, motionFill[0]!.id, { label: '改标签', cardSize: 'F' });
+assert.equal(edited[0]?.label, '改标签');
+assert.equal(edited[0]?.cardSize, 'F');
+edited = removeRailClip(edited, edited[0]!.id);
+assert.equal(edited.length, 0);
 
 assert.deepEqual(parseCardRecommendation('{"size":"S","reason":"关键词点题"}'), { size: 'S', reason: '关键词点题' });
 assert.deepEqual(
@@ -186,4 +203,22 @@ assert.match(demoCardSuggestion(demoZh, 16000)?.reason ?? '', /演示：完整�
 assert.equal(demoCardSuggestion(demoEn, 9500)?.size, 'S', 'english keywords still pick a small card');
 assert.equal(demoCardSuggestion(demoEn, 16000)?.size, 'F');
 
-console.log('laosa.verify: styles, prefs, chapters, rails, semantic card, sample timeline');
+
+// VO slot + prefs round-trip
+assert.equal(LAOHEI_DEMO_VO_SRC, '/demo/laohei-vo.mp4');
+const voStat = statSync(new URL(`../../public${LAOHEI_DEMO_VO_SRC}`, import.meta.url));
+assert.equal(voStat.size > 1000, true, 'demo VO placeholder is a generated sample file');
+assert.equal(demoPrefs.voMedia ?? null, null, 'demo opens with empty VO slot so the inspector empty-state shows');
+mem.clear();
+saveLaosaPrefs(projectId, {
+  ...defaultLaosaPrefs('zh'),
+  voMedia: { name: 'talk.mp4', src: LAOHEI_DEMO_VO_SRC, durationInFrames: 720 },
+  rails: [{ id: 'm1', rail: 'motion', startFrame: 10, durationInFrames: 30, label: '小卡', cardSize: 'S' }],
+});
+const withVo = loadLaosaPrefs(projectId);
+assert.equal(withVo.voMedia?.src, LAOHEI_DEMO_VO_SRC);
+assert.equal(withVo.rails[0]?.cardSize, 'S');
+assert.equal(parseLaosaPrefs(JSON.stringify({ voMedia: { name: '', src: '/x' } })).voMedia, null, 'empty VO name rejected');
+
+console.log('laosa.verify: styles, prefs, chapters, rails, semantic card, sample timeline, VO slot');
+

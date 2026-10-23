@@ -17,11 +17,21 @@ import type { TimelineState } from '../editor/types';
 import { detectChapters } from './chapters';
 import { demoCardSuggestion } from './demoSuggest';
 import { defaultLaosaPrefs, ensureLaosaPrefs, saveLaosaPrefs } from './prefs';
-import { autoLandClip, stubSmartFill } from './rails';
+import { autoLandClip, removeRailClip, smartFill, updateRailClip } from './rails';
 import { readOpenAiCompatibleKey, requestSemanticCard, SemanticCardError, type SemanticErrorCode } from './semanticClient';
 import { styleById } from './styles';
 import { packagingLinesFromTimeline } from './timelineLines';
-import type { CardSize, ChapterMark, DeskLanguage, LaosaPrefs, NineAnchor, RailKind, StyleTemplate, TimedLine } from './types';
+import type {
+  CardSize,
+  ChapterMark,
+  DeskLanguage,
+  LaosaPrefs,
+  NineAnchor,
+  RailKind,
+  StyleTemplate,
+  TimedLine,
+  VoMedia,
+} from './types';
 
 export type KeyPresence = 'unknown' | 'ready' | 'missing' | 'unreachable';
 
@@ -38,19 +48,27 @@ export interface LaosaDeskValue {
   activeSize: CardSize;
   activeAnchor: NineAnchor;
   selectedName: string | null;
+  selectedRailId: string | null;
   lines: TimedLine[];
   chapters: ChapterMark[];
   durationMs: number;
   playheadFrame: number;
   playheadMs: number;
+  fps: number;
   keyPresence: KeyPresence;
   recommendation: RecommendationState;
   setStyle: (id: string) => void;
   setLanguage: (language: DeskLanguage) => void;
   setCardSize: (size: CardSize) => void;
   setAnchor: (anchor: NineAnchor) => void;
-  landRail: (rail: RailKind, frame: number, label: string) => void;
-  stubFill: (rail: RailKind, frame: number) => void;
+  landRail: (rail: RailKind, frame: number, label: string, src?: string) => void;
+  /** Caption-aware fill. Uses semantic size when a recommend result is ready; otherwise offline labels. */
+  smartFillRail: (rail: RailKind, frame: number) => void;
+  selectRail: (id: string | null) => void;
+  removeSelectedRail: () => void;
+  updateSelectedRailLabel: (label: string) => void;
+  applySizeToSelectedRail: (size: CardSize) => void;
+  setVoMedia: (media: VoMedia | null) => void;
   recommend: () => Promise<void>;
   /** Offline deterministic suggestion. Does not check or call a model. */
   suggestDemo: () => void;
@@ -80,11 +98,13 @@ const FALLBACK_DESK: LaosaDeskValue = {
   activeSize: FALLBACK_PREFS.cardSize,
   activeAnchor: FALLBACK_PREFS.anchor,
   selectedName: null,
+  selectedRailId: null,
   lines: [],
   chapters: [],
   durationMs: 1,
   playheadFrame: 0,
   playheadMs: 0,
+  fps: 30,
   keyPresence: 'unknown',
   recommendation: { status: 'idle' },
   setStyle: () => {},
@@ -92,7 +112,12 @@ const FALLBACK_DESK: LaosaDeskValue = {
   setCardSize: () => {},
   setAnchor: () => {},
   landRail: () => {},
-  stubFill: () => {},
+  smartFillRail: () => {},
+  selectRail: () => {},
+  removeSelectedRail: () => {},
+  updateSelectedRailLabel: () => {},
+  applySizeToSelectedRail: () => {},
+  setVoMedia: () => {},
   recommend: async () => {},
   suggestDemo: () => {},
   applyRecommendation: () => {},
@@ -119,6 +144,7 @@ export function LaosaProvider({ projectId, state, playerRef, onOpenSettings, chi
   const [playheadFrame, setPlayheadFrame] = useState(0);
   const [keyPresence, setKeyPresence] = useState<KeyPresence>('unknown');
   const [recommendation, setRecommendation] = useState<RecommendationState>({ status: 'idle' });
+  const [selectedRailId, setSelectedRailId] = useState<string | null>(null);
 
   const commit = (recipe: (current: LaosaPrefs) => LaosaPrefs) => {
     setPrefs((current) => {
@@ -131,6 +157,7 @@ export function LaosaProvider({ projectId, state, playerRef, onOpenSettings, chi
   const selectedItemId = state.selectedId ?? null;
   const selectedName = state.items.find((item) => item.id === selectedItemId)?.name ?? null;
   const packaging = activePackaging(prefs, selectedItemId);
+  const fps = Math.max(1, state.fps || 30);
 
   const updatePackaging = (patch: Partial<{ size: CardSize; anchor: NineAnchor }>) => {
     commit((current) => {
@@ -171,17 +198,25 @@ export function LaosaProvider({ projectId, state, playerRef, onOpenSettings, chi
     return () => player.removeEventListener('frameupdate', onFrame);
   }, [playerRef, state.items.length]);
 
+  useEffect(() => {
+    if (selectedRailId && !prefs.rails.some((clip) => clip.id === selectedRailId)) {
+      setSelectedRailId(null);
+    }
+  }, [prefs.rails, selectedRailId]);
+
   const value: LaosaDeskValue = {
     prefs,
     style: styleById(prefs.styleId),
     activeSize: packaging.size,
     activeAnchor: packaging.anchor,
     selectedName,
+    selectedRailId,
     lines,
     chapters,
     durationMs,
     playheadFrame,
-    playheadMs: (playheadFrame / Math.max(1, state.fps)) * 1000,
+    playheadMs: (playheadFrame / fps) * 1000,
+    fps,
     keyPresence,
     recommendation,
     setStyle: (id) => commit((current) => ({ ...current, styleId: styleById(id).id })),
@@ -191,12 +226,42 @@ export function LaosaProvider({ projectId, state, playerRef, onOpenSettings, chi
     },
     setCardSize: (size) => updatePackaging({ size }),
     setAnchor: (anchor) => updatePackaging({ anchor }),
-    landRail: (rail, frame, label) => {
-      commit((current) => ({ ...current, rails: autoLandClip(current.rails, rail, frame, label) }));
+    landRail: (rail, frame, label, src) => {
+      commit((current) => ({
+        ...current,
+        rails: autoLandClip(current.rails, rail, frame, label, undefined, src ? { src } : undefined),
+      }));
     },
-    stubFill: (rail, frame) => {
-      commit((current) => ({ ...current, rails: stubSmartFill(current.rails, rail, frame) }));
+    smartFillRail: (rail, frame) => {
+      const ready = recommendation.status === 'ready' ? recommendation.result : null;
+      commit((current) => ({
+        ...current,
+        rails: smartFill(current.rails, rail, frame, {
+          fps,
+          lines,
+          cardSize: rail === 'motion' ? (ready?.size ?? current.cardSize) : undefined,
+          reason: ready?.reason,
+          demo: keyPresence !== 'ready',
+        }),
+      }));
     },
+    selectRail: (id) => setSelectedRailId(id),
+    removeSelectedRail: () => {
+      if (!selectedRailId) return;
+      const id = selectedRailId;
+      setSelectedRailId(null);
+      commit((current) => ({ ...current, rails: removeRailClip(current.rails, id) }));
+    },
+    updateSelectedRailLabel: (label) => {
+      if (!selectedRailId) return;
+      commit((current) => ({ ...current, rails: updateRailClip(current.rails, selectedRailId, { label }) }));
+    },
+    applySizeToSelectedRail: (size) => {
+      if (!selectedRailId) return;
+      commit((current) => ({ ...current, rails: updateRailClip(current.rails, selectedRailId, { cardSize: size }) }));
+      updatePackaging({ size });
+    },
+    setVoMedia: (media) => commit((current) => ({ ...current, voMedia: media })),
     recommend: async () => {
       if (!lines.length) {
         setRecommendation({ status: 'empty' });
@@ -214,16 +279,37 @@ export function LaosaProvider({ projectId, state, playerRef, onOpenSettings, chi
       }
     },
     suggestDemo: () => {
-      const playheadMs = (playheadFrame / Math.max(1, state.fps)) * 1000;
+      const playheadMs = (playheadFrame / fps) * 1000;
       const result = demoCardSuggestion(lines, playheadMs);
       setRecommendation(result ? { status: 'ready', result, demo: true } : { status: 'empty' });
     },
     applyRecommendation: () => {
-      if (recommendation.status === 'ready') updatePackaging({ size: recommendation.result.size });
+      if (recommendation.status !== 'ready') return;
+      const { result, demo } = recommendation;
+      const selected = selectedItemId;
+      commit((current) => {
+        const active = activePackaging(current, selected);
+        const size = result.size;
+        const anchor = active.anchor;
+        const next: LaosaPrefs = {
+          ...current,
+          cardSize: size,
+          anchor,
+          rails: smartFill(current.rails, 'motion', playheadFrame, {
+            fps,
+            lines,
+            cardSize: size,
+            reason: result.reason,
+            demo: Boolean(demo),
+          }),
+        };
+        if (selected) next.byItem = { ...current.byItem, [selected]: { size, anchor } };
+        return next;
+      });
     },
     openSettings: () => onOpenSettings?.('llm/openai'),
     seekFrame: (frame) => playerRef.current?.seekTo(Math.max(0, Math.round(frame))),
-    seekMs: (ms) => playerRef.current?.seekTo(Math.max(0, Math.round((ms / 1000) * Math.max(1, state.fps)))),
+    seekMs: (ms) => playerRef.current?.seekTo(Math.max(0, Math.round((ms / 1000) * fps))),
     refreshKeyPresence,
   };
 

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — timeline rails. Drop auto-lands; smart fill is a labeled stub.
+// OpenChatCut — timeline rails. Drop auto-lands; smart fill uses captions / semantic size.
 
 import { useT } from '../i18n/locale';
 import { showAppToast } from '../ui/appToast';
@@ -30,19 +30,26 @@ function clipLabel(label: string, t: (text: string) => string): string {
 export function LaosaRails({ px, headerWidth, frameFromClientX, playheadFrame }: LaosaRailsProps) {
   const t = useT();
   const desk = useLaosaDesk();
-  const land = (rail: RailKind, frame: number, label: string) => desk.landRail(rail, frame, label);
+  const land = (rail: RailKind, frame: number, label: string, src?: string) => desk.landRail(rail, frame, label, src);
   return (
     <div className="cc-laosa-rails" data-laosa-desk="rails">
       {LAOSA_RAIL_ORDER.map((rail) => (
-        <div key={rail} className="cc-laosa-rail">
+        <div key={rail} className="cc-laosa-rail" data-laosa-rail={rail}>
           <div className="cc-laosa-rail-head" style={{ width: headerWidth }}>
             <span>{railName(rail, t)}</span>
             <button
               type="button"
-              title={t('智能填充尚未接入模型，已放一个占位片段。')}
+              data-laosa-fill={rail}
+              title={desk.keyPresence === 'ready'
+                ? t('按当前字幕与语义结果落轨')
+                : t('演示填充：按当前字幕落标注片段')}
               onClick={() => {
-                desk.stubFill(rail, playheadFrame());
-                showAppToast(t('智能填充尚未接入模型，已放一个占位片段。'));
+                desk.smartFillRail(rail, playheadFrame());
+                showAppToast(
+                  desk.keyPresence === 'ready'
+                    ? t('已按字幕与语义结果落轨')
+                    : t('演示填充：已按字幕落标注片段'),
+                );
               }}
             >
               {t('智能填充')}
@@ -61,18 +68,29 @@ export function LaosaRails({ px, headerWidth, frameFromClientX, playheadFrame }:
               const file = event.dataTransfer.files?.[0];
               const text = event.dataTransfer.getData('text/plain').trim();
               const label = file?.name || text.slice(0, 80) || t('未命名素材');
-              land(rail, frameFromClientX(event.clientX), label);
+              const src = file ? URL.createObjectURL(file) : undefined;
+              land(rail, frameFromClientX(event.clientX), label, src);
             }}
+            onClick={() => desk.selectRail(null)}
           >
             {desk.prefs.rails.filter((clip) => clip.rail === rail).map((clip) => (
-              <span
+              <button
                 key={clip.id}
-                className={`cc-laosa-rail-clip is-${rail}`}
+                type="button"
+                className={`cc-laosa-rail-clip is-${rail}${desk.selectedRailId === clip.id ? ' is-selected' : ''}`}
                 style={{ left: clip.startFrame * px, width: Math.max(8, clip.durationInFrames * px) }}
                 title={clipLabel(clip.label, t)}
+                data-laosa-rail-clip={clip.id}
+                data-laosa-card-size={clip.cardSize ?? ''}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  desk.selectRail(clip.id);
+                  desk.seekFrame(clip.startFrame);
+                }}
               >
-                {clipLabel(clip.label, t)}
-              </span>
+                {clip.cardSize ? <em>{clip.cardSize}</em> : null}
+                <span>{clipLabel(clip.label, t)}</span>
+              </button>
             ))}
           </div>
         </div>

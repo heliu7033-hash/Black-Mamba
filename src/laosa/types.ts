@@ -49,6 +49,22 @@ export interface RailClip {
   durationInFrames: number;
   /** Display label, or a `laosa:*` placeholder key translated by the UI. */
   label: string;
+  /** Optional media src when the user dropped a file onto the rail. */
+  src?: string;
+  /** Motion cards may carry the S/M/F size from semantic recommend. */
+  cardSize?: CardSize;
+}
+
+/** Talking-head / VO media slotted under the packaging preview. */
+export interface VoMedia {
+  /** Display name (file name). */
+  name: string;
+  /**
+   * Playable URL. Demo sample uses `/demo/laohei-vo.mp4`.
+   * User imports may be blob: URLs kept in this browser only.
+   */
+  src: string;
+  durationInFrames?: number;
 }
 
 export interface LaosaPrefs {
@@ -59,6 +75,8 @@ export interface LaosaPrefs {
   anchor: NineAnchor;
   byItem: Record<string, ItemPackaging>;
   rails: RailClip[];
+  /** Optional VO / talking-head under the packaging frame. */
+  voMedia?: VoMedia | null;
 }
 
 export interface TimedLine {
