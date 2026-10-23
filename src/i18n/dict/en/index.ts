@@ -14,6 +14,7 @@ import progress from './progress';
 import review from './review';
 import script from './script';
 import settings from './settings';
+import laosa from './laosa';
 import timeline from './timeline';
 import topbar from './topbar';
 import transcript from './transcript';
@@ -21,5 +22,5 @@ import transcript from './transcript';
 export const EN: Record<string, string> = Object.assign(
   {},
   audio, captions, chat, components, editor, exportPanel, fx, generate,
-  library, media, progress, review, script, settings, timeline, topbar, transcript,
+  laosa, library, media, progress, review, script, settings, timeline, topbar, transcript,
 );

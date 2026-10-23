@@ -2113,3 +2113,121 @@ button, input, select { font: inherit; }
 .cc-preview-text-edit-draft textarea:focus {
   border-color:color-mix(in srgb, var(--cc-accent) 50%, var(--cc-border));
 }
+
+/* Lao Sa packaging desk. Tokens follow the selected style (--ls-* and --cc-*). */
+.cc-laosa-toprow {
+  height:28px; display:flex; align-items:center; padding:0 8px; flex-shrink:0;
+  border-top:0.5px solid var(--cc-border); background:var(--ls-bg, var(--cc-bg));
+}
+.cc-laosa-switches { position:relative; z-index:2; display:flex; align-items:center; gap:6px; min-width:0; height:26px; }
+.cc-topbar-title { pointer-events:none; }
+.cc-topbar-title > span, .cc-topbar-title input { pointer-events:auto; }
+.cc-laosa-field { display:flex; align-items:center; gap:4px; min-width:0; }
+.cc-laosa-kicker { font-size:10px; color:var(--cc-text-dim); white-space:nowrap; }
+.cc-laosa-select {
+  max-width:148px; height:22px; border-radius:3px; padding:0 6px;
+  border:0.5px solid var(--ls-accent, var(--cc-accent)); background:var(--cc-panel);
+  color:var(--ls-fg, var(--cc-text)); font-size:11px; font-weight:650;
+}
+.cc-laosa-seg { display:flex; align-items:center; gap:2px; }
+.cc-laosa-lock {
+  height:22px; display:inline-flex; align-items:center; padding:0 7px; border-radius:3px;
+  border:0.5px solid var(--ls-accent, var(--cc-accent)); color:var(--ls-accent, var(--cc-accent));
+  font-size:10px; font-weight:700; letter-spacing:0.02em; white-space:nowrap;
+}
+.cc-laosa-inspector {
+  flex:1 1 0; max-height:52%; min-height:160px; overflow:auto; padding:8px 10px 10px;
+  border-bottom:0.5px solid var(--cc-border); background:var(--cc-panel);
+}
+.cc-laosa-inspector-head { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:8px; }
+.cc-laosa-inspector-head strong { font-size:12px; color:var(--ls-fg, var(--cc-text)); }
+.cc-laosa-inspector-head span { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:10px; color:var(--cc-text-dim); }
+.cc-laosa-block { margin-top:10px; }
+.cc-laosa-label { font-size:10px; font-weight:700; letter-spacing:0.04em; color:var(--ls-accent, var(--cc-accent)); margin-bottom:6px; }
+.cc-laosa-note { margin:4px 0 0; font-size:11px; line-height:1.45; color:var(--cc-text-dim); }
+.cc-laosa-size-row { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:4px; }
+.cc-laosa-size-row button, .cc-laosa-empty button, .cc-laosa-semantic > button, .cc-laosa-reason button, .cc-laosa-rail-head button {
+  border:0.5px solid var(--cc-border); background:var(--cc-inset); color:var(--ls-fg, var(--cc-text));
+  border-radius:4px; cursor:pointer; font-size:11px;
+}
+.cc-laosa-size-row button { display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:6px 7px; }
+.cc-laosa-size-row button b { font-size:13px; color:var(--ls-accent, var(--cc-accent)); }
+.cc-laosa-size-row button.is-on, .cc-laosa-grid button.is-on, .cc-laosa-chapters button.is-on, .cc-laosa-scrub-track button.is-on {
+  background:var(--ls-accent, var(--cc-accent)); color:var(--cc-on-accent); border-color:transparent;
+}
+.cc-laosa-size-row button.is-on b { color:var(--cc-on-accent); }
+.cc-laosa-grid { display:grid; grid-template-columns:repeat(3, 28px); gap:4px; width:max-content; }
+.cc-laosa-grid button {
+  width:28px; height:28px; display:grid; place-items:center; border-radius:3px;
+  border:0.5px solid var(--cc-border); background:var(--cc-inset); cursor:pointer; padding:0;
+}
+.cc-laosa-grid button::after {
+  content:''; width:6px; height:6px; border-radius:50%; background:var(--cc-text-dim);
+}
+.cc-laosa-grid button.is-on::after { background:var(--cc-on-accent); }
+.cc-laosa-grid button.is-on { box-shadow:inset 0 0 0 2px var(--cc-on-accent); }
+.cc-laosa-empty, .cc-laosa-semantic, .cc-laosa-reason { display:flex; flex-direction:column; gap:6px; margin-top:6px; }
+.cc-laosa-empty p, .cc-laosa-semantic p { margin:0; font-size:11px; line-height:1.45; color:var(--cc-text-muted); }
+.cc-laosa-empty button, .cc-laosa-semantic > button, .cc-laosa-reason button { height:26px; padding:0 8px; width:max-content; }
+.cc-laosa-semantic > button:disabled { opacity:0.45; cursor:default; }
+.cc-laosa-reason { flex-direction:row; align-items:center; }
+.cc-laosa-reason b {
+  width:22px; height:22px; display:grid; place-items:center; border-radius:3px;
+  background:var(--ls-accent, var(--cc-accent)); color:var(--cc-on-accent); flex:0 0 auto;
+}
+.cc-laosa-reason span { flex:1; min-width:0; font-size:11px; color:var(--ls-fg, var(--cc-text)); }
+.cc-laosa-chapters { list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; gap:3px; }
+.cc-laosa-chapters button {
+  width:100%; display:flex; gap:8px; align-items:center; text-align:left; padding:4px 6px;
+  border:0; border-radius:3px; background:transparent; color:var(--ls-fg, var(--cc-text)); cursor:pointer; font-size:11px;
+}
+.cc-laosa-chapters button span:first-child { color:var(--cc-text-dim); font-variant-numeric:tabular-nums; flex:0 0 auto; }
+.cc-laosa-chapters button.is-on span { color:inherit; }
+.cc-laosa-scrub {
+  display:flex; align-items:center; gap:8px; height:28px; padding:0 8px; flex-shrink:0;
+  border-bottom:0.5px solid var(--cc-border); background:var(--cc-bg);
+}
+.cc-laosa-scrub-track { position:relative; flex:1; height:16px; min-width:0; }
+.cc-laosa-scrub-track button {
+  position:absolute; top:2px; height:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  border:0; border-radius:2px; padding:0 4px; font-size:9px; cursor:pointer;
+  background:color-mix(in srgb, var(--ls-accent, var(--cc-accent)) 28%, var(--cc-panel));
+  color:var(--ls-fg, var(--cc-text));
+}
+.cc-laosa-scrub-playhead {
+  position:absolute; top:0; width:2px; height:16px; background:var(--ls-accent, var(--cc-accent)); pointer-events:none;
+}
+.cc-laosa-scrub-now {
+  flex:0 1 140px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-size:10px; color:var(--ls-fg, var(--cc-text));
+}
+.cc-laosa-card {
+  position:absolute; z-index:2; pointer-events:none; box-sizing:border-box;
+  border:1.5px solid var(--ls-accent, var(--cc-accent));
+  background:color-mix(in srgb, var(--ls-accent, var(--cc-accent)) 16%, transparent);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ls-fg, #FCFCFC) 25%, transparent);
+}
+.cc-laosa-card span {
+  position:absolute; left:6px; top:6px; max-width:calc(100% - 12px);
+  padding:2px 6px; border-radius:3px; font-size:10px; font-weight:700;
+  background:var(--ls-accent, var(--cc-accent)); color:var(--cc-on-accent);
+}
+.cc-laosa-rails { border-bottom:0.5px solid var(--cc-border); background:var(--cc-bg); }
+.cc-laosa-rail { display:flex; height:32px; border-top:0.5px solid var(--cc-border); }
+.cc-laosa-rail-head {
+  position:sticky; left:0; z-index:3; display:flex; align-items:center; justify-content:space-between; gap:4px;
+  padding:0 6px; background:var(--cc-tl-side-panel, var(--cc-panel)); border-right:0.5px solid var(--cc-border);
+  color:var(--ls-fg, var(--cc-text)); font-size:11px; font-weight:650;
+}
+.cc-laosa-rail-head button { height:20px; padding:0 6px; white-space:nowrap; }
+.cc-laosa-rail-lane { position:relative; flex:1; min-width:0; }
+.cc-laosa-rail-clip {
+  position:absolute; top:5px; height:22px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  padding:0 6px; border-radius:3px; font-size:10px; line-height:22px; color:var(--cc-on-accent);
+  background:var(--ls-accent, var(--cc-accent));
+}
+.cc-laosa-rail-clip.is-motion { background:color-mix(in srgb, var(--ls-accent, var(--cc-accent)) 70%, #FCFCFC); }
+.cc-laosa-rail-clip.is-broll { background:color-mix(in srgb, var(--ls-accent, var(--cc-accent)) 55%, #080808); color:var(--ls-fg, var(--cc-text)); }
+@media (max-width:1280px) {
+  .cc-laosa-kicker { display:none; }
+}

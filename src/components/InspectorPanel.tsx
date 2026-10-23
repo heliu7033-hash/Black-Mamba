@@ -6,6 +6,7 @@ import { HistoryGestureProvider } from './inspector/InspectorKeyframeControls';
 import { InspectorContent, type InspectorTab } from './inspector/InspectorContent';
 import type { InspectorPanelProps } from './inspector/InspectorTypes';
 import { CaptionInspectorControls } from './inspector/CaptionInspectorControls';
+import { LaosaInspector } from '../laosa/LaosaInspector';
 
 function useInspectorPlayhead(getPlayhead: () => number, playerRef: RefObject<PlayerRef | null>): number {
   const [playhead, setPlayhead] = useState(getPlayhead);
@@ -84,6 +85,7 @@ export function InspectorPanel(panel: InspectorPanelProps) {
         }}
       >
         <InspectorHeader panel={panel} />
+        {!panel.collapsed && <LaosaInspector />}
         {!panel.collapsed && (panel.selectedCaption && panel.onCaptionUpdate
           ? <CaptionInspectorControls selection={panel.selectedCaption} onUpdate={panel.onCaptionUpdate} />
           : item ? <InspectorContent panel={panel} item={item} schema={schema} playheadLocal={playheadLocal} activeTab={activeTab} onTabChange={setActiveTab} />
