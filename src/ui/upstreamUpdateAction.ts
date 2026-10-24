@@ -56,24 +56,24 @@ export function upstreamUpdateMessage(state: UpstreamUpdateState, desktopUpdate:
       current: formatDisplayVersion(state.currentVersion),
     };
     return desktopUpdate
-      ? t('发现 B-CUT 新版本 {latest}，当前版本 {current}。可以直接下载并安装。', params)
-      : t('发现 B-CUT 新版本 {latest}，当前版本 {current}。请前往项目仓库查看更新。', params);
+      ? t('发现 Bcot 新版本 {latest}，当前版本 {current}。可以直接下载并安装。', params)
+      : t('发现 Bcot 新版本 {latest}，当前版本 {current}。请前往项目仓库查看更新。', params);
   }
   if (state.phase === 'current') {
     return t('当前已是最新版本 {version}', { version: formatDisplayVersion(state.currentVersion) });
   }
   if (state.phase === 'downloading') {
-    return t('正在下载 B-CUT {latest}：{percent}%', {
+    return t('正在下载 Bcot {latest}：{percent}%', {
       latest: formatDisplayVersion(state.latestVersion),
       percent: Math.round(state.percent),
     });
   }
   if (state.phase === 'downloaded') {
-    return t('B-CUT {latest} 已下载，重启后完成安装。', {
+    return t('Bcot {latest} 已下载，重启后完成安装。', {
       latest: formatDisplayVersion(state.latestVersion),
     });
   }
-  if (state.phase === 'installing') return t('正在重启并安装 B-CUT…');
+  if (state.phase === 'installing') return t('正在重启并安装 Bcot…');
   if (state.phase === 'error' && state.failedOperation === 'download') return t('下载更新失败，请重试');
   if (state.phase === 'error' && state.failedOperation === 'install') return t('安装更新失败，请重试');
   return t('暂时无法检查更新，请稍后重试');

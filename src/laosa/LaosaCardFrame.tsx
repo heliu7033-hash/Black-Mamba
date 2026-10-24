@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// B-CUT — packaging frame. The card window moves; the Remotion picture does not re-render.
+// Bcot — packaging frame. The card window moves; the Remotion picture does not re-render.
 
 import { useT } from '../i18n/locale';
 import { useLaosaDesk } from './LaosaContext';

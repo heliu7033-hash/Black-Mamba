@@ -1,6 +1,6 @@
 ---
 name: asset-import
-description: Use when acquiring or importing media into a B-CUT project asset library for video editing or creation, including local/attached videos, user-provided paths, public media URLs, web video/audio/image assets, upload fallback decisions, and deciding between import_media, download_media, or manual user action.
+description: Use when acquiring or importing media into a Bcot project asset library for video editing or creation, including local/attached videos, user-provided paths, public media URLs, web video/audio/image assets, upload fallback decisions, and deciding between import_media, download_media, or manual user action.
 ---
 
 # Asset Import
@@ -25,7 +25,7 @@ The successful upload response returns an opaque receipt, echoed `assetType`, an
 
 ## Editing discipline
 
-For multi-source edits, build reviewable work from original source assets in the B-CUT timeline. Do not locally concatenate, pre-trim, pre-compose, burn captions, or flatten media before import — import originals and do all composition on the timeline so every step stays reviewable and undoable.
+For multi-source edits, build reviewable work from original source assets in the Bcot timeline. Do not locally concatenate, pre-trim, pre-compose, burn captions, or flatten media before import — import originals and do all composition on the timeline so every step stays reviewable and undoable.
 
 For code assets such as hand-authored Motion Graphics, use the `create-motion-graphics` skill (`create_motion_graphic_from_code` for new assets, asset-code updates for edits) — MG code is not an imported file.
 

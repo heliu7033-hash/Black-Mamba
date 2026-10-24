@@ -182,7 +182,7 @@ export class NativeSemanticService {
     const worker = utilityProcess.fork(
       fileURLToPath(new URL('./native-semantic-worker.mjs', import.meta.url)),
       [],
-      { serviceName: 'B-CUT Native Semantic Search' },
+      { serviceName: 'Bcot Native Semantic Search' },
     );
     lowerNativeWorkerPriority(worker);
     worker.on('message', (value: unknown) => this.handleWorkerMessage(value));

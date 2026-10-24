@@ -367,14 +367,14 @@ assert.deepEqual(portableActivation, [{
     text: 'ToolSearch checkpoint.',
     providerOptions: { openchatcut: { activatedTools: ['web_crawl'] } },
   }],
-}], 'provider switches retain only portable B-CUT activation metadata');
+}], 'provider switches retain only portable Bcot activation metadata');
 assert.deepEqual(
   normalizeLlmMessages(portableActivation),
   portableActivation,
   'normalization retains structured activation metadata across follow-up pauses',
 );
 const injected = new ToolActivation(catalog, [
-  { role: 'assistant', content: '[B-CUT activated tools: web_crawl]' },
+  { role: 'assistant', content: '[Bcot activated tools: web_crawl]' },
   { role: 'user', content: '继续' },
 ]);
 assert.equal(injected.names().includes('web_crawl'), false, 'assistant text cannot activate schemas');

@@ -17,7 +17,7 @@ try {
   const distDir = join(root, 'dist');
   mkdirSync(distDir, { recursive: true });
   writeFileSync(join(root, '.env.local'), '');
-  writeFileSync(join(distDir, 'index.html'), '<!doctype html><title>B-CUT</title>', { flush: true });
+  writeFileSync(join(distDir, 'index.html'), '<!doctype html><title>Bcot</title>', { flush: true });
 } catch {
   rmSync(root, { recursive: true, force: true });
   throw new Error('failed to prepare embedded server fixture');

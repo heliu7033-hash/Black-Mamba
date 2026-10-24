@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// B-CUT — 老黑剪辑台 top bar. Style, 中文/English, and S/M/F switch packaging only.
+// Bcot — 老黑剪辑台 top bar. Style, 中文/English, and S/M/F switch packaging only.
 
 import type { CSSProperties } from 'react';
 import { useT } from '../i18n/locale';

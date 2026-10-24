@@ -139,19 +139,19 @@ export function BrandMark({ size = 16 }: { size?: number }) {
   );
 }
 
-/** Product word mark. The visible name is exactly B-CUT. */
+/** Product word mark. The visible name is exactly Bcot. */
 export function BrandWordmark({ width = 88 }: { width?: number }) {
   const height = Math.round(width * 0.36);
   return (
     <svg
-      aria-label="B-CUT"
+      aria-label="Bcot"
       role="img"
       width={width}
       height={height}
       viewBox="0 0 160 58"
       style={{ display: 'block', flexShrink: 0 }}
     >
-      <title>B-CUT</title>
+      <title>Bcot</title>
       <text
         x="0"
         y="46"
@@ -161,7 +161,7 @@ export function BrandWordmark({ width = 88 }: { width?: number }) {
         fontWeight="760"
         letterSpacing="0.01em"
       >
-        B-CUT
+        Bcot
       </text>
     </svg>
   );

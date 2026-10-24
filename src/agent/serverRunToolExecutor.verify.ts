@@ -291,7 +291,7 @@ const releaseResultPost = Promise.withResolvers<void>();
 globalThis.fetch = async (input, init) => {
   const url = String(input);
   integrationCapabilities.push(
-    new Headers(init?.headers).get('X-B-CUT-Run-Capability'),
+    new Headers(init?.headers).get('X-Bcot-Run-Capability'),
   );
   if (url.endsWith('/tool-claim')) {
     integrationClaims += 1;

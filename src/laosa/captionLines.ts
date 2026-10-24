@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// B-CUT — packaging text from captions. English mode prefers translated cues
+// Bcot — packaging text from captions. English mode prefers translated cues
 // and leaves the spoken timeline untouched.
 
 import type { DeskLanguage, TimedLine } from './types';

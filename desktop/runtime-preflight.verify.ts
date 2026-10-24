@@ -11,7 +11,7 @@ import {
   runtimeAssetFailure,
 } from './runtime-preflight.ts';
 
-const resourcesPath = join('C:', 'Program Files', 'B-CUT', 'resources');
+const resourcesPath = join('C:', 'Program Files', 'Bcot', 'resources');
 const ffmpegPath = join(resourcesPath, 'app.asar.unpacked', 'node_modules', 'ffmpeg-static', 'ffmpeg.exe');
 
 const windows = packagedRuntimeAssetChecks({ resourcesPath, platform: 'win32', ffmpegPath });
@@ -62,6 +62,6 @@ for (const path of [join(resourcesPath, 'dist', 'index.html'), join(resourcesPat
 }
 assert.match(failure, /杀毒软件/, 'the message names the usual cause in Chinese');
 assert.match(failure, /antivirus/, 'and in English');
-assert.match(failure, /Reinstall B-CUT/, 'and tells the user what to do');
+assert.match(failure, /Reinstall Bcot/, 'and tells the user what to do');
 
 console.log('runtime-preflight.verify: a packaged install that lost bundled files names them instead of exiting silently');

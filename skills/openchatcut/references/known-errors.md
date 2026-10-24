@@ -1,11 +1,11 @@
-# B-CUT MCP recovery
+# Bcot MCP recovery
 
 ## Connection refused
 
-B-CUT is closed, the configured URL is stale, or desktop port 5199 fell
+Bcot is closed, the configured URL is stale, or desktop port 5199 fell
 back to another port.
 
-1. Start B-CUT.
+1. Start Bcot.
 2. Read the endpoint from **Settings → MCP** or the startup log.
 3. Update the single `openchatcut` MCP entry.
 4. Call `openchatcut_status` again.
@@ -43,7 +43,7 @@ An auto session stays auto and does not fall back to manual review.
 
 ## Proposal awaiting review
 
-The draft is ready, but manual approval is still pending in B-CUT. Keep
+The draft is ready, but manual approval is still pending in Bcot. Keep
 polling `get_edit_session` only when the client needs the final state. Report
 `applied`, `rejected`, or `discarded` exactly as returned.
 
@@ -58,5 +58,5 @@ npx skills update openchatcut
 If the source alias is unavailable:
 
 ```bash
-npx skills add 0xsline/B-CUT --skill openchatcut
+npx skills add 0xsline/Bcot --skill openchatcut
 ```

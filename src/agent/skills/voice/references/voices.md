@@ -9,7 +9,7 @@ TTS provider exposes explicit parameters for them.
 
 This curated snapshot covers Doubao, ElevenLabs, and MiniMax only. Inworld,
 Fish Audio, Speechify, OpenAI, Gemini, Mistral, and Cartesia have no bundled
-B-CUT preset/sample catalog. For those providers, require a concrete
+Bcot preset/sample catalog. For those providers, require a concrete
 provider-specific `voiceId` from the user or their provider account; never
 invent a preset or `/voice-samples/...` URL.
 

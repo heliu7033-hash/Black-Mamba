@@ -47,7 +47,7 @@ globalThis.fetch = async (input, init) => {
 try {
   const credentialHeaders = new Headers({
     'Content-Type': 'text/plain',
-    'X-B-CUT-Editor-Credential': 'editor-secret',
+    'X-Bcot-Editor-Credential': 'editor-secret',
   });
   await installModelPack('rhythm-lite', credentialHeaders);
   await cancelModelPackInstall('rhythm-lite', credentialHeaders);

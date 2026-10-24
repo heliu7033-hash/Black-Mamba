@@ -107,7 +107,7 @@ function createNativeAsrWorker(): UtilityProcess {
   return electron.utilityProcess.fork(
     fileURLToPath(new URL('./native-asr-worker.mjs', import.meta.url)),
     [],
-    { serviceName: 'B-CUT Native ASR' },
+    { serviceName: 'Bcot Native ASR' },
   );
 }
 

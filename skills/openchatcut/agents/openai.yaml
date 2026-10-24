@@ -1,16 +1,16 @@
 interface:
-  display_name: "B-CUT"
-  short_description: "Connect and edit local B-CUT video projects"
+  display_name: "Bcot"
+  short_description: "Connect and edit local Bcot video projects"
   brand_color: "#7C3AED"
   icon_small: "./assets/openchatcut-icon.png"
   icon_large: "./assets/openchatcut-icon.png"
-  default_prompt: "Use $openchatcut to connect to B-CUT and inspect the selected video project."
+  default_prompt: "Use $openchatcut to connect to Bcot and inspect the selected video project."
 
 dependencies:
   tools:
     - type: "mcp"
       value: "openchatcut"
-      description: "B-CUT local editor MCP server"
+      description: "Bcot local editor MCP server"
       transport: "streamable_http"
       url: "http://localhost:5199/api/external-mcp/mcp"
 

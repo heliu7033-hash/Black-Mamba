@@ -63,10 +63,10 @@ export function missingRuntimeAssets(
 /** Shared by the asset preflight and the entry bundle's load failure. */
 export const RUNTIME_ASSET_ADVICE = [
   '常见原因：杀毒软件隔离了其中的文件，或安装过程未完成。',
-  '请重新安装 B-CUT；若文件再次消失，请把安装目录加入杀毒软件白名单。',
+  '请重新安装 Bcot；若文件再次消失，请把安装目录加入杀毒软件白名单。',
   '',
   'Most often antivirus software quarantined part of the install, or the',
-  'installer did not finish. Reinstall B-CUT, and add the installation',
+  'installer did not finish. Reinstall Bcot, and add the installation',
   'directory to your antivirus exclusions if the files disappear again.',
 ].join('\n');
 

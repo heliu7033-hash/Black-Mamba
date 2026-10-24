@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// B-CUT — semantic card client. Claude/SSXZ credentials stay on the server.
+// Bcot — semantic card client. Claude/SSXZ credentials stay on the server.
 
 import {
   clipSemanticLines,

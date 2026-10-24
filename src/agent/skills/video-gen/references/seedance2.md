@@ -2,7 +2,7 @@
 
 Read this before `submit_video({ model: "seedance2", … })`.
 
-Grounded in B-CUT’s video adapter (`server/plugins/video.ts` → Seedance
+Grounded in Bcot’s video adapter (`server/plugins/video.ts` → Seedance
 `/contents/generations/tasks`). Capability claims outside what we wire are
 **not** to be promised. Official prompt patterns (subject/motion/camera,
 multimodal `@` refs, edit/extend/bridge) are adapted here to our tool shape.

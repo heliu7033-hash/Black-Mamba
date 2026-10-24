@@ -38,7 +38,7 @@ language.
 ## Form Copy Tone
 
 For form-level text (`title`, `prompt`, `fields[].label`, `submitLabel`, and
-`messagePrefix`), write like B-CUT is a capable video-making partner inviting
+`messagePrefix`), write like Bcot is a capable video-making partner inviting
 the user to describe what they want, not like a rigid survey.
 
 Aim for:
@@ -47,9 +47,9 @@ Aim for:
   closest video need or just tell me your idea; we can figure it out together."
 - Short and scannable. Use one natural sentence for `prompt` and concise
   question labels.
-- Honest capability framing. B-CUT can help with many video workflows, but do
+- Honest capability framing. Bcot can help with many video workflows, but do
   not claim unsupported abilities or guarantee a result before inputs are known.
-- The user's language and local product terms. Keep "B-CUT", "B-roll",
+- The user's language and local product terms. Keep "Bcot", "B-roll",
   "Motion Graphics", "MG 动画", model/product names, and platform names in their
   established forms.
 - User-facing creative wording. For early planning or creative-intake forms,
@@ -117,14 +117,14 @@ For voice cards:
   or a public HTTPS URL. Do not pass localhost sample URLs; MCP host iframes do
   not reliably resolve editor-local media.
 - Keep user-visible descriptions provider-neutral. Describe the voice the same
-  way the native B-CUT audition UI does: gender / age range / tone / use case,
+  way the native Bcot audition UI does: gender / age range / tone / use case,
   such as `Female / young / friendly, general` or `男 / 中年 / 低沉知识解说`.
   Do not show provider names like ElevenLabs or Doubao in option descriptions.
 - Keep the option `id` equal to the provider voice id needed by `submit_voice`.
 
 For native start-scenario cards:
 
-- Use this when the user should choose which B-CUT video workflow to start,
+- Use this when the user should choose which Bcot video workflow to start,
   such as talking-head editing, MG animation, long-video-to-shorts,
   product/app promo, AI short film, or explainer video.
 - Present these as common video needs/scenarios, not as the only possible video
@@ -136,7 +136,7 @@ For native start-scenario cards:
 - English, Chinese, and Spanish scenario labels/descriptions/starter prompts are
   built in. For any other user language, faithfully translate each scenario's
   English `label`, `description`, and starter prompt into the user's language
-  and pass those localized values in the option objects. Preserve B-CUT
+  and pass those localized values in the option objects. Preserve Bcot
   product terms and workflow meaning; do not add new requirements. Use
   `submitPrompt` for the translated starter prompt. This override is specific to
   `variant: "scenario"`; ordinary option cards, voice cards, and visual style
@@ -162,14 +162,14 @@ custom HTML, timeline parameter bridges, editor item selection, or file upload
 fields. For files already held by the agent runtime or attached directly to the
 chat outside this card, the media-import workflow is still valid: call
 `import_media` and run the helper/direct upload path. For files the user wants
-to place directly in a project, ask them to use the B-CUT editor upload UI.
+to place directly in a project, ask them to use the Bcot editor upload UI.
 
 ## Example
 
 ```json
 {
   "title": "Your video idea",
-  "prompt": "Choose or fill in what you have in mind so B-CUT can pick a good starting direction.",
+  "prompt": "Choose or fill in what you have in mind so Bcot can pick a good starting direction.",
   "submitLabel": "Send idea",
   "messagePrefix": "Continue with this video direction:",
   "fields": [

@@ -15,8 +15,8 @@ This workflow decides **what** to cut and **why**. It does not re-explain the
 music tools — when you reach an execution step, follow `music-intelligence` for
 `analyze_music`, `music_edit_plan`, and `sync_cuts_to_music`. Load it there.
 
-This is a B-CUT-native workflow. Use the current project, source assets,
-asset-frame inspection, AV/script context, and B-CUT editing tools.
+This is a Bcot-native workflow. Use the current project, source assets,
+asset-frame inspection, AV/script context, and Bcot editing tools.
 
 ## When to switch workflows
 

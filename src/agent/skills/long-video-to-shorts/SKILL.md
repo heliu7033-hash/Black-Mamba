@@ -7,7 +7,7 @@ description: Cut one long podcast, interview, course, livestream, or other sourc
 
 Use this workflow when one long source video carries the output. Supporting clips may exist, but the short-form story comes from selecting self-contained moments inside the long source.
 
-This is a B-CUT-native workflow. Use the current project, assets, transcript, timeline, and B-CUT editing tools. Do not depend on external download, transcription, ffmpeg, or auto-crop pipelines unless the user explicitly asks for an external source that is not already in the project.
+This is a Bcot-native workflow. Use the current project, assets, transcript, timeline, and Bcot editing tools. Do not depend on external download, transcription, ffmpeg, or auto-crop pipelines unless the user explicitly asks for an external source that is not already in the project.
 
 ## Workflow
 

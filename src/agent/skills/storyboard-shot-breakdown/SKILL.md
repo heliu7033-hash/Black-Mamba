@@ -25,7 +25,7 @@ Analyze each shot across five director-decision dimensions:
 
 1. Read project state and source media.
 2. Read transcript or audio context when available so narrative interpretation is grounded.
-3. Detect or mark shot boundaries with available B-CUT/media tooling.
+3. Detect or mark shot boundaries with available Bcot/media tooling.
 4. Extract representative frames for each shot in batch when possible.
 5. Inspect frames before writing analysis. Do not invent details that are not visible.
 6. For high shot counts, tell the user the count and offer output scope choices before spending effort.
@@ -66,4 +66,4 @@ Visual Rule: [1-2 sentences the user can reuse as a shooting/editing reference]
 - Do not borrow details from adjacent shots unless clearly stated as sequence-level analysis.
 - Keep shot numbering stable.
 - User owns scope trade-offs: if output must be reduced, propose choices.
-- Prefer current B-CUT/media tools over hardcoded local commands. Use external scripts only when they are available and clearly help.
+- Prefer current Bcot/media tools over hardcoded local commands. Use external scripts only when they are available and clearly help.

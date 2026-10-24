@@ -4,7 +4,7 @@ When you edit Motion Graphic asset code through any path that mutates `MotionGra
 
 The backend may run additional review during asset creation, but not every asset-code update path has that same review. So when you (the editing agent) modify code by hand, **you are the only safeguard** against introducing patterns that make the entire MG render black in local export. The rules below are the ones the backend reviewer enforces during asset creation; mirror them here.
 
-If you violate any pattern, the symptom is consistent: the affected motion graphic appears entirely black or empty in local export, even though preview in B-CUT and a normal browser both look correct. Preview rendering correctly is NOT evidence that export will work.
+If you violate any pattern, the symptom is consistent: the affected motion graphic appears entirely black or empty in local export, even though preview in Bcot and a normal browser both look correct. Preview rendering correctly is NOT evidence that export will work.
 
 ## The three canvas-pipeline traps
 

@@ -2,7 +2,7 @@
 
 Read this before `submit_video({ model: "hailuo", … })`.
 
-Grounded in B-CUT’s video adapter (`server/plugins/video.ts` → MiniMax
+Grounded in Bcot’s video adapter (`server/plugins/video.ts` → MiniMax
 `POST /v1/video_generation`, poll `query/video_generation`, download via
 `files/retrieve`). Official MiniMax video guide lists four product modes
 (T2V / I2V / first–last / subject-reference). This path implements all four;

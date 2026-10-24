@@ -31,8 +31,8 @@ export default {
   '加载中…': 'Caricamento...',
   '工程不存在，返回…': 'Progetto non trovato, ritorno...',
   '编辑器需要通过 localhost 或 HTTPS 访问': 'L\'editor richiede localhost o HTTPS',
-  '当前地址不是浏览器认可的安全上下文，编辑器依赖的 Web Crypto、WebCodecs 视频解码和剪贴板等能力在这里被禁用。请在运行 B-CUT 的电脑上打开 http://localhost 或 http://127.0.0.1，或通过 HTTPS 提供服务。':
-    'Questo indirizzo non è un contesto sicuro, quindi il browser disattiva Web Crypto, la decodifica video WebCodecs, gli appunti e altre funzionalità su cui si basa l\'editor. Apri http://localhost o http://127.0.0.1 sul computer che esegue B-CUT, oppure servilo tramite HTTPS.',
+  '当前地址不是浏览器认可的安全上下文，编辑器依赖的 Web Crypto、WebCodecs 视频解码和剪贴板等能力在这里被禁用。请在运行 Bcot 的电脑上打开 http://localhost 或 http://127.0.0.1，或通过 HTTPS 提供服务。':
+    'Questo indirizzo non è un contesto sicuro, quindi il browser disattiva Web Crypto, la decodifica video WebCodecs, gli appunti e altre funzionalità su cui si basa l\'editor. Apri http://localhost o http://127.0.0.1 sul computer che esegue Bcot, oppure servilo tramite HTTPS.',
   '当前地址：{origin}': 'Indirizzo attuale: {origin}',
   '编辑器出现错误': 'Si è verificato un errore nell\'editor',
   '重新加载': 'Ricarica',

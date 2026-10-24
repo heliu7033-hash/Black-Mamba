@@ -34,9 +34,9 @@ assert.deepEqual(
   'inline CJK tokens share one flex run without synthetic word gaps',
 );
 assert.deepEqual(
-  buildCaptionWordRuns(words(['B-CUT', '让', '剪辑', '更', '简单', 'today']), false)
+  buildCaptionWordRuns(words(['Bcot', '让', '剪辑', '更', '简单', 'today']), false)
     .map((run) => run.words.map((word) => word.text)),
-  [['B-CUT'], ['让', '剪辑', '更', '简单'], ['today']],
+  [['Bcot'], ['让', '剪辑', '更', '简单'], ['today']],
   'mixed-script captions preserve spacing only at script boundaries',
 );
 assert.equal(

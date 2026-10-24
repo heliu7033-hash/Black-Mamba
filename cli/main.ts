@@ -1,4 +1,4 @@
-// `occ` — B-CUT command line. Runs against the local project library with
+// `occ` — Bcot command line. Runs against the local project library with
 // no app, no browser and no MCP session in the loop; writes still go through the
 // same offline edit-session contract the app and external agents use.
 import { flagText, parseCommandLine } from './args.ts';
@@ -6,7 +6,7 @@ import { CliError, EXIT_FAILURE, EXIT_OK, EXIT_USAGE, UsageError } from './error
 import { writeStderr, writeStdout } from './output.ts';
 import { applyGlobalOptions } from './profile.ts';
 
-const USAGE = `occ — B-CUT command line
+const USAGE = `occ — Bcot command line
 
 Usage
   occ project list [--all] [--json]
@@ -29,7 +29,7 @@ Usage
 
 Global flags
   --project <id|prefix|name>   project to act on (default: most recently updated)
-  --data-dir <path>            use a specific B-CUT library instead of the active profile
+  --data-dir <path>            use a specific Bcot library instead of the active profile
   --json                       machine-readable output on stdout
   --help                       this text
 

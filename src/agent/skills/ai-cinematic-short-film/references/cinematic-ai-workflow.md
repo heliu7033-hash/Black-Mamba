@@ -11,7 +11,7 @@ Use this reference after the story premise and ending are clear. The bible serve
 5. Generate a representative identity shot and a representative world shot first.
 6. Approve or revise those anchors, then generate the remaining shots.
 7. Select clips by story clarity first, continuity second, spectacle third.
-8. Place selected clips as separate B-CUT timeline items; refine order, trims, pacing, and transitions without flattening the sequence.
+8. Place selected clips as separate Bcot timeline items; refine order, trims, pacing, and transitions without flattening the sequence.
 9. Review composed timeline frames and normal-speed playback before finalizing.
 
 ## Copyable style-bible template
@@ -90,7 +90,7 @@ Write each shot prompt in this order, using the same locked phrases for recurrin
 9. **Continuity clause:** incoming state, screen direction, required prop, and outgoing state.
 10. **Negative constraints:** only likely failures such as changed identity, unreadable product text, extra limbs, duplicate props, or unmotivated camera motion.
 
-Prefer one readable action over a brittle list of simultaneous events. Use only controls exposed by the current B-CUT generation capability; do not imply that prompts, seeds, or references make a result deterministic.
+Prefer one readable action over a brittle list of simultaneous events. Use only controls exposed by the current Bcot generation capability; do not imply that prompts, seeds, or references make a result deterministic.
 
 ## Reference-frame policy
 
@@ -98,7 +98,7 @@ Prefer one readable action over a brittle list of simultaneous events. Use only 
 - Prefer user-approved or previously approved frames. Label each reference by role: `identity`, `product`, `location`, `costume`, `state`, `first-frame`, or `last-frame`.
 - Keep one canonical identity reference per stable state. Add another only for a necessary angle, expression, or story-state change.
 - Do not use an attractive frame as a reference if it contradicts the current shot’s geography, wardrobe state, lighting phase, or screen direction.
-- A generated reference is a proposal until reviewed. Store approved generated images or clips in the B-CUT media pool before using them downstream.
+- A generated reference is a proposal until reviewed. Store approved generated images or clips in the Bcot media pool before using them downstream.
 - If the available video generation mode accepts references, supply only the relevant approved ones. Otherwise carry their observable details into the prompt; never claim exact reproduction.
 - Record which references influenced each shot so a failed shot can be regenerated without changing unrelated anchors.
 

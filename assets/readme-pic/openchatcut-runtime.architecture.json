@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "B-CUT 运行时架构",
+    "title": "Bcot 运行时架构",
     "subtitle": "Agent、真实时间线、本地数据与渲染导出的统一工作流",
     "output": "openchatcut-runtime.html"
   },
@@ -111,7 +111,7 @@
   "boundaries": [
     {
       "kind": "region",
-      "label": "B-CUT 本机运行时",
+      "label": "Bcot 本机运行时",
       "wraps": [
         "mcp-broker",
         "builtin-agent",

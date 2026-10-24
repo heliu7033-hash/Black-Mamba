@@ -818,7 +818,7 @@ const sdkToolFailure = await generateText({
 assert.equal(
   sdkToolFailure.steps[0]?.content.some((part) => part.type === 'tool-error'),
   true,
-  'AI SDK must preserve rejected B-CUT results as tool-error parts',
+  'AI SDK must preserve rejected Bcot results as tool-error parts',
 );
 
 const apiContext: AgentContext = {

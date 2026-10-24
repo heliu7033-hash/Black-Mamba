@@ -414,7 +414,7 @@ async function boot(): Promise<void> {
     ...initialBounds,
     show: !SMOKE,
     backgroundColor: '#111111',
-    title: 'B-CUT',
+    title: 'Bcot',
     ...desktopWindowFrameOptions(),
     webPreferences: {
       preload: PRELOAD_PATH,
@@ -474,7 +474,7 @@ if (hasSingleInstanceLock) {
       // A packaged double-click has no console: without this the process just
       // disappears and the user has nothing to report (issue #140).
       try {
-        dialog.showErrorBox('B-CUT 启动失败 / failed to start', detail);
+        dialog.showErrorBox('Bcot 启动失败 / failed to start', detail);
       } catch {
         // A dialog is best effort; the exit below still has to happen.
       }

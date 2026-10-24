@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/openchatcut-icon.png" width="96" alt="B-CUT" />
+  <img src="public/openchatcut-icon.png" width="96" alt="Bcot" />
 </p>
 
-<h1 align="center">B-CUT</h1>
+<h1 align="center">Bcot</h1>
 
 <p align="center">
   <strong>简体中文</strong> · <a href="README.md">English</a>
@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="https://openchatcut.com/zh/pro"><strong>B-CUT Pro</strong></a> · 桌面版：装好就能剪
+  <a href="https://openchatcut.com/zh/pro"><strong>Bcot Pro</strong></a> · 桌面版：装好就能剪
 </p>
 
 <p align="center">
@@ -51,11 +51,11 @@
 </p>
 
 <p align="center">
-  <a href="https://www.producthunt.com/products/openchatcut?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-openchatcut" target="_blank" rel="noopener noreferrer"><img alt="B-CUT - 带真实时间线的开源 AI Agent 视频编辑器 | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1201995&amp;theme=light&amp;t=1784645557617" /></a>
+  <a href="https://www.producthunt.com/products/openchatcut?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-openchatcut" target="_blank" rel="noopener noreferrer"><img alt="Bcot - 带真实时间线的开源 AI Agent 视频编辑器 | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1201995&amp;theme=light&amp;t=1784645557617" /></a>
 </p>
 
 <p align="center">
-  <img src="assets/readme-pic/01-editor-overview.png" alt="B-CUT 编辑器总览：Agent 工作台、素材池、预览窗口与多轨时间线" />
+  <img src="assets/readme-pic/01-editor-overview.png" alt="Bcot 编辑器总览：Agent 工作台、素材池、预览窗口与多轨时间线" />
 </p>
 
 <p align="center">
@@ -76,24 +76,24 @@ OfoxAI 是统一的 AI API 平台，汇集文本、图像和视频模型，支�
 
 <br />
 
-如果 B-CUT 对你有帮助，欢迎通过 Ko-fi 或爱发电支持项目持续开发。
+如果 Bcot 对你有帮助，欢迎通过 Ko-fi 或爱发电支持项目持续开发。
 
 <p align="center">
   <a href="https://ko-fi.com/Y5N2241IP5">
     <img alt="通过 Ko-fi 支持项目" src="https://img.shields.io/badge/Support_me_on-Ko--fi-72a4f2?logo=kofi&amp;logoColor=white" />
   </a>
   <a href="https://www.ifdian.net/a/sline?utm_source=copylink&amp;utm_medium=link">
-    <img alt="通过爱发电支持 B-CUT" src="https://img.shields.io/badge/%E6%94%AF%E6%8C%81%E9%A1%B9%E7%9B%AE-%E7%88%B1%E5%8F%91%E7%94%B5-946CE6" />
+    <img alt="通过爱发电支持 Bcot" src="https://img.shields.io/badge/%E6%94%AF%E6%8C%81%E9%A1%B9%E7%9B%AE-%E7%88%B1%E5%8F%91%E7%94%B5-946CE6" />
   </a>
 </p>
 
 ---
 
-## B-CUT 是什么
+## Bcot 是什么
 
-B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业时间线编辑** 放在同一工作区的 AI 视频编辑器。独立开源（AGPL），与商业版 ChatCut 无隶属关系。
+Bcot 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业时间线编辑** 放在同一工作区的 AI 视频编辑器。独立开源（AGPL），与商业版 ChatCut 无隶属关系。
 
-**B-CUT = 本地视频工程 + 多轨时间线 + AI Agent + MCP + 可交付导出。**
+**Bcot = 本地视频工程 + 多轨时间线 + AI Agent + MCP + 可交付导出。**
 
 它不是只生成一段不可修改的视频。每次编辑都会落到真实工程中的轨道、片段、转场、字幕、特效和素材上；你可以继续手动调整，也可以撤销、重做、保存版本或交给另一个 Agent 接着完成。
 
@@ -101,7 +101,7 @@ B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业
 
 - 官网：[https://openchatcut.com](https://openchatcut.com)
 - 开源 ChatCut 替代说明：[https://openchatcut.com/zh/blog/open-source-chatcut-alternative](https://openchatcut.com/zh/blog/open-source-chatcut-alternative)
-- ChatCut 与 B-CUT 对比：[https://openchatcut.com/zh/blog/chatcut-vs-openchatcut](https://openchatcut.com/zh/blog/chatcut-vs-openchatcut)
+- ChatCut 与 Bcot 对比：[https://openchatcut.com/zh/blog/chatcut-vs-openchatcut](https://openchatcut.com/zh/blog/chatcut-vs-openchatcut)
 
 - 🤖 **Agent-native**：内置 Agent 与外部 MCP Agent 共用同一套编辑工具。
 - 🎞️ **真实时间线**：多视频轨、多音频轨、转场、特效、LUT、缩放和关键帧。
@@ -114,26 +114,26 @@ B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业
 
 ## 社区
 
-加入 B-CUT 社区，交流使用心得、功能建议与开发进展：
+加入 Bcot 社区，交流使用心得、功能建议与开发进展：
 
 - [加入 Discord](https://discord.gg/bSGUAeWYkh)
 - 使用微信扫描下方二维码加入微信群。
 
 <p align="center">
   <br />
-  <img src="assets/readme-pic/wechat-community.jpg" width="220" alt="B-CUT 微信社区二维码" />
+  <img src="assets/readme-pic/wechat-community.jpg" width="220" alt="Bcot 微信社区二维码" />
 </p>
 
 ---
 
 ## 产品导览
 
-下面均为 B-CUT 中的真实工程与编辑状态，而不是静态界面稿。
+下面均为 Bcot 中的真实工程与编辑状态，而不是静态界面稿。
 
 <table>
   <tr>
     <td width="50%" valign="top" align="center">
-      <img src="assets/readme-pic/02-project-dashboard.png" alt="B-CUT 本地工程管理界面" /><br />
+      <img src="assets/readme-pic/02-project-dashboard.png" alt="Bcot 本地工程管理界面" /><br />
       <sub><b>本地工程管理</b> — 创建、导入、复制、导出并继续编辑多个真实工程。</sub>
     </td>
     <td width="50%" valign="top" align="center">
@@ -147,17 +147,17 @@ B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业
       <sub><b>Motion Graphics 与 Agent</b> — 浏览动态图形模板，也可以让 Agent 生成并组合可继续编辑的 MG 片段。</sub>
     </td>
     <td width="50%" valign="top" align="center">
-      <img src="assets/readme-pic/05-effects.png" alt="B-CUT WebGL 视觉特效资源库" /><br />
+      <img src="assets/readme-pic/05-effects.png" alt="Bcot WebGL 视觉特效资源库" /><br />
       <sub><b>WebGL 视觉特效</b> — 像素化、双色调、鱼眼、万花筒、柔化与漏光等效果可直接应用到片段。</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top" align="center">
-      <img src="assets/readme-pic/06-zoom.png" alt="B-CUT 镜头运动与缩放效果资源库" /><br />
+      <img src="assets/readme-pic/06-zoom.png" alt="Bcot 镜头运动与缩放效果资源库" /><br />
       <sub><b>镜头运动与缩放</b> — 推拉、慢推、快速缩放和缓动镜头效果与时间线协同工作。</sub>
     </td>
     <td width="50%" valign="top" align="center">
-      <img src="assets/readme-pic/07-lut.png" alt="B-CUT 使用东京塔风景预览不同 LUT 色彩风格" /><br />
+      <img src="assets/readme-pic/07-lut.png" alt="Bcot 使用东京塔风景预览不同 LUT 色彩风格" /><br />
       <sub><b>LUT 与色彩风格</b> — 使用统一参考画面实时比较相机转换与胶片风格。</sub>
     </td>
   </tr>
@@ -165,11 +165,11 @@ B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业
 
 ---
 
-## 为什么是 B-CUT
+## 为什么是 Bcot
 
-传统编辑器擅长精细操作，一次性 AI 生成器擅长快速出片。B-CUT 把两者连成同一个可持续编辑的工程：
+传统编辑器擅长精细操作，一次性 AI 生成器擅长快速出片。Bcot 把两者连成同一个可持续编辑的工程：
 
-| 能力 | 传统时间线编辑器 | 一次性 AI 视频生成 | **B-CUT** |
+| 能力 | 传统时间线编辑器 | 一次性 AI 视频生成 | **Bcot** |
 |---|:---:|:---:|:---:|
 | 精确到轨道和片段 | ✅ | ❌ | **✅** |
 | 自然语言修改工程 | ❌ | ✅ | **✅** |
@@ -208,18 +208,18 @@ B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业
 
 ## 社区资源库
 
-[B-CUT 社区资源库](https://openchatcut.com/zh/resources)用于发现、安装和分享可复用的 MG 动画、音效、转场、特效、缩放和 LUT。
+[Bcot 社区资源库](https://openchatcut.com/zh/resources)用于发现、安装和分享可复用的 MG 动画、音效、转场、特效、缩放和 LUT。
 
 <p align="center">
   <a href="https://openchatcut.com/zh/resources">
-    <img src="assets/readme-pic/08-community-resources.png" alt="B-CUT 社区资源库" />
+    <img src="assets/readme-pic/08-community-resources.png" alt="Bcot 社区资源库" />
   </a>
 </p>
 
 ### 发现与安装
 
 - 悬停视觉卡片查看完整变化，下载前可直接试听音频资源。
-- 复制资源的安装 URL 到 B-CUT 扩展中心，或下载原始资源包。
+- 复制资源的安装 URL 到 Bcot 扩展中心，或下载原始资源包。
 - 在编辑器内浏览官网目录，并在本机管理已安装扩展。
 
 ### 贡献资源
@@ -228,7 +228,7 @@ B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业
 2. 上传资源与该分类要求的预览输入，网站会渲染用于公开展示的预览。
 3. 填写作者和许可证信息，提交审核；审核通过后公开上架。
 
-可安装的视觉资源沿用编辑器的 `openchatcut-plugin@1` 格式与运行时校验。B-CUT 官方资源使用 MIT 许可证；社区投稿者在提交时选择许可证，发布卡片会显示作者与许可信息。
+可安装的视觉资源沿用编辑器的 `openchatcut-plugin@1` 格式与运行时校验。Bcot 官方资源使用 MIT 许可证；社区投稿者在提交时选择许可证，发布卡片会显示作者与许可信息。
 
 ---
 
@@ -267,7 +267,7 @@ B-CUT 是 **开源 ChatCut 替代方案**：把 **对话式 Agent** 和 **专业
 
 ```bash
 git clone https://github.com/0xsline/OpenChatCut.git
-cd B-CUT
+cd Bcot
 npm install
 cp .env.example .env.local
 npm run dev
@@ -291,7 +291,7 @@ http://localhost:5199/#/laohei
 
 截图、短录屏和已知缺口见 [docs/demo/README.md](docs/demo/README.md)。语义配卡需要在设置里填写 OpenAI 兼容密钥；没有密钥时仍显示空态，并多一个离线的「演示模式」：按当前字幕给一个标明「演示」的 S/M/F，不请求模型。演示工程打开时，智能音乐 / 动效 / B-roll 轨道已经铺好标注片段。「智能填充」按钮本身仍只放下占位，等模型接入。密钥只留在本机设置，不会写入仓库。`/api/laosa/` 这类路径和代码标识仍是实现名，不是界面上的产品名。
 
-编辑器需要浏览器的[安全上下文](https://developer.mozilla.org/zh-CN/docs/Web/Security/Defenses/Secure_Contexts)：请在运行 B-CUT 的电脑上通过 `http://localhost` 或 `http://127.0.0.1` 访问，或通过 HTTPS 提供服务。从其他设备以普通 HTTP 访问（局域网 IP 或反向代理）时，浏览器会禁用 Web Crypto、WebCodecs 和剪贴板，工程列表仍可打开，但编辑器会显示这一要求而不会进入。
+编辑器需要浏览器的[安全上下文](https://developer.mozilla.org/zh-CN/docs/Web/Security/Defenses/Secure_Contexts)：请在运行 Bcot 的电脑上通过 `http://localhost` 或 `http://127.0.0.1` 访问，或通过 HTTPS 提供服务。从其他设备以普通 HTTP 访问（局域网 IP 或反向代理）时，浏览器会禁用 Web Crypto、WebCodecs 和剪贴板，工程列表仍可打开，但编辑器会显示这一要求而不会进入。
 
 `.env.local` 中只需填写你实际使用的模型或素材服务。没有配置的第三方能力会明确提示缺少对应 Key，不影响本地时间线编辑、内置素材和已配置的其他能力。
 
@@ -303,16 +303,16 @@ http://localhost:5199/#/laohei
 ### 内置 Agent 登录方式
 
 - **API Key**：打开**设置 → Agent 模型**，选择厂商并保存 API Key 与模型；密钥始终留在服务端。
-- **ChatGPT 订阅**：先安装官方 Codex CLI 0.146.0 或更高版本，再进入**设置 → Agent 模型 → OpenAI · Codex**。可使用浏览器或设备代码登录、读取账号可用模型，并按模型选择推理强度（或保留模型默认值），再在聊天区的模型选择器中切换到 Codex。B-CUT 使用独立的 Codex 配置目录；凭据存储、令牌续期与退出均由官方 CLI 负责，OAuth 令牌不会暴露给浏览器。
-- **Claude 订阅**：B-CUT 不接收 Claude OAuth 凭据；请通过下文的本机 MCP 连接使用 Claude Code。内置 Agent 仍可通过 Anthropic API Key 使用 Claude。
+- **ChatGPT 订阅**：先安装官方 Codex CLI 0.146.0 或更高版本，再进入**设置 → Agent 模型 → OpenAI · Codex**。可使用浏览器或设备代码登录、读取账号可用模型，并按模型选择推理强度（或保留模型默认值），再在聊天区的模型选择器中切换到 Codex。Bcot 使用独立的 Codex 配置目录；凭据存储、令牌续期与退出均由官方 CLI 负责，OAuth 令牌不会暴露给浏览器。
+- **Claude 订阅**：Bcot 不接收 Claude OAuth 凭据；请通过下文的本机 MCP 连接使用 Claude Code。内置 Agent 仍可通过 Anthropic API Key 使用 Claude。
 
 内置 Agent 的模型循环始终在本机服务端运行。聊天、草稿和提案可跨页面刷新和本地服务重启保留。时间线修改仍通过活动编辑器中经过校验且可撤销的命令完成。
 
 ### Agent 本地路径访问（高级）
 
-桌面端 Agent 默认可以访问操作系统允许读取的任意本地目录，包括外接素材盘。`browse_local_media` 可浏览文件夹，按文件名、相对路径和媒体类型搜索，并分页返回结果，不会自动导入。Agent 选好素材后，可用 `import_assets` 批量导入最多 100 个路径，也可用 `import_asset` 导入单个路径、`import_folder` 导入整个文件夹。导入复用媒体探测和源文件引用流程，保留原文件，并跳过媒体池及同一批次中的重复内容。TXT、Markdown、DOCX、PDF 等文稿请作为对话附件添加。桌面端默认启用这些工具；在浏览器中使用时，只有 `AGENT_IMPORT_ROOTS` 中列出的目录可用，且浏览器需与运行 B-CUT 的机器相同（本机访问）。
+桌面端 Agent 默认可以访问操作系统允许读取的任意本地目录，包括外接素材盘。`browse_local_media` 可浏览文件夹，按文件名、相对路径和媒体类型搜索，并分页返回结果，不会自动导入。Agent 选好素材后，可用 `import_assets` 批量导入最多 100 个路径，也可用 `import_asset` 导入单个路径、`import_folder` 导入整个文件夹。导入复用媒体探测和源文件引用流程，保留原文件，并跳过媒体池及同一批次中的重复内容。TXT、Markdown、DOCX、PDF 等文稿请作为对话附件添加。桌面端默认启用这些工具；在浏览器中使用时，只有 `AGENT_IMPORT_ROOTS` 中列出的目录可用，且浏览器需与运行 Bcot 的机器相同（本机访问）。
 
-需要限制目录范围时，可在 `.env.local` 中填写英文逗号分隔的绝对路径，例如 `AGENT_IMPORT_ROOTS=/Volumes/Media,D:\Projects`；留空表示桌面端默认放行；浏览器端必须设置该白名单，留空时会拒绝这些工具。手动设置的范围同时适用于浏览和导入。源码运行会读取仓库根目录的文件；桌面安装包会从 Electron 用户数据目录读取：macOS 为 `~/Library/Application Support/B-CUT/`，Windows 为 `%APPDATA%\B-CUT\`，Linux 为 `$XDG_CONFIG_HOME/B-CUT/`（通常是 `~/.config/B-CUT/`）。修改后请重启应用。
+需要限制目录范围时，可在 `.env.local` 中填写英文逗号分隔的绝对路径，例如 `AGENT_IMPORT_ROOTS=/Volumes/Media,D:\Projects`；留空表示桌面端默认放行；浏览器端必须设置该白名单，留空时会拒绝这些工具。手动设置的范围同时适用于浏览和导入。源码运行会读取仓库根目录的文件；桌面安装包会从 Electron 用户数据目录读取：macOS 为 `~/Library/Application Support/Bcot/`，Windows 为 `%APPDATA%\Bcot\`，Linux 为 `$XDG_CONFIG_HOME/Bcot/`（通常是 `~/.config/Bcot/`）。修改后请重启应用。
 
 
 本地 H.264 导出会在 macOS 上优先使用 VideoToolbox，在兼容的 Windows 设备上优先使用 NVENC，失败时自动回退软件编码。可用 `OPENCHATCUT_RENDER_CONCURRENCY` 和 `OPENCHATCUT_MAX_ACTIVE_EXPORTS` 调整渲染并发及重型导出上限，用 `OPENCHATCUT_DISABLE_HARDWARE_ENCODING` 关闭硬件编码，或用 `OPENCHATCUT_H264_ENCODER` 覆盖 FFmpeg 侧的编码器选择；详见 [`.env.example`](.env.example)。
@@ -329,7 +329,7 @@ npm run desktop:dev
 
 ## 项目状态
 
-B-CUT 目前处于积极开发阶段，编辑器、工程格式和 Agent 工具仍会持续迭代。预构建的 macOS、Windows 与 Linux 安装包已发布到 [GitHub Releases](https://github.com/0xsline/OpenChatCut/releases)；开发和排障时，从源码运行仍是最透明的方式。
+Bcot 目前处于积极开发阶段，编辑器、工程格式和 Agent 工具仍会持续迭代。预构建的 macOS、Windows 与 Linux 安装包已发布到 [GitHub Releases](https://github.com/0xsline/OpenChatCut/releases)；开发和排障时，从源码运行仍是最透明的方式。
 
 基础时间线、本地工程、内置素材和手动编辑不依赖云服务。AI 模型、在线素材、生成、转写等联网能力只在你配置对应服务后启用。
 
@@ -337,13 +337,13 @@ B-CUT 目前处于积极开发阶段，编辑器、工程格式和 Agent 工具�
 
 ## 在 Codex / Claude Code 中使用
 
-安装单入口 B-CUT Agent Skill：
+安装单入口 Bcot Agent Skill：
 
 ```bash
-npx skills add 0xsline/B-CUT
+npx skills add 0xsline/Bcot
 ```
 
-然后对 Agent 说“设置 B-CUT”。安装的路由 Skill 会注册本地 MCP
+然后对 Agent 说“设置 Bcot”。安装的路由 Skill 会注册本地 MCP
 连接，并按需加载编辑器内置的 26 个专项 Skill，避免技能列表出现大量入口。
 
 自定义技能存放在用户可见目录，与 `~/.codex/skills` / `~/.claude/skills` 布局一致：
@@ -357,22 +357,22 @@ npx skills add 0xsline/B-CUT
 该目录即可被 Agent 使用；在聊天的 `/` 命令或创作模式选择器中选中某个
 工作流，下一条消息就会按它执行。
 
-B-CUT 暴露 Streamable HTTP MCP：
+Bcot 暴露 Streamable HTTP MCP：
 
 ```text
 http://localhost:5199/api/external-mcp/mcp
 ```
 
-仓库根目录的 `.mcp.json` 已包含本地连接。使用时间线工具前，先运行 B-CUT 并打开目标工程；工程列表、创建和定位工具不要求编辑器保持打开。
+仓库根目录的 `.mcp.json` 已包含本地连接。使用时间线工具前，先运行 Bcot 并打开目标工程；工程列表、创建和定位工具不要求编辑器保持打开。
 
 Codex App/CLI 与 Claude Code 使用同一套会话流程：
 
 1. 调用 `begin_edit_session`，保存返回的 `editSessionId`，并将 `approvalMode` 设为 `manual`（默认）或 `auto`。
 2. 后续每个工程读取/编辑工具都传入该 id；所有修改只进入隔离草稿。
 3. 草稿完成后调用 `review_edit_session`。
-4. `manual` 模式下，在已打开的 B-CUT 工程内审阅、预览、勾选并应用或拒绝提案；`auto` 模式下，`review_edit_session` 会立即应用完整草稿。客户端可轮询 `get_edit_session` 获取 `applied`、`rejected` 或 `discarded` 状态。
+4. `manual` 模式下，在已打开的 Bcot 工程内审阅、预览、勾选并应用或拒绝提案；`auto` 模式下，`review_edit_session` 会立即应用完整草稿。客户端可轮询 `get_edit_session` 获取 `applied`、`rejected` 或 `discarded` 状态。
 
-Codex 或 Claude 内的授权决定客户端能否调用工具。只有 `manual` 会话需要 B-CUT 工程内审批；`auto` 会话会明确跳过该审批。两种模式应用的操作都会原子提交为一个撤销节点。
+Codex 或 Claude 内的授权决定客户端能否调用工具。只有 `manual` 会话需要 Bcot 工程内审批；`auto` 会话会明确跳过该审批。两种模式应用的操作都会原子提交为一个撤销节点。
 如果 `auto` 会话已过期，它会直接返回错误而不会降级为人工审批；请丢弃后重新创建会话。
 会话只暴露可安全进入草稿的工程读取/编辑工具。生成、导出、删除工程及其他会立即产生副作用的工具不在会话中开放，因为拒绝提案时无法回滚这些副作用。
 
@@ -395,8 +395,8 @@ claude mcp add --transport http openchatcut \
 然后可以直接对 Agent 描述编辑任务：
 
 ```text
-启动一个 B-CUT 编辑会话，读取草稿，在第二条音频轨的 8 秒处添加划盘音效，
-并给相邻视频添加故障转场。提交草稿供审阅，等待我在 B-CUT 内应用后，
+启动一个 Bcot 编辑会话，读取草稿，在第二条音频轨的 8 秒处添加划盘音效，
+并给相邻视频添加故障转场。提交草稿供审阅，等待我在 Bcot 内应用后，
 再报告修改已经生效。
 ```
 
@@ -460,7 +460,7 @@ OPENCHATCUT_EDITOR_URL=https://your-editor.example.com
 ## 架构
 
 <p align="center">
-  <img src="assets/readme-pic/openchatcut-runtime.svg" alt="B-CUT 运行时架构：Agent、MCP、EditorCore、本地存储、预览与渲染导出" />
+  <img src="assets/readme-pic/openchatcut-runtime.svg" alt="Bcot 运行时架构：Agent、MCP、EditorCore、本地存储、预览与渲染导出" />
 </p>
 
 <p align="center">
@@ -549,11 +549,11 @@ npm run build
 
 ## 技术基础
 
-B-CUT 基于以下核心项目与规范构建：
+Bcot 基于以下核心项目与规范构建：
 
-| 项目 / 规范 | 在 B-CUT 中的作用 |
+| 项目 / 规范 | 在 Bcot 中的作用 |
 |---|---|
-| [ChatCut-Inc/agent-plugin](https://github.com/ChatCut-Inc/agent-plugin) | Agent Skills 的改造基础。B-CUT 基于该插件的技能结构与工作流，针对本地编辑器、存储、MCP 和工具架构进行了适配。详见 [Agent Skills 来源说明](src/agent/skills/NOTICE.md)。 |
+| [ChatCut-Inc/agent-plugin](https://github.com/ChatCut-Inc/agent-plugin) | Agent Skills 的改造基础。Bcot 基于该插件的技能结构与工作流，针对本地编辑器、存储、MCP 和工具架构进行了适配。详见 [Agent Skills 来源说明](src/agent/skills/NOTICE.md)。 |
 | [Remotion](https://www.remotion.dev/) | React 视频预览、合成与服务端渲染的核心基础。 |
 | [Model Context Protocol](https://modelcontextprotocol.io/) | Codex、Claude Code 等外部 Agent 访问工程与时间线工具的协议基础。 |
 | [Vercel AI SDK](https://ai-sdk.dev/) | 内置 Agent 的多厂商模型流式响应与工具调用基础。 |
@@ -578,7 +578,7 @@ B-CUT 基于以下核心项目与规范构建：
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=0xsline/OpenChatCut&type=date&theme=dark&legend=top-left&sealed_token=KKfeYtGGCjyG1QN9_Ev6Tvyyrcp5LW6bzOT8ZKED1EE0qNRqM3KrThzzbXWdcP6K-sr3vKbmoFZYDviSMtf8SI5UqAPYQf9v8qXCpM04S2C4LQTAKPbexT66SI3Q8pcHJJoMT7VCZnGp93LqIXZchAyYfTMmKy_y_LFOJ-_ruEq8GP1kVESXshaFzJfC" />
       <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=0xsline/OpenChatCut&type=date&legend=top-left&sealed_token=KKfeYtGGCjyG1QN9_Ev6Tvyyrcp5LW6bzOT8ZKED1EE0qNRqM3KrThzzbXWdcP6K-sr3vKbmoFZYDviSMtf8SI5UqAPYQf9v8qXCpM04S2C4LQTAKPbexT66SI3Q8pcHJJoMT7VCZnGp93LqIXZchAyYfTMmKy_y_LFOJ-_ruEq8GP1kVESXshaFzJfC" />
-      <img alt="B-CUT Star 增长趋势图" src="https://api.star-history.com/chart?repos=0xsline/OpenChatCut&type=date&legend=top-left&sealed_token=KKfeYtGGCjyG1QN9_Ev6Tvyyrcp5LW6bzOT8ZKED1EE0qNRqM3KrThzzbXWdcP6K-sr3vKbmoFZYDviSMtf8SI5UqAPYQf9v8qXCpM04S2C4LQTAKPbexT66SI3Q8pcHJJoMT7VCZnGp93LqIXZchAyYfTMmKy_y_LFOJ-_ruEq8GP1kVESXshaFzJfC" />
+      <img alt="Bcot Star 增长趋势图" src="https://api.star-history.com/chart?repos=0xsline/OpenChatCut&type=date&legend=top-left&sealed_token=KKfeYtGGCjyG1QN9_Ev6Tvyyrcp5LW6bzOT8ZKED1EE0qNRqM3KrThzzbXWdcP6K-sr3vKbmoFZYDviSMtf8SI5UqAPYQf9v8qXCpM04S2C4LQTAKPbexT66SI3Q8pcHJJoMT7VCZnGp93LqIXZchAyYfTMmKy_y_LFOJ-_ruEq8GP1kVESXshaFzJfC" />
     </picture>
   </a>
 </p>
@@ -587,7 +587,7 @@ B-CUT 基于以下核心项目与规范构建：
 
 ## 许可证
 
-B-CUT 采用 [GNU Affero General Public License v3.0 或更高版本](LICENSE)。
+Bcot 采用 [GNU Affero General Public License v3.0 或更高版本](LICENSE)。
 第三方组件与资产仍分别受其自身许可证约束。
 
 ---

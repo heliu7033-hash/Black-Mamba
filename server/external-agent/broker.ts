@@ -328,7 +328,7 @@ export function invokeEditorTool(
         finishCall(
           call,
           'cancelled',
-          `B-CUT tool ${name} timed out before a terminal result was received.`,
+          `Bcot tool ${name} timed out before a terminal result was received.`,
           true,
         );
       }, deadline - Date.now()),
@@ -347,7 +347,7 @@ function takeNextCall(projectId: string, binding: EditorBinding): QueuedCall | u
     const call = queue.shift()!;
     if (!pending.has(call.id)) continue;
     if (call.deadline <= Date.now()) {
-      finishCall(call, 'cancelled', `B-CUT tool ${call.name} timed out before dispatch.`, false);
+      finishCall(call, 'cancelled', `Bcot tool ${call.name} timed out before dispatch.`, false);
       continue;
     }
     if (

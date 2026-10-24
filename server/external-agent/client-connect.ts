@@ -1,4 +1,4 @@
-// One-click external client connection: writes the B-CUT MCP endpoint
+// One-click external client connection: writes the Bcot MCP endpoint
 // and token into well-known local client config files. Only the `openchatcut`
 // entry is touched; every other server in each file is preserved. JSON files
 // are merged atomically (write-to-temp + rename) and never clobbered when the
@@ -211,7 +211,7 @@ async function saveTokenToZshrc(token: string, baseDir: string, codexConfig: str
       await writeAtomic(zshrc, lines.join('\n'));
     } else {
       const suffix = text && !text.endsWith('\n') ? '\n' : '';
-      await writeAtomic(zshrc, `${text}${suffix}# B-CUT MCP token (added by B-CUT)\n${wanted}\n`);
+      await writeAtomic(zshrc, `${text}${suffix}# Bcot MCP token (added by Bcot)\n${wanted}\n`);
     }
   } catch (error) {
     return { ok: false, error: 'config-write-error', detail: error instanceof Error ? error.message : String(error) };

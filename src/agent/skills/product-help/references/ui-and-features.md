@@ -1,4 +1,4 @@
-# B-CUT UI & Features
+# Bcot UI & Features
 
 ## Project Entry & Dashboard
 

@@ -67,7 +67,7 @@ submit_music({ provider: "sonilo", mode: "v2m", sourceAssetId: "renderedCutAsset
 ## Rules
 
 - Only generate after an explicit request; `count` 2–3 can multiply provider charges, so never add variants silently.
-- Mureka `stream:true` enables the provider's streaming task phase, but B-CUT still waits for durable final files.
+- Mureka `stream:true` enables the provider's streaming task phase, but Bcot still waits for durable final files.
 - MiniMax cover requires a configured `music-cover*` model and exactly one of `referenceAssetId` or `coverFeatureId`; `coverFeatureId` also requires lyrics.
 - Atlas Cloud supports `t2m` only and does not accept MiniMax cover/optimizer or Mureka-specific controls.
 - Never mix MiniMax audio-setting fields into Mureka or Mureka IDs/modes into MiniMax.

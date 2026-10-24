@@ -39,7 +39,7 @@ function mapTypeToKind(type: string | undefined, url: string): PoolKind | null {
       return 'image';
     case 'effect':
     case 'transition':
-      return null; // not B-CUT media-pool assets
+      return null; // not Bcot media-pool assets
     default:
       return sniffKind(url);
   }
@@ -162,7 +162,7 @@ async function registerMediaUrl(
     return {
       success: false,
       error: opts.type === 'effect' || opts.type === 'transition'
-        ? `type=${opts.type} is not an B-CUT media-pool asset`
+        ? `type=${opts.type} is not an Bcot media-pool asset`
         : '无法从 URL 识别媒体类型，请传 type: video|image|audio|gif|svg|motion-graphic',
       url,
     };

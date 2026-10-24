@@ -269,7 +269,7 @@ try {
   const upload = requests.find((request) => request.path === '/api/upload');
   assert(upload);
   assert.equal(upload.headers['idempotency-key'], admitted.requestId, 'request id doubles as Idempotency-Key');
-  assert.equal(upload.headers['user-agent'], 'B-CUT');
+  assert.equal(upload.headers['user-agent'], 'Bcot');
   assert.match(upload.body, /name="video"; filename="final-cut.mp4"/);
   assert.match(upload.body, /name="user"\r\n\r\ncreator\r\n/);
   assert.match(upload.body, /name="async_upload"\r\n\r\ntrue\r\n/);

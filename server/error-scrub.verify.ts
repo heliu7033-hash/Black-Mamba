@@ -21,7 +21,7 @@ import { clientErrorMessage, scrubInternalPaths } from './error-scrub.ts';
 }
 
 {
-  const scrubbed = scrubInternalPaths('cannot write C:\\Users\\alice\\AppData\\B-CUT\\store.db');
+  const scrubbed = scrubInternalPaths('cannot write C:\\Users\\alice\\AppData\\Bcot\\store.db');
   assert.ok(!scrubbed.includes('alice'), 'Windows user directories are collapsed');
   assert.ok(scrubbed.includes('store.db'), 'the file name survives');
 }

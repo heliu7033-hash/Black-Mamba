@@ -55,7 +55,7 @@ Use `submit_voice` to create a TTS audio asset. The current MCP tool contract is
   `references[].speaker`; never shorten, translate, or "correct" a supplied ID.
 - The curated catalog in [references/voices.md](references/voices.md) covers
   only Doubao, ElevenLabs, and MiniMax. Other providers have no bundled preset
-  or sample catalog in B-CUT. Require a concrete voice ID from the user or
+  or sample catalog in Bcot. Require a concrete voice ID from the user or
   their provider account; never invent a preset or `/voice-samples/...` URL.
 - AI SDK-backed fields are provider-specific: OpenAI supports `modelId`,
   `speed`, `outputFormat`, and `instructions`; Gemini supports `modelId`,
@@ -178,7 +178,7 @@ submit_voice({
 ## Voice Audition Before Generation
 
 When the user needs TTS and has not already chosen a concrete voice, first
-separate providers with curated B-CUT choices from providers that require
+separate providers with curated Bcot choices from providers that require
 an account-specific voice ID.
 
 For Doubao, ElevenLabs, or MiniMax, read
@@ -225,7 +225,7 @@ For a curated provider:
 5. Wait for the user to choose.
 6. Call `submit_voice` with the selected preset ID as `voiceId`.
 
-For a provider without a curated B-CUT catalog, ask for a free-text,
+For a provider without a curated Bcot catalog, ask for a free-text,
 concrete provider voice ID instead. Do not add `media` or synthesize a
 `/voice-samples/...` path. Wait for the user to supply/confirm the exact ID
 before calling `submit_voice`.
@@ -405,7 +405,7 @@ The curated catalog contains separate Doubao, ElevenLabs, and MiniMax IDs.
 `vivi` / `dayi` are only Doubao; `mark` / `amelia` / `james` are only
 ElevenLabs; `female-yujie` is only MiniMax. Inworld, Fish Audio, Speechify,
 OpenAI, Gemini, Mistral, and Cartesia require a concrete provider-specific ID
-confirmed by the user and have no bundled B-CUT samples.
+confirmed by the user and have no bundled Bcot samples.
 
 Provider choice:
 

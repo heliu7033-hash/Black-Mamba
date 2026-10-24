@@ -5,9 +5,9 @@ description: Plan AI short films with story, shots, prompts, and continuity.
 
 # AI Cinematic Short Film
 
-Use this workflow when the user wants B-CUT to create a cinematic AI-generated short film or story-led visual sequence.
+Use this workflow when the user wants Bcot to create a cinematic AI-generated short film or story-led visual sequence.
 
-This is a B-CUT-native workflow. If a source workflow depends on external image/video generation or manual assembly, replace that step with B-CUT's equivalent capability when available. Do not add unrelated B-CUT features just because they exist.
+This is a Bcot-native workflow. If a source workflow depends on external image/video generation or manual assembly, replace that step with Bcot's equivalent capability when available. Do not add unrelated Bcot features just because they exist.
 
 ## When to Use
 
@@ -33,7 +33,7 @@ This is a B-CUT-native workflow. If a source workflow depends on external image/
 - Keep a shared style bible so shots feel like one film.
 - Do not silently change characters, products, claims, or key user references.
 - Ask for confirmation when the premise, ending, product representation, or visual identity is ambiguous enough to change the result.
-- Replace external generation or assembly steps with equivalent B-CUT capabilities when they exist. Do not introduce unrelated B-CUT features just because they are available.
+- Replace external generation or assembly steps with equivalent Bcot capabilities when they exist. Do not introduce unrelated Bcot features just because they are available.
 
 ## Output
 

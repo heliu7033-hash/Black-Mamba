@@ -1,6 +1,6 @@
 ---
 name: known-errors
-description: Use when a B-CUT tool call fails or returns an unexpected shape.
+description: Use when a Bcot tool call fails or returns an unexpected shape.
 ---
 
 # Known Errors
@@ -27,19 +27,19 @@ Workspace path restrictions:
 - `push_asset` on the external MCP only accepts public http(s) URLs as `filePath`. It rejects local paths, workspace paths, and chat attachment paths.
 - For motion-graphic assets, pass the JSX source via `create_motion_graphic_from_code({ code:"...", name, width, height, durationInFrames })`. `push_asset` no longer accepts an inline `code` argument.
 - Copying local media into the workspace is not the fix for video/audio/image/GIF imports; use `asset-import` and `import_media` instead.
-- Use `import_media action=create_session`, then run the B-CUT media import helper once with the returned token for client-held files.
+- Use `import_media action=create_session`, then run the Bcot media import helper once with the returned token for client-held files.
 
 Browser video conversion failure:
 
 - Error text often includes `Unable to convert video without dropping audio/video tracks` or `unknown_source_codec`.
-- Rerun the B-CUT media import helper; it owns frontend-aligned conversion and will surface a user-actionable error if conversion is impossible.
+- Rerun the Bcot media import helper; it owns frontend-aligned conversion and will surface a user-actionable error if conversion is impossible.
 - Do not ask the user to re-import the same file through the editor UI as a workaround — the conversion path is the same, the error will repeat. Fix the source (re-encode locally with `ffmpeg`) or pick a different file.
 - After the replacement asset is uploaded/transcribed, delete the failed original asset if it is unused. The clean final media pool should look like a successful import, not a failed import plus a replacement.
 
 Motion Graphic requirements:
 
 - `push_asset(type:"motion-graphic")` requires `width`, `height`, and `duration` or `durationInFrames`.
-- MG code must pass the B-CUT validator.
+- MG code must pass the Bcot validator.
 - Root `AbsoluteFill` is not valid for generated MG code; use a scaling root `div`.
 - Avoid declaring a top-level local named `scale` inside MG code. The validator/runtime may already reserve that identifier; use a specific name such as `uiScale`.
 

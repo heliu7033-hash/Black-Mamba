@@ -100,7 +100,7 @@ async function main(): Promise<void> {
     assert.equal(qoderInternational.theme, 'dark', 'unrelated settings preserved');
     for (const file of ['.qoder/settings.json', '.qoder-cn/settings.json']) {
       const config = JSON.parse(await readFile(path.join(home, file), 'utf8'));
-      assert.equal(config.mcpServers.openchatcut.url, ENDPOINT, `${file} points at B-CUT`);
+      assert.equal(config.mcpServers.openchatcut.url, ENDPOINT, `${file} points at Bcot`);
       assert.equal(config.mcpServers.openchatcut.headers.Authorization, 'Bearer tok_QOD2', `${file} refreshed`);
     }
 
@@ -121,7 +121,7 @@ async function main(): Promise<void> {
       `mcp add openchatcut --url ${ENDPOINT} --bearer-token-env-var OPENCHATCUT_MCP_TOKEN`,
     );
     const zshrcFirst = await readFile(path.join(home, '.zshrc'), 'utf8');
-    assert.match(zshrcFirst, /# B-CUT MCP token \(added by B-CUT\)\nexport OPENCHATCUT_MCP_TOKEN='tok_AbC123-_xyz'\n$/);
+    assert.match(zshrcFirst, /# Bcot MCP token \(added by Bcot\)\nexport OPENCHATCUT_MCP_TOKEN='tok_AbC123-_xyz'\n$/);
     const rotated = await connectExternalClient('codex', ENDPOINT, 'tok_NEW456', { baseDir: home, codexBin: stub });
     assert.equal(rotated.ok, true);
     const zshrcSecond = await readFile(path.join(home, '.zshrc'), 'utf8');

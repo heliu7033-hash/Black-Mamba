@@ -3,13 +3,13 @@ import type { Tool } from '@modelcontextprotocol/sdk/types.js';
 export const MCP_CONTROL_TOOLS: Tool[] = [
   {
     name: 'openchatcut_status',
-    description: 'Show connected B-CUT editors, this transport session binding, and capability status.',
+    description: 'Show connected Bcot editors, this transport session binding, and capability status.',
     inputSchema: { type: 'object', properties: {} },
     annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   },
   {
     name: 'list_projects',
-    description: 'List B-CUT projects, newest first.',
+    description: 'List Bcot projects, newest first.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -21,7 +21,7 @@ export const MCP_CONTROL_TOOLS: Tool[] = [
   },
   {
     name: 'create_project',
-    description: 'Create an empty B-CUT project with one active timeline and one video track.',
+    description: 'Create an empty Bcot project with one active timeline and one video track.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -47,7 +47,7 @@ export const MCP_CONTROL_TOOLS: Tool[] = [
   },
   {
     name: 'get_editor_url',
-    description: 'Return the B-CUT editor URL for this session project or an explicitly named project.',
+    description: 'Return the Bcot editor URL for this session project or an explicitly named project.',
     inputSchema: {
       type: 'object',
       properties: { projectId: { type: 'string' }, editorBaseUrl: { type: 'string' } },

@@ -47,7 +47,7 @@ export function SecureContextRequiredView({ origin, translate, onHome }: SecureC
       )}
     >
       <span style={BODY_TEXT}>
-        {translate('当前地址不是浏览器认可的安全上下文，编辑器依赖的 Web Crypto、WebCodecs 视频解码和剪贴板等能力在这里被禁用。请在运行 B-CUT 的电脑上打开 http://localhost 或 http://127.0.0.1，或通过 HTTPS 提供服务。')}
+        {translate('当前地址不是浏览器认可的安全上下文，编辑器依赖的 Web Crypto、WebCodecs 视频解码和剪贴板等能力在这里被禁用。请在运行 Bcot 的电脑上打开 http://localhost 或 http://127.0.0.1，或通过 HTTPS 提供服务。')}
       </span>
       <span style={{ ...BODY_TEXT, color: theme.textMuted, wordBreak: 'break-all' }}>
         {translate('当前地址：{origin}', { origin })}

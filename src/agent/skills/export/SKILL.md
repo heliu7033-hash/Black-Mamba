@@ -1,17 +1,17 @@
 ---
 name: export
-description: Use when a B-CUT video editing or creation workflow needs export, render, download, share, final delivery, subtitle-file export, render choice, local-only asset handling, or export fallback explanation.
+description: Use when a Bcot video editing or creation workflow needs export, render, download, share, final delivery, subtitle-file export, render choice, local-only asset handling, or export fallback explanation.
 ---
 
 # Export
 
-Use B-CUT's export tools for delivery. An export request should call `submit_export` (or `submit_render_job` for async), then use `track_export` for status and final delivery when the result is not returned immediately.
+Use Bcot's export tools for delivery. An export request should call `submit_export` (or `submit_render_job` for async), then use `track_export` for status and final delivery when the result is not returned immediately.
 
 Default policy:
 
-- Prefer `submit_export` when the user asks to export/share/finalize the B-CUT timeline.
+- Prefer `submit_export` when the user asks to export/share/finalize the Bcot timeline.
 - Keep originals local by default during editing. Upload originals only when a cloud export/proof needs remote assets and the user has not forbidden upload.
-- Do not wrap sandbox `ffmpeg` work as a B-CUT tool. Use sandbox `ffmpeg` for full video processing only when the user explicitly asks for a standalone local-file operation outside a B-CUT editing workflow. For B-CUT editing tasks, do not produce a pre-edited or flattened local render as the primary review/final deliverable; use B-CUT export.
+- Do not wrap sandbox `ffmpeg` work as a Bcot tool. Use sandbox `ffmpeg` for full video processing only when the user explicitly asks for a standalone local-file operation outside a Bcot editing workflow. For Bcot editing tasks, do not produce a pre-edited or flattened local render as the primary review/final deliverable; use Bcot export.
 
 ## Durable Export
 

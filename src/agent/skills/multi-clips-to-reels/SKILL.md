@@ -7,7 +7,7 @@ description: Turn multiple product shots, event footage, travel clips, gameplay 
 
 Use this workflow when multiple raw clips or assets carry the output. The task is to select, sequence, and package the strongest footage into one or more reels, highlights, recaps, or short videos.
 
-This is a B-CUT-native workflow. Use the current project, source assets, asset-frame inspection, AV/script context, and B-CUT editing tools. Use the current timeline when it already contains relevant cuts or for final verification; do not depend on timeline screenshots as the primary way to understand raw source clips. Do not depend on external download, transcription, ffmpeg, or auto-crop pipelines unless the user explicitly asks for an external source that is not already in the project.
+This is a Bcot-native workflow. Use the current project, source assets, asset-frame inspection, AV/script context, and Bcot editing tools. Use the current timeline when it already contains relevant cuts or for final verification; do not depend on timeline screenshots as the primary way to understand raw source clips. Do not depend on external download, transcription, ffmpeg, or auto-crop pipelines unless the user explicitly asks for an external source that is not already in the project.
 
 ## Workflow
 
