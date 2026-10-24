@@ -2,7 +2,7 @@
 
 Read this before `submit_video({ model: "kling", … })`.
 
-Grounded in OpenChatCut’s video adapter (`server/plugins/video.ts` → Kling
+Grounded in B-CUT’s video adapter (`server/plugins/video.ts` → Kling
 `POST /v1/videos/omni-video`, default model `kling-v3-omni`). Official Omni
 capabilities (multi-shot, first/last frame, image refs, `<<<image_n>>>` tokens)
 are mapped to our tool shape below. **Do not promise** features we do not

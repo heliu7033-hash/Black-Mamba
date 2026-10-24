@@ -344,7 +344,7 @@ function visitStory(element: XmlElement, ctx: WalkContext, env: WalkEnv, offsetO
       skip(env, element, 'transitions are not imported; the clips meet with a cut', at);
       return;
     case 'gap':
-      // Gaps cannot be anchored in FCPXML; OpenChatCut exports use them as motion-graphic placeholders.
+      // Gaps cannot be anchored in FCPXML; B-CUT exports use them as motion-graphic placeholders.
       if (laneOf(element) !== 0) skip(env, element, 'placeholder gap has no media', at);
       return visitAnchored(element, shift(timing.offset, timing.start), scoped, env);
     case 'title':

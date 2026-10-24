@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — 老黑剪辑台 desk state. One preference record drives the top bar, inspector, and rails.
+// B-CUT — 老黑剪辑台 desk state. One preference record drives the top bar, inspector, and rails.
 
 import {
   createContext,

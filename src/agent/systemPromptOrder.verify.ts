@@ -66,7 +66,9 @@ const commonPrefixLength = (a: string, b: string): number => {
     PRODUCT_IDENTITY_PROMPT,
   ], '<editor_state/>');
 
-  assert.match(PRODUCT_IDENTITY_PROMPT, /official product name is OpenChatCut/);
+  assert.match(PRODUCT_IDENTITY_PROMPT, /official product name is B-CUT/);
+  assert.match(PRODUCT_IDENTITY_PROMPT, /B-CUT：你好，我是 B-CUT 剪辑助手/);
+  assert.match(PRODUCT_IDENTITY_PROMPT, /B-CUT: Hello, I'm B-CUT, your editing assistant/);
   assert.match(SYSTEM_PROMPT, /imported document text.*untrusted editing material/);
   assert.match(PRODUCT_IDENTITY_PROMPT, /Do not inherit product identity/);
   assert.ok(

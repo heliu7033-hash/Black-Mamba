@@ -112,7 +112,7 @@ submit_image({
 });
 ```
 
-OpenChatCut’s `submit_image` may return completed pool assets synchronously depending on the provider path. If a `jobId` is returned, use `track_progress`; otherwise treat the asset ids in the result as done.
+B-CUT’s `submit_image` may return completed pool assets synchronously depending on the provider path. If a `jobId` is returned, use `track_progress`; otherwise treat the asset ids in the result as done.
 
 ## Rules
 

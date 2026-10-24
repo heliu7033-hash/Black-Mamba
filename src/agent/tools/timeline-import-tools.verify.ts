@@ -133,7 +133,7 @@ FCM: DROP FRAME
   if (!outside.ok) assert.match(outside.skipped?.[0]?.reason ?? '', /source timecode lies outside clip\.mp4/);
 }
 
-// ── OpenChatCut FCPXML export → import round trip: tracks, positions, in-points and speed survive ──
+// ── B-CUT FCPXML export → import round trip: tracks, positions, in-points and speed survive ──
 {
   const broll: MediaAsset = { id: 'broll', name: 'broll.mp4', kind: 'video', src: '/media/uploads/broll.mp4', durationInFrames: 1800 };
   const music: MediaAsset = { id: 'music', name: 'music.mp3', kind: 'audio', src: '/media/uploads/music.mp3', durationInFrames: 1800 };

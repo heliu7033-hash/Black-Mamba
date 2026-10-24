@@ -2,7 +2,7 @@
 
 Read this before generating with `submit_image({ model: "image-01", … })`.
 
-Grounded in OpenChatCut’s image adapter (`server/plugins/image.ts` → MiniMax). Only promise what our tool exposes.
+Grounded in B-CUT’s image adapter (`server/plugins/image.ts` → MiniMax). Only promise what our tool exposes.
 
 ## Capabilities (as wired)
 

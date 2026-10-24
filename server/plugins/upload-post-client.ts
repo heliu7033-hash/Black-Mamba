@@ -88,7 +88,7 @@ export async function providerError(response: Response): Promise<string> {
 
 async function apiGet(config: UploadPostConfig, path: string): Promise<Response> {
   return fetchWithProxy(`${config.baseUrl}${path}`, {
-    headers: { Authorization: `Apikey ${config.apiKey}`, 'User-Agent': 'OpenChatCut' },
+    headers: { Authorization: `Apikey ${config.apiKey}`, 'User-Agent': 'B-CUT' },
     signal: AbortSignal.timeout(READ_TIMEOUT_MS),
   });
 }

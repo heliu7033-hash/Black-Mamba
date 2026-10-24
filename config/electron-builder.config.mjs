@@ -67,7 +67,7 @@ const hasMacSigningCertificate = Boolean(process.env.CSC_LINK || process.env.CSC
 
 export default {
   appId: 'dev.openchatcut.app',
-  productName: 'OpenChatCut',
+  productName: 'B-CUT',
   artifactName: '${productName}-${version}-${arch}.${ext}',
   directories: { output: 'release' },
   // 7z LZMA maximum compression for the distributable installers (dmg/zip/nsis/AppImage).

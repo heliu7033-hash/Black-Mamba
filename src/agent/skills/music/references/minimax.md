@@ -2,7 +2,7 @@
 
 Read this before `submit_music({ provider: "minimax", … })`.
 
-Grounded in OpenChatCut’s music adapter (`server/plugins/music.ts` → MiniMax
+Grounded in B-CUT’s music adapter (`server/plugins/music.ts` → MiniMax
 `/v1/music_generation`). Official fields: `prompt`, `lyrics`, `is_instrumental`,
 `lyrics_optimizer`, `audio_setting`, `output_format`, and cover refs
 (`audio_base64` / `cover_feature_id`).

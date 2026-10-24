@@ -98,7 +98,7 @@ export default defineConfig(({ mode }) => {
     applyAuthoritativeLocalProvider(env, readFileSync('.env.local', 'utf8'));
   }
   if (profile.mode === 'isolated-dev') {
-    process.stdout.write(`[OpenChatCut] isolated profile ${profile.id} · ${profile.rootDir}\n`);
+    process.stdout.write(`[B-CUT] isolated profile ${profile.id} · ${profile.rootDir}\n`);
   }
   // Seed the runtime keystore so the settings UI (POST /api/keys) can override any key
   // live. Server plugins (assembled in server/plugins/index.ts, shared with the

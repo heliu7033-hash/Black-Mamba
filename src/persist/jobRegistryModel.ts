@@ -21,7 +21,7 @@ export interface GenerationOperationTimestamps {
 }
 
 export interface TrackedJob {
-  /** Stable OpenChatCut operation identity. Legacy rows normalize this from jobId. */
+  /** Stable B-CUT operation identity. Legacy rows normalize this from jobId. */
   operationId: string;
   /** Backend polling handle. Kept separately from a provider task id. */
   jobId: string;

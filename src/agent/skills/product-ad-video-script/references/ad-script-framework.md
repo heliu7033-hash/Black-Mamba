@@ -1,6 +1,6 @@
 # Evidence-Grounded Short-Video Ad Framework
 
-Use this reference to turn verified product information into distinct ad angles, select the most defensible one, and map it to assets and an OpenChatCut timeline.
+Use this reference to turn verified product information into distinct ad angles, select the most defensible one, and map it to assets and an B-CUT timeline.
 
 ## 1. Build the product fact sheet
 
@@ -113,7 +113,7 @@ Select the objection most likely to block the CTA: trust, effort, fit, price, le
 
 Ask for one action that matches the viewer’s evidence level: learn more, view the product, compare details, try an available feature, or use a verified offer. Include deadlines, prices, eligibility, and availability only when current and sourced. Never manufacture scarcity.
 
-## 10. Map evidence to OpenChatCut
+## 10. Map evidence to B-CUT
 
 For every spoken or on-screen claim, identify:
 

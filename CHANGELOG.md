@@ -1,7 +1,7 @@
 # Changelog / 更新日志
 
-All notable changes to OpenChatCut are documented here.  
-OpenChatCut 的重要变更记录在此。
+All notable changes to B-CUT are documented here.  
+B-CUT 的重要变更记录在此。
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases use [Semantic Versioning](https://semver.org/).  
 格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循[语义化版本](https://semver.org/lang/zh-CN/)。
@@ -200,8 +200,8 @@ Project data remains in its current directory; moving it through Settings is una
 - **`probe_media` now runs the ffprobe bundled with the app instead of the e2b cloud sandbox** — on a machine without an E2B key the tool used to fail with "e2b sandbox is not configured" even though import, previews and export QA were already probing locally. Uploads and bundled assets are read in place; a public URL is fetched through the SSRF-safe transport into a temp file first.  
   **`probe_media` 改用应用自带的 ffprobe，不再依赖 e2b 云沙箱**——没有配置 E2B key 的机器上，这个工具之前会报「e2b sandbox is not configured」，而导入、预览、导出质检其实早就在本地跑 ffprobe 了。上传文件和内置素材直接就地读取；公开 URL 先经过防 SSRF 的抓取落到临时文件再探测。
 
-- **Codex one-click MCP connect works on Windows (#161)** — the token went into `~/.zshrc`, which nothing on Windows reads, so Codex started without it and showed no OpenChatCut tools while the guide reported success. On Windows it is now saved as a user environment variable.  
-  **Codex 一键接入 MCP 在 Windows 上可用（#161）**——令牌之前写进 `~/.zshrc`，而 Windows 上没有程序读取这个文件，于是 Codex 启动时拿不到令牌、看不到 OpenChatCut 的工具，指引却显示成功。现在在 Windows 上会保存为用户环境变量。
+- **Codex one-click MCP connect works on Windows (#161)** — the token went into `~/.zshrc`, which nothing on Windows reads, so Codex started without it and showed no B-CUT tools while the guide reported success. On Windows it is now saved as a user environment variable.  
+  **Codex 一键接入 MCP 在 Windows 上可用（#161）**——令牌之前写进 `~/.zshrc`，而 Windows 上没有程序读取这个文件，于是 Codex 启动时拿不到令牌、看不到 B-CUT 的工具，指引却显示成功。现在在 Windows 上会保存为用户环境变量。
 
 - **Projects keep saving to disk in long sessions** — the browser store opened a new IndexedDB connection for every read and write and never closed it, until the browser refused new ones and saving quietly fell back to memory (contributed in #137). Conflicting offline edits are now recovered into a separate, verified copy, and the original project stays as it was.  
   **长时间使用也能持续保存到磁盘**——浏览器存储每次读写都新开一个 IndexedDB 连接且从不关闭，直到浏览器拒绝新的连接，保存就悄悄退化成只存在内存里（#137 贡献）。离线编辑发生冲突时，现在会恢复成一份经过校验的独立副本，原工程保持不变。
@@ -337,8 +337,8 @@ Project data remains in its current directory; moving it through Settings is una
 
 - Added xAI Grok as a built-in Agent provider (grok-4.6 default, OpenAI-compatible API at api.x.ai), with the standard settings page, API key configuration, connection testing, model discovery, and model-capability catalog entries.
   新增 xAI Grok 内置 Agent 供应商（默认 grok-4.6，api.x.ai OpenAI 兼容接口），提供标准设置页、API Key 配置、连接测试、模型发现与模型能力目录条目。
-- Added xAI subscription sign-in (SuperGrok / X Premium+): login is owned by the official Grok CLI (`grok login`); OpenChatCut imports the session server-side, refreshes it automatically through auth.x.ai, and streams Grok over the subscription token. Session credentials never reach the browser, and the API-key provider remains available as a fallback.
-  新增 xAI 订阅登录（SuperGrok / X Premium+）：登录由官方 Grok CLI 负责（终端运行 grok login），OpenChatCut 在服务端导入会话并经 auth.x.ai 自动续期，以订阅会话令牌运行 Grok。会话凭据不会进入浏览器，API Key 供应商继续作为兜底。
+- Added xAI subscription sign-in (SuperGrok / X Premium+): login is owned by the official Grok CLI (`grok login`); B-CUT imports the session server-side, refreshes it automatically through auth.x.ai, and streams Grok over the subscription token. Session credentials never reach the browser, and the API-key provider remains available as a fallback.
+  新增 xAI 订阅登录（SuperGrok / X Premium+）：登录由官方 Grok CLI 负责（终端运行 grok login），B-CUT 在服务端导入会话并经 auth.x.ai 自动续期，以订阅会话令牌运行 Grok。会话凭据不会进入浏览器，API Key 供应商继续作为兜底。
 - Added xAI Grok Imagine image and video generation (`grok-imagine` / `grok-imagine-video`): settings pages, connection tests, agent tool schemas, skill references, and the generation job pipeline all carry xAI as a first-class provider. Images are returned as base64 (no CDN download); video runs through the async job model with proxy-aware result downloads. Auth prefers the subscription session and falls back to `LLM_XAI_API_KEY`.
   新增 xAI Grok Imagine 生图与生视频（`grok-imagine` / `grok-imagine-video`）：设置页、连接测试、Agent 工具 schema、技能参考与生成任务管线均把 xAI 作为一等供应商。生图以 base64 返回（免 CDN 下载）；生视频走异步任务模型，结果下载支持代理。鉴权优先订阅会话，回退 `LLM_XAI_API_KEY`。
 - Added local Silero VAD (onnx-community silero-vad ONNX via onnxruntime-web) as the silence-removal evidence runner: with `VITE_ENABLE_VAD_SILENCE_REMOVAL` enabled, silence trimming only removes spans the model confirms are non-speech. The flag stays off by default; the model loads lazily on first use.
@@ -542,10 +542,10 @@ Project data remains in its current directory; moving it through Settings is una
   新增可选的 AI SDK 语音路由：OpenAI、Gemini、Mistral Voxtral 与 Cartesia 配音，以及 OpenAI、Mistral Voxtral、Deepgram、Groq、ElevenLabs Scribe、Cartesia 云端转写。AssemblyAI 仍是默认转写路径，本地 Whisper 继续可用；Agent 可发现已配置的供应商并显式路由，且不会接触密钥。
 - Added in-app desktop updates: packaged Windows and Linux builds can check, download, retry, and install the next GitHub Release from the dashboard notice or Settings. Packaged macOS checks send users to the GitHub Releases download page instead because the current v0.2.0 lane is ad-hoc signed and does not support safe direct installation.
   新增桌面端应用内更新：Windows 与 Linux 安装包可在首页提示或设置中检查、下载、重试并安装下一版 GitHub Release。macOS 安装包检查更新后会改为引导用户前往 GitHub Releases 下载页，因为当前 v0.2.0 发布通道采用临时签名，暂不支持安全的应用内直接安装。
-- Added dashboard header shortcuts for contacting the author and opening the OpenChatCut GitHub repository; the contact disclosure shows a selectable email link without leaving the project list.
+- Added dashboard header shortcuts for contacting the author and opening the B-CUT GitHub repository; the contact disclosure shows a selectable email link without leaving the project list.
   首页顶栏新增“联系作者”和 GitHub 仓库快捷入口；联系信息会就地显示可选择的邮箱链接，无需离开工程列表。
-- Added opt-in blurred background fill for video and image clips: the Inspector offers exact 0–100% intensity control plus four quick shortcuts, while `edit_item` accepts `backgroundFillStrength`. The sharp foreground remains independently movable, resizable, croppable, and rotatable. Shared preview/export compositing preserves fades, effects, and GLSL transition alpha; FCPXML retains the toggle and percentage as OpenChatCut metadata and explicitly reports that destination editors cannot reconstruct the generated blur layer from those custom fields.
-  新增视频与图片片段的可选模糊背景填充：检查器支持 0–100% 精确强度调节和四个快捷档位，`edit_item` 接受 `backgroundFillStrength`；清晰前景框仍可独立移动、缩放、裁剪和旋转。预览与导出共用合成链并保留淡化、特效和 GLSL 转场透明度；FCPXML 会把开关与百分比保存在 OpenChatCut 自定义元数据中，并明确提示目标剪辑软件无法从这些字段自动重建生成的模糊图层。
+- Added opt-in blurred background fill for video and image clips: the Inspector offers exact 0–100% intensity control plus four quick shortcuts, while `edit_item` accepts `backgroundFillStrength`. The sharp foreground remains independently movable, resizable, croppable, and rotatable. Shared preview/export compositing preserves fades, effects, and GLSL transition alpha; FCPXML retains the toggle and percentage as B-CUT metadata and explicitly reports that destination editors cannot reconstruct the generated blur layer from those custom fields.
+  新增视频与图片片段的可选模糊背景填充：检查器支持 0–100% 精确强度调节和四个快捷档位，`edit_item` 接受 `backgroundFillStrength`；清晰前景框仍可独立移动、缩放、裁剪和旋转。预览与导出共用合成链并保留淡化、特效和 GLSL 转场透明度；FCPXML 会把开关与百分比保存在 B-CUT 自定义元数据中，并明确提示目标剪辑软件无法从这些字段自动重建生成的模糊图层。
 - Added visual geometry understanding: in-browser MediaPipe person segmentation + face detection aggregate into per-segment safe zones (cached per asset+revision). Captions auto-avoid the speaker (`apply_caption_avoidance`), export QA warns when a caption covers the face, `auto_reframe` focal points follow the subject, and overlay graphics place into the safe zone (`place_graphics_in_safe_zone`). Undetected faces fall back to the subject's head band.
   新增视觉几何理解：浏览器内 MediaPipe 人像分割 + 人脸检测聚合为分段安全区（按素材+版本缓存）。字幕自动避开说话人（`apply_caption_avoidance`）、导出 QA 在字幕遮挡人脸时预警、`auto_reframe` 焦点跟随主体、叠加图形自动放入安全区（`place_graphics_in_safe_zone`）；人脸检测不到时回退到主体头部带。
 - Added `edit_item` source windows: `sourceStartMs`/`sourceEndMs` from `search_media` pass through unchanged; explicit `sourceStartSeconds`/`sourceEndSeconds` are also accepted and converted internally.
@@ -657,8 +657,8 @@ Project data remains in its current directory; moving it through Settings is una
   OpenAI 文生图主路径改走 AI SDK `generateImage`（gpt 专属参数映射到 provider metadata）；图生图/编辑路径保留原 multipart 实现。
 - Added StepFun and BytePlus ModelArk Agent LLM providers (BytePlus fronts DeepSeek, GLM, and Doubao-Seed models behind one Ark-compatible endpoint with a swappable model id), plus WaveSpeed and BytePlus Seedream image generation, BytePlus Seedance video generation (sharing the seedance2/Volcengine task API and reference limits), and Inworld, Fish Audio, and Speechify text-to-speech providers — each with settings-panel configuration and connection testing.
   新增 StepFun 与 BytePlus ModelArk Agent 大脑厂商（BytePlus 通过同一个 Ark 兼容端点承载 DeepSeek、GLM、豆包 Seed 等模型，可切换模型 ID），以及 WaveSpeed 与 BytePlus Seedream 生图、BytePlus Seedance 生视频（复用 seedance2/火山引擎的任务接口与引用素材限制），以及 Inworld、Fish Audio、Speechify 配音厂商，均支持设置面板配置与连接测试。
-- Added first-class ChatGPT subscription sign-in for the built-in Agent through the official Codex CLI, including isolated credential storage, browser/device-code OAuth, account and model discovery, model-specific reasoning-effort selection, model switching, and dynamic OpenChatCut tool calling. Claude Code subscriptions remain available through the existing local MCP connection without exposing Claude OAuth credentials.
-  新增基于官方 Codex CLI 的内置 Agent ChatGPT 订阅登录：支持隔离凭据存储、浏览器/设备代码 OAuth、账号与模型发现、按模型选择推理强度、模型切换及 OpenChatCut 动态工具调用。Claude Code 订阅继续通过既有本机 MCP 连接使用，无需向 OpenChatCut 暴露 Claude OAuth 凭据。
+- Added first-class ChatGPT subscription sign-in for the built-in Agent through the official Codex CLI, including isolated credential storage, browser/device-code OAuth, account and model discovery, model-specific reasoning-effort selection, model switching, and dynamic B-CUT tool calling. Claude Code subscriptions remain available through the existing local MCP connection without exposing Claude OAuth credentials.
+  新增基于官方 Codex CLI 的内置 Agent ChatGPT 订阅登录：支持隔离凭据存储、浏览器/设备代码 OAuth、账号与模型发现、按模型选择推理强度、模型切换及 B-CUT 动态工具调用。Claude Code 订阅继续通过既有本机 MCP 连接使用，无需向 B-CUT 暴露 Claude OAuth 凭据。
 - Added first-class Ollama and LM Studio Agent providers with configurable local endpoints, optional API keys, model discovery, and explicit model activation.
   新增 Ollama 与 LM Studio Agent 厂商：支持配置本地端点、可选 API Key、模型发现，并仅在明确保存模型后激活。
 - Added validated 4K video export across browser and server render paths, producing a 2160-pixel short edge (`3840×2160` for 16:9 projects) with matching bitrate and quality-check expectations.
@@ -1008,8 +1008,8 @@ Project data remains in its current directory; moving it through Settings is una
 
 ### Added / 新增
 
-- Initial public release of the local-first, agent-native OpenChatCut video editor.  
-  首次公开发布 local-first、agent-native 的 OpenChatCut 视频编辑器。
+- Initial public release of the local-first, agent-native B-CUT video editor.  
+  首次公开发布 local-first、agent-native 的 B-CUT 视频编辑器。
 - Added editable multitrack projects, media management, transcript-driven editing, preview, effects, transitions, motion graphics, LUTs, and production exports.  
   提供可编辑多轨工程、素材管理、文字稿剪辑、预览、特效、转场、动态图形、LUT 与成片导出。
 - Added built-in Agent tools and MCP access for Codex and Claude Code.  

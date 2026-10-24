@@ -1,6 +1,6 @@
 # Mureka (`provider: "mureka"`)
 
-OpenChatCut wires the official Mureka generate/query and file-upload APIs. The configured model is `MUREKA_MUSIC_MODEL` (default `auto`; official choices include `mureka-7.6`, `mureka-o2`, `mureka-8`, `mureka-9`, with endpoint-specific support).
+B-CUT wires the official Mureka generate/query and file-upload APIs. The configured model is `MUREKA_MUSIC_MODEL` (default `auto`; official choices include `mureka-7.6`, `mureka-o2`, `mureka-8`, `mureka-9`, with endpoint-specific support).
 
 ## Modes
 
@@ -16,7 +16,7 @@ OpenChatCut wires the official Mureka generate/query and file-upload APIs. The c
 
 Prompt-song styles: `pop`, `rock`, `jazz`, `r&b`, `edm`, `ambient`, `folk`, `latin`, `k-pop`, `j-pop`, `house`, `gospel`, `lo-fi`.
 
-Output selection: `audioFormat` may be `mp3`, `wav`, or `flac`. Every returned choice is downloaded and becomes a distinct asset. OpenChatCut defaults `count` to 1 rather than Mureka's official default 2 to avoid surprise charges.
+Output selection: `audioFormat` may be `mp3`, `wav`, or `flac`. Every returned choice is downloaded and becomes a distinct asset. B-CUT defaults `count` to 1 rather than Mureka's official default 2 to avoid surprise charges.
 
 ## Combinations
 

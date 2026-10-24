@@ -156,7 +156,7 @@ async function bootstrap(options: BridgeRequestOptions = {}): Promise<Response> 
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-OpenChatCut-Editor-Bootstrap': '1',
+      'X-B-CUT-Editor-Bootstrap': '1',
     },
     body: '{}',
   }, options);
@@ -344,7 +344,7 @@ try {
   assert.equal(registrationValue.registrationCapability, registrationCapability);
   assert.equal(calls.registerEditor, registerCount + 1);
   const wrongCapabilityHeaders = {
-    'X-OpenChatCut-Editor-Registration': 'w'.repeat(43),
+    'X-B-CUT-Editor-Registration': 'w'.repeat(43),
   };
   // A different window without the live capability may still re-claim a
   // same-revision project (claim gate re-issues ownership); capability-based
@@ -369,7 +369,7 @@ try {
       ...init,
       headers: {
         ...Object.fromEntries(new Headers(init?.headers)),
-        'X-OpenChatCut-Editor-Registration': registrationCapability,
+        'X-B-CUT-Editor-Registration': registrationCapability,
       },
     });
     assert(

@@ -2,7 +2,7 @@ import { externalToolSchemas } from './external-tool-schemas';
 import type { ExternalEditSessionTerminalStatus } from './external-edit-session';
 import type { BrowserProjectOwnership } from '../persist/projectStoreTransport';
 
-const EDITOR_REGISTRATION_CAPABILITY_HEADER = 'X-OpenChatCut-Editor-Registration';
+const EDITOR_REGISTRATION_CAPABILITY_HEADER = 'X-B-CUT-Editor-Registration';
 
 export class EditorBridgeRequestError extends Error {
   readonly operation: string;

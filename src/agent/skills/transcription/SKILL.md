@@ -1,6 +1,6 @@
 ---
 name: transcription
-description: Use when a video/audio task needs OpenChatCut transcription, captions, subtitles, subtitle styling, transcript search, transcript readiness checks, or enabling captions, including local or attached videos where the user asks to add captions/subtitles, transcribe, create bilingual subtitles, clean talking-head speech, remove filler words, or trim pauses.
+description: Use when a video/audio task needs B-CUT transcription, captions, subtitles, subtitle styling, transcript search, transcript readiness checks, or enabling captions, including local or attached videos where the user asks to add captions/subtitles, transcribe, create bilingual subtitles, clean talking-head speech, remove filler words, or trim pauses.
 ---
 
 # Transcription
@@ -10,7 +10,7 @@ For newly imported local/client-held media, use `import_media` to start transcri
 Typical flow:
 
 1. `read_project` with `view: "assets"` to get the video/audio asset ID and transcript status.
-2. If this is a fresh client-held import, make sure it went through `import_media action=create_session` plus the OpenChatCut media import helper.
+2. If this is a fresh client-held import, make sure it went through `import_media action=create_session` plus the B-CUT media import helper.
 3. Call `track_progress` with `action:"wait"`, `target:"transcription"`, and `assetIds` set to the asset ID or prefix.
 4. Use `find_transcript` to search transcript text and confirm word timestamps.
 5. Use `edit_captions` action `enable` or `read_captions` as needed once transcription is ready.

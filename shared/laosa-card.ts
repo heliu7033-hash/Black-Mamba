@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — 老黑剪辑台 semantic card contract. Shared by the local API and the editor.
+// B-CUT — 老黑剪辑台 semantic card contract. Shared by the local API and the editor.
 // The spoken content stays locked; this only classifies packaging size.
 
 export type CardSize = 'S' | 'M' | 'F';

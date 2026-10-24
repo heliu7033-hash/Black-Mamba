@@ -18,7 +18,7 @@ interface ClientSnippet {
   logo: ReactElement;
   name: string;
   desc: string;
-  /** 'connect' = OpenChatCut writes the config file for you; 'paste' = the client
+  /** 'connect' = B-CUT writes the config file for you; 'paste' = the client
    *  keeps custom MCP servers in its own store, so there is no file to write and
    *  the snippet is copied instead. */
   mode: 'connect' | 'paste';

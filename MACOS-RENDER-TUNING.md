@@ -6,7 +6,7 @@ Increasing the number of concurrent render tabs can make those stages slower.
 
 ## Observed workload
 
-Measured on an Apple M4 Max (16 CPU cores, 64 GiB RAM), OpenChatCut's
+Measured on an Apple M4 Max (16 CPU cores, 64 GiB RAM), B-CUT's
 `b3747ca6` checkout, Remotion 4.0.509, with VideoToolbox H.264 at 80 Mbps.
 Two short 3840×2160/60 video-only test timelines used different 4K/59.94 HEVC
 clips at roughly 100 Mbps, with playback rates of 1.494 and 1.579. They had no

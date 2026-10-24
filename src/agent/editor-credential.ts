@@ -1,7 +1,7 @@
 import type { EditorBootstrapInfo } from '../../shared/editor-auth-transport';
 import { fetchWithEditorSession } from '../persist/projectStoreTransport';
 
-export const EDITOR_BOOTSTRAP_HEADER = 'X-OpenChatCut-Editor-Bootstrap';
+export const EDITOR_BOOTSTRAP_HEADER = 'X-B-CUT-Editor-Bootstrap';
 
 let cached: EditorBootstrapInfo | null = null;
 let pending: Promise<EditorBootstrapInfo> | null = null;

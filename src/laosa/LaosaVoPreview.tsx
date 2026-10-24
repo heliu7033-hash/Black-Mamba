@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — VO / talking-head slot under the packaging card. Demo or user import.
+// B-CUT — VO / talking-head slot under the packaging card. Demo or user import.
 
 import { useT } from '../i18n/locale';
 import { useLaosaDesk } from './LaosaContext';
