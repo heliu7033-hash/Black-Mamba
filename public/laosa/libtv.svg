@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="LibTV">
+  <rect width="32" height="32" rx="8" fill="#16161E"/>
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="none" stroke="#FFFFFF" stroke-opacity="0.22"/>
+  <path d="M8 8.5h5.2v10.2H18V22H8V8.5z" fill="#F7F7FB"/>
+  <circle cx="23.2" cy="11" r="3.1" fill="#7C5CFF"/>
+  <circle cx="25.4" cy="17.2" r="2.5" fill="#2EE6A6"/>
+  <circle cx="19.6" cy="19.4" r="2.1" fill="#FF5C8A"/>
+</svg>
