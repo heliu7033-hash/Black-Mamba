@@ -28,6 +28,7 @@ import {
 } from '../../captions/captionSelectionInteraction';
 import type { TimelineProps } from './timelineTypes';
 import { useTimelineController } from './useTimelineController';
+import { DeskAgentDock } from '../../laosa/DeskAgentDock';
 import { LaosaRails } from '../../laosa/LaosaRails';
 
 export function Timeline(props: TimelineProps) {
@@ -453,6 +454,12 @@ The playhead line/triangle is pointerEvents:none, click it to click the ruler - 
       })()}
 
       {/* single-clip render status (export MG / convert to video take a few seconds)*/}
+      <DeskAgentDock
+        state={state}
+        commands={commands}
+        seekTo={(frame) => { playerRef.current?.seekTo(frame); }}
+      />
+
       {clipJob && (
         <div style={{ position: 'fixed', left: '50%', bottom: 24, transform: 'translateX(-50%)', zIndex: 200,
           background: clipJob.error ? theme.accent : theme.panelAlt, color: clipJob.error ? theme.onAccent : theme.text,

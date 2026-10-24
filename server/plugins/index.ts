@@ -43,6 +43,7 @@ import { stockSearchPlugin } from "./stock.ts";
 import { firecrawlPlugin } from "./firecrawl.ts";
 import { settingsPlugin } from "./settings.ts";
 import { laosaCardPlugin } from "./laosa-card.ts";
+import { laosaAgentsPlugin } from "./laosa-agents.ts";
 import { skillFilesPlugin } from "./skill-files.ts";
 import { skillInstallPlugin } from "./skill-install.ts";
 import { skillExecPlugin } from "./skill-exec.ts";
@@ -88,6 +89,7 @@ export function serverPlugins(options: { projectStoreHttp?: boolean } = {}): Plu
     claudeCodeAgentPlugin(),
     settingsPlugin(),
     laosaCardPlugin(),
+    laosaAgentsPlugin(),
     exportStagePlugin(),
     exportPlugin(),
     exportDestinationPlugin(),
