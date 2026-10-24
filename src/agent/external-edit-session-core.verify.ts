@@ -58,7 +58,7 @@ const staged = captureExternalToolActions(
   'set_aspect_ratio',
   { width: 1080, height: 1920 },
 );
-assert.equal(activeTimeline(base).width, 1920, 'live/base project must remain unchanged while drafting');
+assert.equal(activeTimeline(base).width, 1080, 'live/base project must remain unchanged while drafting');
 assert.equal(staged.draft!.getState().width, 1080);
 assert.equal(staged.operations.length, 1);
 

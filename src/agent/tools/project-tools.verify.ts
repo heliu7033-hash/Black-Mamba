@@ -35,6 +35,9 @@ const empty = emptyProjectDoc({ width: 1280, height: 720, fps: 24 });
 assert.strictEqual(empty.version, CURRENT_PROJECT_VERSION);
 assert.strictEqual(empty.timelines[0]!.width, 1280);
 assert.strictEqual(empty.timelines[0]!.fps, 24);
+const portraitDefault = emptyProjectDoc();
+assert.strictEqual(portraitDefault.timelines[0]!.width, 1080, 'new projects default to 9:16 width');
+assert.strictEqual(portraitDefault.timelines[0]!.height, 1920, 'new projects default to 9:16 height');
 
 resetProjectStoreMemory();
 

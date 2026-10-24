@@ -1,11 +1,14 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { loadInitialProjects, syncAgentBackends, type ProjectStartupSource } from './appShell';
+import { emptyProjectDoc, loadInitialProjects, syncAgentBackends, type ProjectStartupSource } from './appShell';
 import { getActiveAgentModelChoice, getAgentModelSnapshot, subscribeAgentModels } from '../agent/model-selection';
 import type { ProjectMeta } from '../persist/projectStoreCoordinators';
 import { syncDesktopNativeInferenceEnabled } from '../transcript/desktop-inference-preference';
 
 const demo = { id: 'demo', name: '示例工程', updatedAt: 1 };
+const blank = emptyProjectDoc();
+assert.equal(blank.timelines[0]?.width, 1080, 'empty projects open at 9:16 width');
+assert.equal(blank.timelines[0]?.height, 1920, 'empty projects open at 9:16 height');
 
 function source(options: {
   projects?: ProjectMeta[];

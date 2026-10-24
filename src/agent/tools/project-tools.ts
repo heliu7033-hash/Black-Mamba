@@ -31,8 +31,8 @@ export function buildEditorUrl(projectId: string, editorBaseUrl?: string): strin
 }
 
 function emptyState(opts: { width?: number; height?: number; fps?: number }): TimelineState {
-  const width = typeof opts.width === 'number' && opts.width > 0 ? Math.round(opts.width) : 1920;
-  const height = typeof opts.height === 'number' && opts.height > 0 ? Math.round(opts.height) : 1080;
+  const width = typeof opts.width === 'number' && opts.width > 0 ? Math.round(opts.width) : 1080;
+  const height = typeof opts.height === 'number' && opts.height > 0 ? Math.round(opts.height) : 1920;
   const fps = typeof opts.fps === 'number' && opts.fps > 0 ? opts.fps : 30;
   return {
     fps,

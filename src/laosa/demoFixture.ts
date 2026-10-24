@@ -117,8 +117,8 @@ function overlayItem(span: DemoSpan): TimelineItem {
     durationInFrames: span.durationInFrames,
     kind: 'text',
     name: span.label,
-    width: 1920,
-    height: 1080,
+    width: 1080,
+    height: 1920,
     props: {
       text: span.label,
       fontSize: 42,
@@ -148,8 +148,8 @@ export function laoheiDemoTimeline(): TimelineState {
     durationInFrames: DEMO_FRAMES,
     kind: 'solid',
     name: '炭黑舞台',
-    width: 1920,
-    height: 1080,
+    width: 1080,
+    height: 1920,
     props: { color: '#080808' },
   };
   const title: TimelineItem = {
@@ -159,8 +159,8 @@ export function laoheiDemoTimeline(): TimelineState {
     durationInFrames: DEMO_FRAMES,
     kind: 'text',
     name: '锁定口播',
-    width: 1920,
-    height: 1080,
+    width: 1080,
+    height: 1920,
     props: {
       text: '同一口播\n内容锁定',
       fontSize: 84,
@@ -181,8 +181,8 @@ export function laoheiDemoTimeline(): TimelineState {
   };
   return {
     fps: LAOHEI_DEMO_FPS,
-    width: 1920,
-    height: 1080,
+    width: 1080,
+    height: 1920,
     items: [stage, title, ...MOTION_SPANS.map(overlayItem), bed],
     selectedId: title.id,
     selectedIds: [title.id],

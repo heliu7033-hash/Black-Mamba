@@ -185,6 +185,8 @@ for (const rail of ['music', 'motion', 'broll'] as const) {
   }
 }
 const rawTimeline = laoheiDemoTimeline();
+assert.equal(rawTimeline.width, 1080, 'demo composition is portrait width');
+assert.equal(rawTimeline.height, 1920, 'demo composition is portrait height');
 assert.equal(rawTimeline.items.some((item) => item.kind === 'audio' && item.src === LAOHEI_DEMO_BED_SRC), true);
 assert.equal(rawTimeline.items.some((item) => item.kind === 'text' && item.track === 'V3'), true);
 assert.equal(rawTimeline.items.find((item) => item.id === 'laohei_title')?.props?.text, '同一口播\n内容锁定');

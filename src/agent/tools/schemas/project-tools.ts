@@ -27,8 +27,8 @@ export const PROJECT_TOOL_SCHEMAS: AgentToolSchema[] = [
       properties: {
         name: { type: 'string', description: 'Display name (default: a localized new-project name).' },
         description: { type: 'string' },
-        compositionWidth: { type: 'number', description: 'Default 1920.' },
-        compositionHeight: { type: 'number', description: 'Default 1080.' },
+        compositionWidth: { type: 'number', description: 'Default 1080.' },
+        compositionHeight: { type: 'number', description: 'Default 1920.' },
         fps: { type: 'number', description: 'Default 30.' },
         editorBaseUrl: { type: 'string' },
       },

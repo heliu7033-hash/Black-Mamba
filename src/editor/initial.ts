@@ -26,8 +26,8 @@ const SEED_B = pick('Dark Tech');
 
 export const INITIAL: TimelineState = {
   fps: 30,
-  width: 1920,
-  height: 1080,
+  width: 1080,
+  height: 1920,
   items: [
     seedItem('seed_1', SEED_A, 0),
     seedItem('seed_2', SEED_B, SEED_A.durationInFrames),

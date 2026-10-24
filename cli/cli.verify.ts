@@ -520,6 +520,9 @@ try {
   assert.equal(draftPath, stubDraftPath, 'export jianying must drive the exporter and report its draft');
   assert.equal(draft.applied, false, 'a draft export stages nothing in the project');
 
+  const portraitDefault = occJson<ProjectJson>(['project', 'new', 'CLI Portrait Default', '--json']);
+  assert.deepEqual(activeTimelineSize(portraitDefault.id), { width: 1080, height: 1920, fps: 30 });
+
   process.stdout.write('occ cli verify: ok\n');
 } finally {
   // This process holds the store's SQLite connections open (it writes fixtures

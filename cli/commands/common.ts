@@ -22,7 +22,7 @@ export function requirePositional(commandLine: CommandLine, index: number, label
   return value;
 }
 
-/** `1920x1080` / `1080p` / `2160p` → [width, height]. */
+/** `1080x1920` / `1080p` / `2160p` → [width, height]. */
 export function parseSize(input: string): [number, number] {
   const shorthand = /^(\d{3,4})p$/i.exec(input.trim());
   if (shorthand) {
@@ -31,7 +31,7 @@ export function parseSize(input: string): [number, number] {
     return [width, height];
   }
   const pair = /^(\d{2,5})\s*[x×]\s*(\d{2,5})$/i.exec(input.trim());
-  if (!pair) throw new UsageError(`--size expects WIDTHxHEIGHT (for example 1920x1080), got "${input}"`);
+  if (!pair) throw new UsageError(`--size expects WIDTHxHEIGHT (for example 1080x1920), got "${input}"`);
   return [Number(pair[1]), Number(pair[2])];
 }
 

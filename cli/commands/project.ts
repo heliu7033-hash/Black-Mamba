@@ -103,7 +103,7 @@ async function newCommand(line: CommandLine, commandLine: CommandLine, json: boo
   const widthFlag = flagText(commandLine, 'width');
   const heightFlag = flagText(commandLine, 'height');
   if ((widthFlag === undefined) !== (heightFlag === undefined)) {
-    throw new UsageError('--width and --height go together; use --size 1920x1080 for the common case');
+    throw new UsageError('--width and --height go together; use --size 1080x1920 for the common case');
   }
   const [width, height] = sizeFlag
     ? parseSize(sizeFlag)
