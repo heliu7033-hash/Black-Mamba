@@ -1,4 +1,4 @@
-# Edit an OpenChatCut project
+# Edit an B-CUT project
 
 ## Start with current state
 
@@ -46,7 +46,7 @@ argument.
 ## Review and finish
 
 1. Call `review_edit_session` after all draft edits are ready.
-2. For manual mode, tell the user the proposal is ready inside OpenChatCut.
+2. For manual mode, tell the user the proposal is ready inside B-CUT.
 3. Poll `get_edit_session` when the client needs the final state.
 4. Report completion only when the status is `applied`.
 5. If the status is `rejected` or `discarded`, report that exact result.

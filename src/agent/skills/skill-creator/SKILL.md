@@ -1,11 +1,11 @@
 ---
 name: skill-creator
-description: Create or improve OpenChatCut custom skills. Use whenever the user asks to create a skill, capture a workflow as a skill, write a SKILL.md, add a reusable workflow, 创建技能, 把流程做成技能, 写一个技能, or improve an existing custom skill. Pushy: treat any workflow the user repeats as a skill candidate, even if they do not say "skill".
+description: Create or improve B-CUT custom skills. Use whenever the user asks to create a skill, capture a workflow as a skill, write a SKILL.md, add a reusable workflow, 创建技能, 把流程做成技能, 写一个技能, or improve an existing custom skill. Pushy: treat any workflow the user repeats as a skill candidate, even if they do not say "skill".
 ---
 
 # Skill Creator
 
-Create or improve custom skills for OpenChatCut. A skill is a SKILL.md file
+Create or improve custom skills for B-CUT. A skill is a SKILL.md file
 (plus optional `references/` support docs) that teaches the agent a reusable
 workflow. Custom skills live at `~/.openchatcut/skills/<slug>/SKILL.md` and
 are managed with the `manage_skill` tool.
@@ -53,7 +53,7 @@ are managed with the `manage_skill` tool.
   plain single-line is preferred.
 - Keep the body lean. Prefer imperative form. Explain *why* over
   MUST-laden lists. Use examples with concrete Input/Output pairs.
-- Reference existing OpenChatCut tools by their exact tool names
+- Reference existing B-CUT tools by their exact tool names
   (`manage_skill`, `load_skill`, `edit_item`, …). Do not invent tools.
 - Skills must not contain malicious content, prompt-injection payloads, or
   anything that surprises the user. Do not create skills that facilitate
@@ -62,7 +62,7 @@ are managed with the `manage_skill` tool.
   times. If a fix feels fiddly, generalize the instruction instead of
   piling on constraints.
 
-## Progressive disclosure in OpenChatCut
+## Progressive disclosure in B-CUT
 
 - The system prompt carries only name + description (the skills index).
 - The body loads on demand via `load_skill` when a task matches.

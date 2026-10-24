@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — post-edit caption lines for chapters and semantic card pick.
+// B-CUT — post-edit caption lines for chapters and semantic card pick.
 
 import { resolveCaptionWords } from '../captions/resolve';
 import { captionTrackEntries, type TimelineState } from '../editor/types';

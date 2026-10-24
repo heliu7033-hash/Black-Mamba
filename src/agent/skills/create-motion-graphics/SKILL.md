@@ -1,17 +1,17 @@
 ---
 name: create-motion-graphics
-description: "Use whenever the agent needs to add, create, hand-author, patch, or place Motion Graphic JSX assets in a OpenChatCut project. This is the direct-authoring path: use create_motion_graphic_from_code / edit_asset / edit_item, not motion-graphic-gen or submit_motion_graphic. Covers project/timeline intake, project visual language, editable properties, asset binding, inline JSX authoring, existing asset updates, timeline placement, and verification."
+description: "Use whenever the agent needs to add, create, hand-author, patch, or place Motion Graphic JSX assets in a B-CUT project. This is the direct-authoring path: use create_motion_graphic_from_code / edit_asset / edit_item, not motion-graphic-gen or submit_motion_graphic. Covers project/timeline intake, project visual language, editable properties, asset binding, inline JSX authoring, existing asset updates, timeline placement, and verification."
 ---
 
 # Create Motion Graphics
 
-Use this skill when a OpenChatCut task requires a Motion Graphic asset that the agent will author or patch as inline JSX.
+Use this skill when a B-CUT task requires a Motion Graphic asset that the agent will author or patch as inline JSX.
 
 This skill is for direct authoring. Do not translate the request into a Gemini prompt or generation brief, and do not call `submit_motion_graphic`, when this workflow is active.
 
-Even though `submit_motion_graphic` exists in the tool list, treat it as the generation route, not this one. Ignore that path for MG work; use `create_motion_graphic_from_code` for new JSX assets and `edit_asset` for existing MG JSX. If the direct-authoring tools are missing, stop and report that the OpenChatCut tool surface is out of date.
+Even though `submit_motion_graphic` exists in the tool list, treat it as the generation route, not this one. Ignore that path for MG work; use `create_motion_graphic_from_code` for new JSX assets and `edit_asset` for existing MG JSX. If the direct-authoring tools are missing, stop and report that the B-CUT tool surface is out of date.
 
-Pass source inline through the asset code tools. Do not stage Motion Graphic code in the OpenChatCut repository, `ai-working/`, `/tmp`, a local HTTP server, generated code files, or guessed backend workspace paths.
+Pass source inline through the asset code tools. Do not stage Motion Graphic code in the B-CUT repository, `ai-working/`, `/tmp`, a local HTTP server, generated code files, or guessed backend workspace paths.
 
 ## Core Principles
 
@@ -264,7 +264,7 @@ Place and review:
 
 ### Create A New Asset
 
-Create new Motion Graphic assets by passing inline JSX and editable property metadata through the current OpenChatCut asset-creation tool. Use the tool schema for the exact field names and accepted duration format.
+Create new Motion Graphic assets by passing inline JSX and editable property metadata through the current B-CUT asset-creation tool. Use the tool schema for the exact field names and accepted duration format.
 
 Choose the MG's natural box, duration, asset name, description, and property schema from the edit requirements. The asset duration should match the intended placed span, including internal entrance, hold, and exit timing. The asset creation step only creates the asset; timeline placement is separate.
 
@@ -303,7 +303,7 @@ A successful tool call is not verification.
 
 - Re-read asset state after asset creation or update.
 - Re-read timeline state after placement, movement, trimming, or property overrides.
-- For visible changes, inspect a real composed frame using the normal OpenChatCut visual verification path.
+- For visible changes, inspect a real composed frame using the normal B-CUT visual verification path.
 - For a batch, compare the composed settled frames side by side; verify that each visual job has a fitting form, repeated surfaces/anchors/rhythms are intentional, and each placement works for its own target frame.
 - If the result is wrong, classify the failure before retrying: invalid tool shape, invalid JSX, missing/incorrect property key, timeline placement, async asset readiness, or canvas/export safety.
 - Fix placement with timeline edits; fix bad rendering with JSX/property changes; use canvas rules for preview-good/export-black failures.

@@ -1,7 +1,7 @@
 import { useEffect, useState, type RefObject } from 'react';
 import type { PlayerRef } from '@remotion/player';
 import { useT } from '../i18n/locale';
-import { Icon } from './icons';
+import { BrandWordmark, Icon } from './icons';
 import { HistoryGestureProvider } from './inspector/InspectorKeyframeControls';
 import { InspectorContent, type InspectorTab } from './inspector/InspectorContent';
 import type { InspectorPanelProps } from './inspector/InspectorTypes';
@@ -53,6 +53,7 @@ function InspectorHeader({ panel }: { panel: InspectorPanelProps }) {
       <span className={`cc-insp-chevron${panel.collapsed ? ' closed' : ''}`}><Icon name="chevronDown" size={12} /></span>
       <span className="cc-insp-heading">
         <span className="cc-insp-title">{caption ? t('字幕属性') : t('片段属性')}</span>
+        <BrandWordmark width={72} />
         {caption ? <span className="cc-insp-title-name" title={caption.target.cue.text}>{caption.target.cue.text}</span>
           : item && <span className="cc-insp-title-name" title={item.name}>{count > 1 ? t('{n} 个片段', { n: count }) : item.name}</span>}
       </span>

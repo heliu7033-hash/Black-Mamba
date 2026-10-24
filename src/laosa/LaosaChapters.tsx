@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — Astra chapter scrub. The bar follows the edited caption timeline.
+// B-CUT — Astra chapter scrub. The bar follows the edited caption timeline.
 
 import { useT } from '../i18n/locale';
 import { chapterAt } from './chapters';

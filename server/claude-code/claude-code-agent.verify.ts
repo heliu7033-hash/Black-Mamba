@@ -240,13 +240,13 @@ if (serverNames[0] === 'openchatcut') process.exit(72);
 if (!valueAfter('--allowedTools').includes(serverNames[0])) process.exit(73);
 if (!mcpServers[serverNames[0]].headers?.Authorization?.startsWith('Bearer ')) process.exit(74);
 // The system prompt must arrive as a FILE. Inline (--append-system-prompt)
-// overflows the ~32KB Windows command-line cap for a real OpenChatCut system
+// overflows the ~32KB Windows command-line cap for a real B-CUT system
 // prompt and spawn dies with ENAMETOOLONG.
 if (has('--append-system-prompt')) process.exit(65);
 if (!has('--append-system-prompt-file')) process.exit(66);
 const promptFile = valueAfter('--append-system-prompt-file');
 if (!promptFile || !existsSync(promptFile)) process.exit(67);
-if (!readFileSync(promptFile, 'utf8').includes('OpenChatCut')) process.exit(68);
+if (!readFileSync(promptFile, 'utf8').includes('B-CUT')) process.exit(68);
 // Guard the whole command line, not just the system prompt.
 if (args.join(' ').length > 8000) process.exit(69);
 const promptIndex = args.indexOf('-p');
@@ -303,11 +303,11 @@ try {
     ], 'a successful fake turn translates init/text/usage/done in order');
   }
   {
-    // Regression: a real OpenChatCut system prompt is tens of KB. Passed inline
+    // Regression: a real B-CUT system prompt is tens of KB. Passed inline
     // it blew the ~32KB Windows command-line cap and spawn failed with
     // ENAMETOOLONG before the CLI ever started. 200KB here is far past any
     // platform limit, so this fails loudly if the prompt returns to argv.
-    const huge = `OpenChatCut ${'x'.repeat(200_000)}`;
+    const huge = `B-CUT ${'x'.repeat(200_000)}`;
     const events: ClaudeCodeTurnStreamEvent[] = [];
     await runClaudeCodeTurn(
       shimPath,

@@ -101,7 +101,7 @@ try {
   assert.equal(conflictingCreate.status, 409, 'a reused run identity cannot change its request');
   const deferredMetadata = await fetch(
     `${origin}/api/agent-runs/${deferredRunId}?projectId=project-deferred-admission`,
-    { headers: { ...auth, 'X-OpenChatCut-Run-Capability': deferredCapability } },
+    { headers: { ...auth, 'X-B-CUT-Run-Capability': deferredCapability } },
   );
   assert.equal(
     (await deferredMetadata.json() as { status?: unknown }).status,
@@ -127,7 +127,7 @@ try {
     headers: {
       ...auth,
       'Content-Type': 'application/json',
-      'X-OpenChatCut-Run-Capability': deferredCapability,
+      'X-B-CUT-Run-Capability': deferredCapability,
     },
     body: JSON.stringify({ projectId: 'project-deferred-admission' }),
   });
@@ -150,21 +150,21 @@ try {
   );
   const first = await readSse(
     `/api/agent-runs/${run.id}/events?projectId=${run.projectId}&after=0`,
-    { 'X-OpenChatCut-Run-Capability': runCapability },
+    { 'X-B-CUT-Run-Capability': runCapability },
   );
   assert.deepEqual(first.events.map((event) => event.id), [1, 2, 3, 4]);
   const reconnect = await readSse(
     `/api/agent-runs/${run.id}/events?projectId=${run.projectId}&after=1`,
     {
       'Last-Event-ID': '1',
-      'X-OpenChatCut-Run-Capability': runCapability,
+      'X-B-CUT-Run-Capability': runCapability,
     },
   );
   assert.deepEqual(reconnect.events.map((event) => event.id), [2, 3, 4], 'after and Last-Event-ID replay the later ordered suffix without duplicates');
   assert.equal(reconnect.events.at(-1)?.type, 'done');
   const recoveredMetadataResponse = await fetch(
     `${origin}/api/agent-runs/${run.id}?projectId=${run.projectId}`,
-    { headers: { ...auth, 'X-OpenChatCut-Run-Capability': runCapability } },
+    { headers: { ...auth, 'X-B-CUT-Run-Capability': runCapability } },
   );
   assert.equal(recoveredMetadataResponse.status, 200, 'terminal replay recovers with stored verifier');
   const recoveredMetadata = await recoveredMetadataResponse.json() as Record<string, unknown>;
@@ -180,7 +180,7 @@ try {
     {
       headers: {
         ...auth,
-        'X-OpenChatCut-Run-Capability': 'A'.repeat(43),
+        'X-B-CUT-Run-Capability': 'A'.repeat(43),
       },
     },
   );
@@ -201,7 +201,7 @@ try {
   assert.equal(unauthorizedCancel.status, 403, 'run identifiers alone cannot cancel');
   const wrongProject = await fetch(
     `${origin}/api/agent-runs/${run.id}?projectId=other-project`,
-    { headers: { ...auth, 'X-OpenChatCut-Run-Capability': runCapability } },
+    { headers: { ...auth, 'X-B-CUT-Run-Capability': runCapability } },
   );
   assert.equal(wrongProject.status, 409, 'metadata is project-bound');
   const malformedCursor = await fetch(
@@ -210,7 +210,7 @@ try {
       headers: {
         ...auth,
         Accept: 'text/event-stream',
-        'X-OpenChatCut-Run-Capability': runCapability,
+        'X-B-CUT-Run-Capability': runCapability,
       },
     },
   );
@@ -252,7 +252,7 @@ try {
       headers: {
         ...auth,
         'Content-Type': 'application/json',
-        'X-OpenChatCut-Run-Capability': toolCapability,
+        'X-B-CUT-Run-Capability': toolCapability,
       },
       body: JSON.stringify({ ...toolBinding, result: { image: 'premature' } }),
     },
@@ -269,7 +269,7 @@ try {
       headers: {
         ...auth,
         'Content-Type': 'application/json',
-        'X-OpenChatCut-Run-Capability': toolCapability,
+        'X-B-CUT-Run-Capability': toolCapability,
       },
       body: JSON.stringify(toolBinding),
     },
@@ -292,7 +292,7 @@ try {
       headers: {
         ...auth,
         'Content-Type': 'application/json',
-        'X-OpenChatCut-Run-Capability': toolCapability,
+        'X-B-CUT-Run-Capability': toolCapability,
       },
       body: JSON.stringify({ ...toolBinding, result: { image: oversizedPayload } }),
     },
@@ -306,7 +306,7 @@ try {
       headers: {
         ...auth,
         'Content-Type': 'application/json',
-        'X-OpenChatCut-Run-Capability': toolCapability,
+        'X-B-CUT-Run-Capability': toolCapability,
       },
       body: JSON.stringify({ ...toolBinding, result: { image: acceptedPayload } }),
     },
@@ -340,14 +340,14 @@ try {
       headers: {
         ...auth,
         Accept: 'text/event-stream',
-        'X-OpenChatCut-Run-Capability': capCapability,
+        'X-B-CUT-Run-Capability': capCapability,
       },
     },
   );
   assert.equal(cappedResponse.status, 410, 'a cursor before the bounded replay window is explicit');
   const capped = await readSse(
     `/api/agent-runs/${capRun.id}/events?projectId=${capRun.projectId}&after=${capRecovered?.replayStart ? capRecovered.replayStart - 1 : 0}`,
-    { 'X-OpenChatCut-Run-Capability': capCapability },
+    { 'X-B-CUT-Run-Capability': capCapability },
   );
   assert.deepEqual(capped.events.map((event) => event.id), [...new Set(capped.events.map((event) => event.id))]);
   const { run: subscriberRun, capability: subscriberCapability } = createRunWithCapability({
@@ -363,7 +363,7 @@ try {
   const subscriberHeaders = {
     ...auth,
     Accept: 'text/event-stream',
-    'X-OpenChatCut-Run-Capability': subscriberCapability,
+    'X-B-CUT-Run-Capability': subscriberCapability,
   };
   const subscriptions = await Promise.all(Array.from(
     { length: MAX_SSE_SUBSCRIBERS_PER_RUN },

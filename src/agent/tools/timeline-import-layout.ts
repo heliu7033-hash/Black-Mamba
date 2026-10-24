@@ -2,7 +2,7 @@
 // the video clips that already carry them, drop channel-split duplicates, and
 // lay lanes out on tracks that never overlap.
 //
-// An OpenChatCut video clip plays its file's audio. NLE exports list that audio
+// An B-CUT video clip plays its file's audio. NLE exports list that audio
 // separately (EDL "A"/"A2" events beside the "V" event, FCPXML <audio>
 // components or detached audio clips), so importing both would double it.
 import { describeSource, type ClipFamily, type ImportReport, type ParsedClip } from './timeline-import-types';
@@ -46,7 +46,7 @@ export function reconcileClips(clips: readonly ParsedClip[], report: ImportRepor
         element: audio.from.element,
         name: audio.from.name,
         at: audio.from.at,
-        reason: 'audio of a video file that is not in sync with a video clip of that file; OpenChatCut plays a video file\'s audio from its video clip',
+        reason: 'audio of a video file that is not in sync with a video clip of that file; B-CUT plays a video file\'s audio from its video clip',
       });
       continue;
     }

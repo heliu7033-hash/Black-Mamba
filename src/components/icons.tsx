@@ -139,28 +139,29 @@ export function BrandMark({ size = 16 }: { size?: number }) {
   );
 }
 
-/** OpenChatCut word mark: OPEN reverse white badge + Chat Cut solid word mark. */
-export function OpenChatCutWordmark({ width = 126 }: { width?: number }) {
+/** Product word mark. The visible name is exactly B-CUT. */
+export function BrandWordmark({ width = 88 }: { width?: number }) {
+  const height = Math.round(width * 0.36);
   return (
     <svg
-      aria-label="OpenChatCut"
+      aria-label="B-CUT"
       role="img"
       width={width}
-      height={width / 4}
-      viewBox="0 0 504 126"
+      height={height}
+      viewBox="0 0 160 58"
       style={{ display: 'block', flexShrink: 0 }}
     >
-      <rect x="0" y="13" width="166" height="92" rx="14" fill="currentColor" />
+      <title>B-CUT</title>
       <text
+        x="0"
+        y="46"
+        fill="currentColor"
         fontFamily="Inter, Geist, system-ui, sans-serif"
-        dominantBaseline="alphabetic"
+        fontSize="48"
+        fontWeight="760"
+        letterSpacing="0.01em"
       >
-        <tspan x="83" y="82" textAnchor="middle" fill="var(--cc-panel)" fontSize="58" fontWeight="850" letterSpacing="-0.045em">
-          OPEN
-        </tspan>
-        <tspan x="188" y="79" fill="currentColor" fontSize="62" fontWeight="720" letterSpacing="-0.045em">
-          Chat Cut
-        </tspan>
+        B-CUT
       </text>
     </svg>
   );

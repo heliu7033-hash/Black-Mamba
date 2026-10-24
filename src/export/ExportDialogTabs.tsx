@@ -196,7 +196,7 @@ function XmlTab({ state, nleFormat, includeMg, mgCount, setNleFormat, setInclude
         <InfoCard
           icon="film"
           title={t('当前 FCPXML 会保留背景参数，但不生成图层')}
-          text={t('OpenChatCut 会把 {n} 个片段的背景填充开关与百分比写入 FCPXML 元数据，但目标剪辑软件不会据此还原模糊图层；如需完全一致，请同时导出成片。', {
+          text={t('B-CUT 会把 {n} 个片段的背景填充开关与百分比写入 FCPXML 元数据，但目标剪辑软件不会据此还原模糊图层；如需完全一致，请同时导出成片。', {
             n: backgroundFillCount,
           })}
         />

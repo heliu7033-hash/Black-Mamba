@@ -1,6 +1,6 @@
 ---
 name: verification
-description: Use when checking whether agent edits are reflected in the OpenChatCut project and editor.
+description: Use when checking whether agent edits are reflected in the B-CUT project and editor.
 ---
 
 # Verification
@@ -21,7 +21,7 @@ Prefer two signals:
 1. `read_project` for structure: assets, tracks, items, frame placement, timeline duration.
 2. A visual capture path for rendered evidence at exact frames.
 
-Use `view_timeline_frames` for composed timeline proof. This verifies the edited OpenChatCut timeline: trims, layers, captions, effects,
+Use `view_timeline_frames` for composed timeline proof. This verifies the edited B-CUT timeline: trims, layers, captions, effects,
 markers, placeholders, crops, transitions, and layout.
 
 For raw source-asset frame inspection, choose the cheapest path based on where
@@ -44,7 +44,7 @@ blocked until the asset has bytes available to the renderer. Source-frame
 inspection via `view_asset_frames` still works as long as the asset's bytes are
 on disk (`/media/uploads/`).
 
-If both visual proof paths are blocked, ask the user to inspect the OpenChatCut
+If both visual proof paths are blocked, ask the user to inspect the B-CUT
 editor directly and note the blocker explicitly.
 
 Useful checks:
@@ -52,7 +52,7 @@ Useful checks:
 - After import: `read_project({ "view": "assets", "assetId": "<prefix>" })`
 - After move/trim: `read_project({ "view": "timeline" })`
 - After visual overlay or MG on any timeline media: `view_timeline_frames({ "frames": [30, 45, 75] })`, then look at the returned frames.
-- For user-requested source selection or visual moment picking: sample stills with `view_asset_frames` and inspect them. Use that only to choose source files, moments, and rough trims. Build the visible edit as OpenChatCut timeline items. Do not treat raw source inspection as timeline verification or as permission to produce the edited video elsewhere.
+- For user-requested source selection or visual moment picking: sample stills with `view_asset_frames` and inspect them. Use that only to choose source files, moments, and rough trims. Build the visible edit as B-CUT timeline items. Do not treat raw source inspection as timeline verification or as permission to produce the edited video elsewhere.
 - For source-frame inspection: call `view_asset_frames({"assetId":"...","sourceTimesMs":[...]})` after `read_project({"view":"assets"})` confirms the asset id/type. Prefer this over asking the user to reattach the file.
 - For local-only visual verification: upload/register cloud-readable media before relying on connector visual proof.
 - For no-source validation: confirm the tool manifest exposed the parameters you used, then record the visible proof in the trace log.

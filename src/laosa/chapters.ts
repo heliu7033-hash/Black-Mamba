@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — Astra-style chapters from post-edit caption lines.
+// B-CUT — Astra-style chapters from post-edit caption lines.
 // Boundaries follow silence and sentence breaks. They do not rewrite the timeline.
 
 import type { ChapterMark, TimedLine } from './types';

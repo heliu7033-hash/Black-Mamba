@@ -55,9 +55,9 @@ export function rememberClaudeCodeSession(key: string, sessionId: string): void 
 
 /**
  * Drop a remembered session. Called whenever the CLI's transcript can no longer
- * be trusted to match what OpenChatCut thinks the conversation is: a failed or
+ * be trusted to match what B-CUT thinks the conversation is: a failed or
  * timed-out turn (the CLI's state is unknown), or a compacted context (the
- * summary rewrote OpenChatCut's history but not the CLI's).
+ * summary rewrote B-CUT's history but not the CLI's).
  */
 export function forgetClaudeCodeSession(key: string): void {
   sessions.delete(key);

@@ -41,8 +41,8 @@ export interface ClaudeCodeTurnRequest {
 
 /**
  * Unlike Codex's dynamicTools RPC bridge, Claude Code CLI's own MCP client
- * calls OpenChatCut's MCP server directly and executes tools itself — these
- * events are for chat-UI display only, never for OpenChatCut to act on.
+ * calls B-CUT's MCP server directly and executes tools itself — these
+ * events are for chat-UI display only, never for B-CUT to act on.
  */
 export type ClaudeCodeTurnStreamEvent =
   | { readonly type: 'session'; readonly sessionId: string }

@@ -1,6 +1,6 @@
 # Sonilo (`provider: "sonilo"`)
 
-OpenChatCut wires the Sonilo video-to-music API (`/v1/video-to-music` → poll `/v1/tasks/{task_id}`). There is no model field: `/v1` always routes to the latest model server-side.
+B-CUT wires the Sonilo video-to-music API (`/v1/video-to-music` → poll `/v1/tasks/{task_id}`). There is no model field: `/v1` always routes to the latest model server-side.
 
 ## Mode
 

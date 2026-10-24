@@ -17,8 +17,8 @@ off to `product-ad-video-script` for the script, then come back here to assemble
 It does not re-explain music tooling — for beat-driven placement use
 `beat-sync-montage` or `music-intelligence`.
 
-This is a OpenChatCut-native workflow. Use the current project, source assets,
-asset-frame inspection, AV/script context, and OpenChatCut editing tools.
+This is a B-CUT-native workflow. Use the current project, source assets,
+asset-frame inspection, AV/script context, and B-CUT editing tools.
 
 ## When to switch workflows
 

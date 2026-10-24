@@ -375,7 +375,7 @@ export function serverRunShouldResume(
   return enabled && storedProjectId === currentProjectId;
 }
 
-export const SERVER_RUN_CAPABILITY_HEADER = 'X-OpenChatCut-Run-Capability';
+export const SERVER_RUN_CAPABILITY_HEADER = 'X-B-CUT-Run-Capability';
 
 export interface CreatedServerRunResponse {
   readonly id: string;

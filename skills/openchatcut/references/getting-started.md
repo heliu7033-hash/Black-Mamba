@@ -1,6 +1,6 @@
-# Connect OpenChatCut
+# Connect B-CUT
 
-Use this flow when the user says “set up OpenChatCut”, when the `openchatcut`
+Use this flow when the user says “set up B-CUT”, when the `openchatcut`
 MCP server is missing, or when its endpoint cannot be reached.
 
 ## 1. Find the endpoint
@@ -11,7 +11,7 @@ The default endpoint is:
 http://localhost:5199/api/external-mcp/mcp
 ```
 
-Start OpenChatCut first. Open **Settings → MCP** in the trusted editor window,
+Start B-CUT first. Open **Settings → MCP** in the trusted editor window,
 copy the displayed bearer-token configuration, and use the endpoint shown there.
 If desktop port 5199 was occupied, that page reflects the active fallback port.
 
@@ -62,7 +62,7 @@ http://localhost:5199/api/external-mcp/mcp?toolExposure=progressive
 ```
 
 The equivalent request header is
-`X-OpenChatCut-Tool-Exposure: progressive`. The initial list keeps connection,
+`X-B-CUT-Tool-Exposure: progressive`. The initial list keeps connection,
 session, project-read, `ToolSearch`, and `load_skill` tools. `ToolSearch` and
 `load_skill` expand only that transport session's list. Clients that cache one
 fixed tool list for the whole connection must use the default URL, which retains
@@ -97,7 +97,7 @@ Once the user has identified a project:
 ## Token lifecycle
 
 The endpoint always requires a bearer token, including on localhost. By default,
-OpenChatCut generates it in private server memory and shows it only through the
+B-CUT generates it in private server memory and shows it only through the
 trusted editor's **Settings → MCP** page. A server restart changes that generated
 token, so reconnect clients using the newly displayed configuration.
 

@@ -3,8 +3,8 @@
 export default {
   '请按“{name}”工作流处理当前工程：{summary}。先检查素材和时间线，再执行并检查成片。': 'Follow the “{name}” workflow for the current project: {summary}. Inspect the media and timeline first, then execute and verify the result.',
   // ── ChatPanel shell ──
-  '展开 OpenChatCut Agent': 'Expand OpenChatCut Agent',
-  '收起 OpenChatCut Agent': 'Collapse OpenChatCut Agent',
+  '展开 B-CUT Agent': 'Expand B-CUT Agent',
+  '收起 B-CUT Agent': 'Collapse B-CUT Agent',
   '清空对话': 'Clear chat',
   'Agent 仍在运行中，无法清空对话。请先等待运行结束或停止当前运行，再试一次。':
     'The Agent is still running and the chat cannot be cleared. Wait for the run to finish or stop it first, then try again.',

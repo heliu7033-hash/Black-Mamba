@@ -2,9 +2,9 @@
   "name": "openchatcut",
   "private": true,
   "version": "0.2.17",
-  "description": "Open-source ChatCut alternative: local-first, agent-native AI video editor with MCP.",
+  "description": "B-CUT: local-first, agent-native AI video editor with MCP.",
   "license": "AGPL-3.0-or-later",
-  "author": "OpenChatCut Contributors",
+  "author": "B-CUT Contributors",
   "type": "module",
   "main": "desktop-dist/main.mjs",
   "bin": {
