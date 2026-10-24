@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// OpenChatCut — semantic card client. The key never leaves the server settings store.
+// OpenChatCut — semantic card client. Claude/SSXZ credentials stay on the server.
 
 import {
   clipSemanticLines,
@@ -18,13 +18,12 @@ export class SemanticCardError extends Error {
   }
 }
 
-const KEY_NAMES = ['LLM_OPENAI_API_KEY', 'OPENAI_API_KEY'] as const;
-
+/** True when the server can read Claude/SSXZ credentials (~/.claude/settings.json or ANTHROPIC_*). */
 export async function readOpenAiCompatibleKey(): Promise<boolean> {
-  const response = await fetch('/api/keys');
+  const response = await fetch('/api/laosa/semantic-card');
   if (!response.ok) throw new SemanticCardError('unreachable');
-  const body = await response.json() as { keys?: Record<string, { configured?: boolean }> };
-  return KEY_NAMES.some((name) => body.keys?.[name]?.configured === true);
+  const body = await response.json() as { configured?: boolean };
+  return body.configured === true;
 }
 
 export async function requestSemanticCard(lines: readonly SemanticLine[]): Promise<CardRecommendation> {

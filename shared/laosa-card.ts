@@ -61,15 +61,20 @@ function stripFence(text: string): string {
 
 export function parseCardRecommendation(raw: string): CardRecommendation | null {
   const source = stripFence(raw);
-  const start = source.indexOf('{');
-  const end = source.lastIndexOf('}');
-  if (start < 0 || end <= start) return null;
-  let parsed: unknown;
+  let parsed: unknown = null;
   try {
-    parsed = JSON.parse(source.slice(start, end + 1));
+    parsed = JSON.parse(source);
   } catch {
-    return null;
+    const start = source.indexOf('{');
+    const end = source.lastIndexOf('}');
+    if (start < 0 || end <= start) return null;
+    try {
+      parsed = JSON.parse(source.slice(start, end + 1));
+    } catch {
+      return null;
+    }
   }
+  if (Array.isArray(parsed)) parsed = parsed[0];
   if (!parsed || typeof parsed !== 'object') return null;
   const record = parsed as Record<string, unknown>;
   const size = sizeFromToken(record.size ?? record.card ?? record.cardSize);
