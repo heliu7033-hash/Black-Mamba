@@ -4087,11 +4087,11 @@
           },
           "compositionWidth": {
             "type": "number",
-            "description": "Default 1920."
+            "description": "Default 1080."
           },
           "compositionHeight": {
             "type": "number",
-            "description": "Default 1080."
+            "description": "Default 1920."
           },
           "fps": {
             "type": "number",

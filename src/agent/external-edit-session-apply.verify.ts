@@ -98,6 +98,7 @@ await warningRuntime.hydrate(await reviewedWithRun('runtime-project'));
 await warningRuntime.apply(new Set([0]));
 assert.equal(warningSaveCount, 1, 'a successful document commit is applied exactly once');
 assert.equal(activeTimeline(warningLive.getDoc()).width, 1080);
+assert.equal(activeTimeline(warningLive.getDoc()).fit, 'contain');
 const warningInfo = await warningRuntime.execute(
   'get_edit_session',
   { editSessionId: reviewed.id },
@@ -160,7 +161,12 @@ await assert.rejects(
 assert.equal(failedSaveCount, 1);
 assert.equal(
   activeTimeline(failedSaveLive.getDoc()).width,
-  1920,
+  activeTimeline(base).width,
+  'a failed document commit never reaches applyDoc',
+);
+assert.equal(
+  activeTimeline(failedSaveLive.getDoc()).fit,
+  activeTimeline(base).fit,
   'a failed document commit never reaches applyDoc',
 );
 const failedSaveInfo = await failedSaveRuntime.execute(
@@ -288,6 +294,11 @@ await terminalPublicationStarted;
 assert.equal(
   activeTimeline(committedRaceLive.getDoc()).width,
   1080,
+  'the live EditorCommands transaction commits before terminal proposal publication',
+);
+assert.equal(
+  activeTimeline(committedRaceLive.getDoc()).fit,
+  'contain',
   'the live EditorCommands transaction commits before terminal proposal publication',
 );
 committedRaceLive.commands.setAspect(1440, 1440, 'contain');

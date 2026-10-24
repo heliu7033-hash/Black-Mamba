@@ -11,7 +11,7 @@ const USAGE = `occ — OpenChatCut command line
 Usage
   occ project list [--all] [--json]
   occ project show [<project>] [--doc] [--json]
-  occ project new <name> [--size 1920x1080] [--fps 30] [--json]
+  occ project new <name> [--size 1080x1920] [--fps 30] [--json]
   occ timeline show [<project>] [--json]
   occ timeline items [<project>] [--track <track id>] [--timeline <id>] [--json]
   occ media ls [<project>] [--json]
