@@ -149,28 +149,28 @@ jobs:
 
           hdiutil attach -nobrowse -readonly -mountpoint "$mount_dir" "${dmgs[0]}"
           mounted=true
-          mounted_app="$mount_dir/Bcot.app"
-          test -x "$mounted_app/Contents/MacOS/Bcot"
+          mounted_app="$mount_dir/B-CUT.app"
+          test -x "$mounted_app/Contents/MacOS/B-CUT"
           # The DMG and ZIP contain the same app; execute it from the writable ZIP below.
           hdiutil detach "$mount_dir"
           mounted=false
 
           unzip -tq "${zips[0]}"
-          test "$(unzip -Z1 "${zips[0]}" 'Bcot.app/Contents/MacOS/Bcot')" = \
-            'Bcot.app/Contents/MacOS/Bcot'
+          test "$(unzip -Z1 "${zips[0]}" 'B-CUT.app/Contents/MacOS/B-CUT')" = \
+            'B-CUT.app/Contents/MacOS/B-CUT'
           test "$(unzip -Z1 "${zips[0]}" \
-            'Bcot.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework')" = \
-            'Bcot.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework'
+            'B-CUT.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework')" = \
+            'B-CUT.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework'
           unzip -q "${zips[0]}" -d "$zip_dir"
-          zipped_app="$zip_dir/Bcot.app"
-          test -x "$zipped_app/Contents/MacOS/Bcot"
-          "$zipped_app/Contents/MacOS/Bcot"
+          zipped_app="$zip_dir/B-CUT.app"
+          test -x "$zipped_app/Contents/MacOS/B-CUT"
+          "$zipped_app/Contents/MacOS/B-CUT"
           case "$(uname -m)" in
             arm64) runtime_arch='mac-arm64' ;;
             x86_64) runtime_arch='mac-x64' ;;
             *) echo "Unsupported macOS architecture: $(uname -m)" >&2; exit 1 ;;
           esac
-          render_runtime="Bcot.app/Contents/Resources/chrome-headless-shell/$runtime_arch/chrome-headless-shell-$runtime_arch/chrome-headless-shell"
+          render_runtime="B-CUT.app/Contents/Resources/chrome-headless-shell/$runtime_arch/chrome-headless-shell-$runtime_arch/chrome-headless-shell"
           test "$(unzip -Z1 "${zips[0]}" "$render_runtime")" = "$render_runtime"
           test -x "$zip_dir/$render_runtime"
 
@@ -199,7 +199,7 @@ jobs:
               throw "NSIS installer exited with $($install.ExitCode)"
             }
 
-            $installedExe = Join-Path $installDir 'Bcot.exe'
+            $installedExe = Join-Path $installDir 'B-CUT.exe'
             if (-not (Test-Path -LiteralPath $installedExe -PathType Leaf)) {
               throw "NSIS installer did not create $installedExe"
             }
@@ -254,9 +254,9 @@ jobs:
               (Select-String -LiteralPath $smokeOut -Pattern 'SMOKE-OK' -Quiet)
             if (-not $smokeOk) {
               if (-not $finished) {
-                throw 'Installed Bcot smoke still running after 420s; killed. The last [smoke] line above is where it hung.'
+                throw 'Installed B-CUT smoke still running after 420s; killed. The last [smoke] line above is where it hung.'
               }
-              throw "Installed Bcot smoke exited with $($smoke.ExitCode)"
+              throw "Installed B-CUT smoke exited with $($smoke.ExitCode)"
             }
             if (-not $finished -or $smoke.ExitCode -ne 0) {
               Write-Host 'SMOKE-OK reached; the process then wedged in Windows teardown after the forced renderer crashes and was killed. Known Electron teardown deadlock, not a smoke failure.'
@@ -341,9 +341,9 @@ jobs:
           test -f release-files/latest-x64-mac.yml
           test -f release-files/latest-x64.yml
           test -f release-files/latest-x64-linux.yml
-          test -f "release-files/Bcot-${EXPECTED_VERSION}-arm64.zip.blockmap"
-          test -f "release-files/Bcot-${EXPECTED_VERSION}-x64.zip.blockmap"
-          test -f "release-files/Bcot-${EXPECTED_VERSION}-x64.exe.blockmap"
+          test -f "release-files/B-CUT-${EXPECTED_VERSION}-arm64.zip.blockmap"
+          test -f "release-files/B-CUT-${EXPECTED_VERSION}-x64.zip.blockmap"
+          test -f "release-files/B-CUT-${EXPECTED_VERSION}-x64.exe.blockmap"
 
       - name: Generate checksums
         working-directory: release-files

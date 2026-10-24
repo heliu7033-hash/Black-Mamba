@@ -1,6 +1,6 @@
 # Repository layout index
 
-Bcot keeps build-tool configuration under `config/` and load-bearing
+B-CUT keeps build-tool configuration under `config/` and load-bearing
 project files at the repository root. This file is the single index for that
 split — update it whenever a file moves.
 

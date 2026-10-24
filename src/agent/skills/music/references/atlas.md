@@ -19,4 +19,4 @@ Use `provider:"atlas"` with `mode:"t2m"`. Pass a required style prompt and optio
 - `sampleRate`: `16000`, `24000`, `32000`, or `44100`
 - `bitrate`: `32000`, `64000`, `128000`, or `256000`
 
-Do not pass MiniMax cover controls, `lyricsOptimizer`, or Mureka IDs/modes. Submission is a single paid POST. Bcot records the prediction ID, polls with bounded backoff, and can resume polling without submitting another generation.
+Do not pass MiniMax cover controls, `lyricsOptimizer`, or Mureka IDs/modes. Submission is a single paid POST. B-CUT records the prediction ID, polls with bounded backoff, and can resume polling without submitting another generation.

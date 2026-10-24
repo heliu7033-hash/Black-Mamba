@@ -17,7 +17,7 @@ import type { McpSession } from './mcp.ts';
 
 const PROJECT_SELECTOR = {
   type: 'string',
-  description: 'Bcot project id. It must match the project bound to this MCP transport session.',
+  description: 'B-CUT project id. It must match the project bound to this MCP transport session.',
 };
 
 export function fullMcpTools(session?: McpSession): Tool[] {

@@ -149,7 +149,7 @@ export interface ServerClaudeCodeTurnDeps {
 /**
  * Run one Agent turn through the server-side Claude Code executor.
  *
- * Unlike Codex, Claude Code CLI's own MCP client calls Bcot's MCP
+ * Unlike Codex, Claude Code CLI's own MCP client calls B-CUT's MCP
  * server directly and executes tools itself (the CLI is launched with
  * --mcp-config pointing at this instance's own /api/external-mcp/mcp and
  * --allowedTools "mcp__openchatcut-builtin__*"). There is no tool-execution bridge
@@ -198,7 +198,7 @@ export async function executeServerClaudeCodeTurn(
     sessionGeneration: input.run.sessionGeneration,
     model: input.model,
   });
-  // Compaction rewrites Bcot's history but leaves the CLI's own
+  // Compaction rewrites B-CUT's history but leaves the CLI's own
   // transcript untouched, so the two have diverged and a resumed session would
   // carry the pre-summary conversation the compaction was meant to shed.
   if (prepared.usage.compacted) forgetClaudeCodeSession(resumeKey);

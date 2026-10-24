@@ -37,7 +37,7 @@ export const STOCK_TOOL_SCHEMAS: AgentToolSchema[] = [
         },
         projectId: {
           type: 'string',
-          description: 'Ignored because Bcot uses the active project.',
+          description: 'Ignored because B-CUT uses the active project.',
         },
       },
       required: ['url'],
@@ -83,7 +83,7 @@ export const STOCK_TOOL_SCHEMAS: AgentToolSchema[] = [
         },
         projectId: {
           type: 'string',
-          description: 'Ignored because Bcot uses the active project.',
+          description: 'Ignored because B-CUT uses the active project.',
         },
       },
       required: ['filePath'],

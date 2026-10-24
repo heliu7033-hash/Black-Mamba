@@ -138,7 +138,7 @@ export function externalAgentPlugin(): Plugin {
       });
       server.middlewares.use('/api/external-mcp/mcp', (req, res) => {
         if (!externalMcpAuthorized(req)) {
-          sendBridgeJson(res, 401, { error: 'invalid Bcot MCP token' });
+          sendBridgeJson(res, 401, { error: 'invalid B-CUT MCP token' });
           return;
         }
         void handleMcpRequest(req, res, requestBaseUrl(req)).catch((error) => {

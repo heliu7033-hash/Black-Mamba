@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — open or create the 老黑剪辑台 sample project.
+// B-CUT — open or create the 老黑剪辑台 sample project.
 
 import { setLocale } from '../i18n/locale';
 import { docFromTimeline, createProject, listProjects, saveProject, updateProjectMeta } from '../persist/projectStore';

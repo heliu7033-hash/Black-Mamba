@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "Bcot Runtime Architecture",
+    "title": "B-CUT Runtime Architecture",
     "subtitle": "A unified workflow for agents, the real timeline, local data, rendering, and export",
     "output": "openchatcut-runtime.en.html"
   },
@@ -111,7 +111,7 @@
   "boundaries": [
     {
       "kind": "region",
-      "label": "Bcot Local Runtime",
+      "label": "B-CUT Local Runtime",
       "wraps": [
         "mcp-broker",
         "builtin-agent",

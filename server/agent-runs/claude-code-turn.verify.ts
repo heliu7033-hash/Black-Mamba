@@ -106,7 +106,7 @@ function sequence(events: readonly ClaudeCodeTurnStreamEvent[]): ServerClaudeCod
         args: { query: 'clips' },
       });
       // Unlike Codex, Claude Code's own MCP client executes the call itself —
-      // Bcot never claims/settles it; the tool-end just arrives.
+      // B-CUT never claims/settles it; the tool-end just arrives.
       emit({
         type: 'tool-end',
         callId: 'call-1',

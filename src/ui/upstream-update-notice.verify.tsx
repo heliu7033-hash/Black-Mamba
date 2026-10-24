@@ -11,7 +11,7 @@ const { UpstreamUpdateNoticeView } = noticeModule;
 const markup = renderToStaticMarkup(
   <div data-dashboard-chrome>
     <UpstreamUpdateNoticeView
-      message="发现 Bcot 新版本 V0.2.0，当前版本 V0.1.9。可以直接下载并安装。"
+      message="发现 B-CUT 新版本 V0.2.0，当前版本 V0.1.9。可以直接下载并安装。"
       actionLabel="下载更新"
       closeLabel="关闭"
       onAction={() => undefined}
@@ -24,7 +24,7 @@ const markup = renderToStaticMarkup(
   </div>,
 );
 
-assert.match(markup, /发现 Bcot 新版本 V0\.2\.0/, '新版提示必须明确给出官方产品与版本');
+assert.match(markup, /发现 B-CUT 新版本 V0\.2\.0/, '新版提示必须明确给出官方产品与版本');
 assert.match(markup, />下载更新<\/button>/, '桌面新版提示必须提供直接下载动作');
 assert.match(markup, /role="status"/, '非阻塞提示应使用状态语义');
 assert.doesNotMatch(markup, /<a\b/, '更新入口必须走受控桌面 IPC 而不是任意链接');

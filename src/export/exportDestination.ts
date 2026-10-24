@@ -161,7 +161,7 @@ async function putDesktopBody(
   signal?.throwIfAborted();
   const init: RequestInit & { duplex?: 'half' } = {
     method: 'PUT', body, signal,
-    ...(sourcePath ? { headers: { 'X-Bcot-Export-Source': sourcePath } } : {}),
+    ...(sourcePath ? { headers: { 'X-B-CUT-Export-Source': sourcePath } } : {}),
   };
   if (body instanceof ReadableStream) init.duplex = 'half';
   const endpoint = `/api/export-destinations/${encodeURIComponent(destination.grantId)}/${encodeURIComponent(filename)}`;

@@ -335,7 +335,7 @@ async function addClip(
 }
 
 /**
- * Build a CapCut/JianYing draft from an Bcot timeline using capcut-cli.
+ * Build a CapCut/JianYing draft from an B-CUT timeline using capcut-cli.
  * `init` creates an empty draft; every clip is then added at its timeline
  * position and trimmed to its source window (kept inside its file's probed
  * duration), video first, then audio and captions. (`quickstart --video` always
@@ -369,7 +369,7 @@ export async function exportJianyingDraft(
   if (missing.length > 0) {
     return { ok: false, draftName: '', draftPath: '', addedVideos: 0, addedAudios: 0, captions: 0, warnings, error: `media files not found locally: ${missing.slice(0, 3).join(', ')}` };
   }
-  const named = String(request.draftName || `Bcot-${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '')}`)
+  const named = String(request.draftName || `B-CUT-${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '')}`)
     .replace(/[\\/]/g, '')
     .replaceAll('\0', '');
   // The name becomes a folder. Windows forbids : * ? " < > | and control

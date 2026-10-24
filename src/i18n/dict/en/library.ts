@@ -97,7 +97,7 @@ export default {
   '发现、管理并分享创意扩展包': 'Discover, manage, and share creative extension packs',
   '收起安装': 'Hide install',
   '返回资源库': 'Back to library',
-  '仅安装你信任的扩展包；安装前会校验格式并真实编译其中的 MG 与 Shader。': 'Only install extension packs you trust. Bcot validates the format and compiles MG and shaders before installing.',
+  '仅安装你信任的扩展包；安装前会校验格式并真实编译其中的 MG 与 Shader。': 'Only install extension packs you trust. B-CUT validates the format and compiles MG and shaders before installing.',
   '扩展包 JSON URL…': 'Extension pack JSON URL…',
   '从 URL 安装': 'Install from URL',
   '选择文件': 'Choose file',

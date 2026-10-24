@@ -313,15 +313,15 @@ function sourceFrameAt(xml: string, name: string, frame: number, fps: number): Q
   const windowsXml = timelineToFcpxml({
     ...state,
     assets: [{ ...state.assets![0]!, originalFilePath: 'D:\\媒体\\旅行.最终版.001.MOV' }],
-  }, { mediaDir: 'D:\\Bcot\\media' });
+  }, { mediaDir: 'D:\\B-CUT\\media' });
   assert.ok(windowsXml.includes('src="file:///D:/%E5%AA%92%E4%BD%93/%E6%97%85%E8%A1%8C.%E6%9C%80%E7%BB%88%E7%89%88.001.MOV"'), 'Windows 原片路径合法编码');
 
   const uncXml = timelineToFcpxml({
     ...state,
     assets: [{ ...state.assets![0]!, originalFilePath: '\\\\server\\共享 空间\\旅行.最终版.001.MOV' }],
-  }, { mediaDir: '\\\\server\\Bcot\\media' });
+  }, { mediaDir: '\\\\server\\B-CUT\\media' });
   assert.ok(uncXml.includes('kind="original-media" src="file://server/%E5%85%B1%E4%BA%AB%20%E7%A9%BA%E9%97%B4/%E6%97%85%E8%A1%8C.%E6%9C%80%E7%BB%88%E7%89%88.001.MOV"'), 'UNC 原片路径合法编码');
-  assert.ok(uncXml.includes('kind="proxy-media" src="file://server/Bcot/media/8e45fd6f-8da8-4d6a-8a4f-339d6a8fd747.mp4"'), 'UNC 代理路径合法编码');
+  assert.ok(uncXml.includes('kind="proxy-media" src="file://server/B-CUT/media/8e45fd6f-8da8-4d6a-8a4f-339d6a8fd747.mp4"'), 'UNC 代理路径合法编码');
 }
 
 // ── Issue #27: src is an RFC 3986 file URL (what Final Cut Pro writes) that decodes to the exact disk path ──
@@ -610,7 +610,7 @@ function sourceFrameAt(xml: string, name: string, frame: number, fps: number): Q
   };
   const resolveXml = timelineToFcpxml(state, { nleFormat: 'fcp_xml_resolve' });
   assert.ok(resolveXml.includes('colorSpace="1-1-1 (Rec. 709)"'), 'Resolve 变体带 Rec.709');
-  assert.ok(resolveXml.includes('<event name="Bcot Export (Resolve)">'), 'Resolve 事件名');
+  assert.ok(resolveXml.includes('<event name="B-CUT Export (Resolve)">'), 'Resolve 事件名');
   assert.ok(!timelineToFcpxml(state).includes('colorSpace'), '默认变体不带 colorSpace');
 }
 

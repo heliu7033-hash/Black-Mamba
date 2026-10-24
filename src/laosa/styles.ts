@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — 老黑剪辑台 style templates. The default is 黑曼巴炭黑琥珀.
+// B-CUT — 老黑剪辑台 style templates. The default is 黑曼巴炭黑琥珀.
 
 import type { StyleTemplate } from './types';
 

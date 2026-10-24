@@ -259,7 +259,7 @@ async function runUpload(
     try {
       response = await fetchWithProxy(`${config.baseUrl}/api/upload`, {
         method: 'POST',
-        headers: { Authorization: `Apikey ${config.apiKey}`, 'Idempotency-Key': requestId, 'User-Agent': 'Bcot' },
+        headers: { Authorization: `Apikey ${config.apiKey}`, 'Idempotency-Key': requestId, 'User-Agent': 'B-CUT' },
         body,
       });
     } catch {
@@ -373,7 +373,7 @@ export async function publishToUploadPost(
   if (pausedFor) {
     throw new UploadPostError(503, 'publish_paused', pausedFor === 'relocating'
       ? 'The storage folder is being moved. Nothing was published: confirm again in a moment.'
-      : 'The storage folder was moved and takes effect after restarting Bcot. Nothing was published: restart, then confirm again.');
+      : 'The storage folder was moved and takes effect after restarting B-CUT. Nothing was published: restart, then confirm again.');
   }
 
   // Claim the id synchronously so a concurrent confirm cannot start a second upload.

@@ -22,7 +22,7 @@ assert.equal(catalogEntries[0]?.source, 'bundled', 'the font picker must report 
 const fontRoot = resolve(fileURLToPath(new URL('../../assets/fonts/noto-sans-sc/', import.meta.url)));
 const html = `<!doctype html>
 <html><head><link rel="stylesheet" href="/fonts/noto-sans-sc/noto-sans-sc.css"></head>
-<body><p style="font: 400 32px 'Noto Sans SC'">离线字体渲染 Bcot 123</p></body></html>`;
+<body><p style="font: 400 32px 'Noto Sans SC'">离线字体渲染 B-CUT 123</p></body></html>`;
 const server = createServer((request, response) => {
   const pathname = new URL(request.url ?? '/', 'http://127.0.0.1').pathname;
   if (pathname === '/') {
@@ -91,7 +91,7 @@ try {
       if (!context) throw new Error('2D canvas unavailable');
       context.fillStyle = '#000';
       context.font = weight + ' 56px "Noto Sans SC"';
-      context.fillText('离线字体渲染 Bcot 123', 8, 72);
+      context.fillText('离线字体渲染 B-CUT 123', 8, 72);
       rasters.push(canvas.toDataURL('image/png'));
     }
     return {
@@ -100,7 +100,7 @@ try {
       weights: [...new Set(faces.map((face) => face.weight))],
       styles: [...new Set(faces.map((face) => face.style))],
       checks: [100, 400, 900].map((weight) =>
-        document.fonts.check(weight + ' 32px "Noto Sans SC"', '离线字体渲染 Bcot 123')),
+        document.fonts.check(weight + ' 32px "Noto Sans SC"', '离线字体渲染 B-CUT 123')),
       rasters,
     };
   })()`;

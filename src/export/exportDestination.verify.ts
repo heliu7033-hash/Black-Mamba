@@ -346,7 +346,7 @@ async function verifyDesktopRestoreAndStreaming(): Promise<void> {
       }, { status: 409 });
     }
     uploaded = init?.headers
-      ? String(new Headers(init.headers).get('X-Bcot-Export-Source'))
+      ? String(new Headers(init.headers).get('X-B-CUT-Export-Source'))
       : await new Response(init?.body).text();
     return new Response(null, { status: 204 });
   }) as typeof fetch;

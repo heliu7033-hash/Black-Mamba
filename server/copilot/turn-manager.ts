@@ -126,7 +126,7 @@ function successToolResult(result: unknown, toolName: string): unknown {
 }
 
 /**
- * Bridge Bcot's tool catalog into SDK tools. The handler emits
+ * Bridge B-CUT's tool catalog into SDK tools. The handler emits
  * `tool-start` and then blocks on `settleToolResult`, reproducing the deferred
  * settle protocol the Codex turn manager uses — so the executor's existing
  * `bridgeToolCall` path works unchanged.
@@ -135,7 +135,7 @@ function hostTools(request: CopilotTurnRequest, state: () => TurnSession | undef
   return request.tools.map((spec) => defineTool(spec.name, {
     description: spec.description,
     parameters: spec.inputSchema,
-    // Bcot runs its own approval gate (approval-mode.ts); the CLI must
+    // B-CUT runs its own approval gate (approval-mode.ts); the CLI must
     // not add a second, unrelated confirmation prompt on top of it.
     skipPermission: true,
     handler: async (args: unknown) => {
@@ -157,7 +157,7 @@ function hostTools(request: CopilotTurnRequest, state: () => TurnSession | undef
       });
       if (!outcome.success) {
         // Throwing here would collapse to a generic "Tool execution failed" and
-        // strip Bcot's diagnostic, which the agent needs in order to
+        // strip B-CUT's diagnostic, which the agent needs in order to
         // recover. Return a typed failure so the real reason reaches the model.
         const detail = object(outcome.result)?.error;
         const message = typeof detail === 'string' && detail
@@ -220,7 +220,7 @@ export function copilotSessionConfig(
     availableTools: new ToolSet().addCustom('*'),
     onPermissionRequest: () => ({
       kind: 'reject',
-      feedback: 'Bcot only permits its own editing tools.',
+      feedback: 'B-CUT only permits its own editing tools.',
     }),
     enableSessionStore: false,
   };

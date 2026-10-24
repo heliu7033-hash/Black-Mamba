@@ -22,7 +22,7 @@ import { handleImportUrl, handleUpload } from './upload-route-write.ts';
 
 export { directR2UploadAllowed, maxUploadBytes } from './upload-route-http.ts';
 
-const MEDIA_AUTHORITY_HEADER = 'X-Bcot-Media-Authority';
+const MEDIA_AUTHORITY_HEADER = 'X-B-CUT-Media-Authority';
 type Logger = ViteDevServer['config']['logger'];
 
 export interface UploadRouteDependencies {

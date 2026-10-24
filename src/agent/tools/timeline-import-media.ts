@@ -3,7 +3,7 @@
 // Interchange files address media by their own clock: an FCPXML asset-clip's
 // `start` and an EDL's source timecode are positions on the file's embedded
 // timecode (a camera file may start at 01:00:00:00 or at time of day), while an
-// Bcot clip's srcInFrame counts from the file's first frame. Converting
+// B-CUT clip's srcInFrame counts from the file's first frame. Converting
 // needs the file's timecode origin, which this module resolves.
 import type { MediaAsset } from '../../editor/types';
 import {

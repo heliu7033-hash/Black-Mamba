@@ -1,14 +1,14 @@
 ---
 name: product-help
 description: |
-  Bcot product knowledge — UI layout, editor features, and how generation providers are configured.
+  B-CUT product knowledge — UI layout, editor features, and how generation providers are configured.
   Use when the user asks about the product interface, how to use a feature, where to find something, or needs GUI guidance for something the agent cannot do directly.
   Also use as fallback when a task fails and the user needs to complete it manually in the UI.
   NOT for live project-state queries ("where are my folders?", "what's on my timeline?", "where is clip X?") — those are answered by `read_project`, not by this skill.
 user-invocable: false
 ---
 
-# Bcot Product Help
+# B-CUT Product Help
 
 Product knowledge base for answering user questions and guiding GUI operations.
 

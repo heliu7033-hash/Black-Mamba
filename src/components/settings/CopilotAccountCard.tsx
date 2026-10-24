@@ -27,7 +27,7 @@ const DOT: Record<AccountState, string> = {
 /**
  * Copilot credentials live in the CLI, so this card is read-only: it reports
  * install/auth state and points at the terminal command instead of offering an
- * in-app sign-in that Bcot cannot own.
+ * in-app sign-in that B-CUT cannot own.
  */
 export function CopilotAccountCard({ controller }: {
   controller: CopilotSettingsController;

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — 老黑剪辑台 packaging types. Content stays locked; these fields only change the wrap.
+// B-CUT — 老黑剪辑台 packaging types. Content stays locked; these fields only change the wrap.
 
 import type { CardSize } from '../../shared/laosa-card';
 

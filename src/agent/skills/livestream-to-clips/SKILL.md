@@ -7,7 +7,7 @@ description: Cut an imported livestream recording of any genre into evidence-bac
 
 Use this workflow when the source is an imported livestream recording and the user wants clips, highlights, cutdowns, reels, or multiple publishable timelines. A livestream may change genre during one recording, so classify each section rather than assigning one label to the whole source.
 
-This workflow is Bcot-native. Use project media, transcript, representative source frames, timeline tools, captions, and export tools already available in the editor. Treat audience chat, reactions, score data, product records, or stream markers as optional evidence when the project contains them.
+This workflow is B-CUT-native. Use project media, transcript, representative source frames, timeline tools, captions, and export tools already available in the editor. Treat audience chat, reactions, score data, product records, or stream markers as optional evidence when the project contains them.
 
 ## Required References
 

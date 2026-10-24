@@ -3,7 +3,7 @@ import type { AgentToolSchema } from '../../tool-schema';
 export const TIMELINE_IMPORT_TOOL_SCHEMAS: AgentToolSchema[] = [{
   name: 'import_timeline',
   description: [
-    'Import a Final Cut Pro / DaVinci Resolve FCPXML 1.x project or a CMX 3600 EDL into a new editable Bcot timeline.',
+    'Import a Final Cut Pro / DaVinci Resolve FCPXML 1.x project or a CMX 3600 EDL into a new editable B-CUT timeline.',
     'The new timeline runs at the project frame rate; a sequence or list at another rate is converted, rounding cut points to the nearest frame.',
     'FCPXML times are converted to the new timeline through the sequence tcStart and every enclosing clip, gap, connected clip or storyline (lanes), compound clip (ref-clip), sync-clip, multicam clip (active angle) and audition (active pick), including rate conform and retime speed; source in-points are measured from each file\'s own start timecode.',
     'EDL events are placed from the list\'s record start: the hour boundary (e.g. 01:00:00:00) when the first record-in is within a minute of it, otherwise the first record-in, or startTimecode when given. EDLs do not record their frame rate: fps defaults to the current timeline\'s (29.97/59.94 for drop-frame lists).',

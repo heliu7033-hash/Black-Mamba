@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — scaffold rails for 智能音乐 / 动效 / B-roll.
+// B-CUT — scaffold rails for 智能音乐 / 动效 / B-roll.
 // Auto-land finds the next free frame on that rail. Smart fill uses captions
 // (and optional semantic size) so the desk stays interactive without a model.
 

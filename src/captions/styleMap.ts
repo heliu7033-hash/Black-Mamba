@@ -23,7 +23,7 @@ const UNSUPPORTED: Record<string, true> = {
   direction: true, highlightUnit: true, hidePunctuation: true,
 };
 
-/** Pacing vocabulary → Bcot's two modes (auto/phrase/sentence → phrase). */
+/** Pacing vocabulary → B-CUT's two modes (auto/phrase/sentence → phrase). */
 function mapPacing(v: unknown): CaptionPacing | undefined {
   const p = str(v);
   if (!p) return undefined;

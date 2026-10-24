@@ -6,7 +6,7 @@ Fal does not replace native OpenAI, Gemini, Seedance, Kling, or other providers.
 
 ## Setup
 
-1. Start Bcot using its normal development command (Node 24).
+1. Start B-CUT using its normal development command (Node 24).
 2. Open **Settings → AI Generation → Image → Fal.ai** and save your API key.
    Alternatively put `FAL_KEY=your-key` in the Git-ignored `.env.local`.
 3. Select **Fal.ai** in the capability's default-provider dropdown, then select
@@ -68,7 +68,7 @@ options and model-specific limits are validated before submission.
 Project reference files upload from the server to Fal storage. No R2 account is
 needed. The local upload ceiling is 30 MB per image, 50 MB per video, and 15 MB
 per audio file; individual models can impose additional limits. Generated media
-uses Bcot's existing URL validation, size/MIME checks, and media library.
+uses B-CUT's existing URL validation, size/MIME checks, and media library.
 
 Video jobs save the concrete model selection, endpoint, and Fal request ID.
 Polling or recovering a recorded job never submits a replacement generation.

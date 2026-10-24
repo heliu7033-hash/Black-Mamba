@@ -28,7 +28,7 @@ import { executeExternalGlobalReadTool } from './external-global-read';
 import { discardOrphanedExternalSessions, executeExternalSessionRecovery } from './external-session-recovery';
 export interface ExternalProposalSnapshot { proposal: Proposal | null; stale: boolean }
 /** Confirmation request for a real-project tool (generation/export/import/…)
- * issued from an external session; the user decides in the Bcot UI. */
+ * issued from an external session; the user decides in the B-CUT UI. */
 export interface ExternalGuardRequest { kind: 'real_tool_confirmation'; id: string; sessionId: string; tool: string; summary: string; details: readonly ApprovalDetail[]; argsDigest: string; operationId?: string }
 export interface ExternalBridgeBinding { projectId: string; editorInstanceId: string; baseRevision: string }
 export class ExternalBridgeRuntime {
@@ -220,7 +220,7 @@ export class ExternalBridgeRuntime {
       confirmationId: guard.guardId,
       tool,
       status: 'pending',
-      note: '这个操作会作用于真实工程。请在 Bcot 中确认后重试同一次调用。',
+      note: '这个操作会作用于真实工程。请在 B-CUT 中确认后重试同一次调用。',
     };
   }
   async confirmRealTool(guardId: string, allow: boolean): Promise<void> {

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — right inspector for card size, nine-grid crop, semantic pick, rails, and VO.
+// B-CUT — right inspector for card size, nine-grid crop, semantic pick, rails, and VO.
 
 import { useRef } from 'react';
 import { useT } from '../i18n/locale';

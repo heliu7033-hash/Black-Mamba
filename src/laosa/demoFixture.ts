@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — 老黑剪辑台 sample timeline. Captions, chapters, and rails
+// B-CUT — 老黑剪辑台 sample timeline. Captions, chapters, and rails
 // come from this fixture so the desk can be opened without user media.
 // Rail clips here are labeled demo packaging, not model output.
 // Smart fill is caption-aware in rails.ts (smartFill). Semantic size lands on the motion rail.

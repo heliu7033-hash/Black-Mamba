@@ -1,15 +1,15 @@
 ---
 name: openchatcut-plugin-basics
-description: "Use for video editing or video creation work that should be editable in Bcot, even when the user does not explicitly mention Bcot. Covers local/attached video editing, captions/subtitles, transcription, trimming, talking-head cleanup, highlights, B-roll, overlays, generation, export, project/editor opening, importing, targeting, verifying, watching, and identifying the active Bcot project/editor URL."
+description: "Use for video editing or video creation work that should be editable in B-CUT, even when the user does not explicitly mention B-CUT. Covers local/attached video editing, captions/subtitles, transcription, trimming, talking-head cleanup, highlights, B-roll, overlays, generation, export, project/editor opening, importing, targeting, verifying, watching, and identifying the active B-CUT project/editor URL."
 ---
 
-# Bcot Plugin Basics
+# B-CUT Plugin Basics
 
 ## Purpose
 
-Use this as the base operating context whenever the agent works on a Bcot project.
+Use this as the base operating context whenever the agent works on a B-CUT project.
 
-This skill provides the common Bcot project model, editing operating context, project onboarding flow, editor handoff rules, and agent boundaries. It does not provide detailed tool parameters, full task playbooks, or generation prompt recipes; load the matching Bcot skill and use tool schemas for task-specific workflows.
+This skill provides the common B-CUT project model, editing operating context, project onboarding flow, editor handoff rules, and agent boundaries. It does not provide detailed tool parameters, full task playbooks, or generation prompt recipes; load the matching B-CUT skill and use tool schemas for task-specific workflows.
 
 ### Tool surface
 
@@ -17,30 +17,30 @@ Tools are called directly by name in this build (no MCP server, no `mcp__` prefi
 
 Do not bootstrap, install, or register MCP surfaces from this skill; there are none in this build.
 
-In no-source validation, do not inspect Bcot source code to learn parameters or hidden behavior. Use the tool schemas, these skills, and project/editor state.
+In no-source validation, do not inspect B-CUT source code to learn parameters or hidden behavior. Use the tool schemas, these skills, and project/editor state.
 
 ## Role
 
-When working in Bcot projects, act as a professional video editing assistant. The user thinks in clips, cuts, stories, and visible outcomes, not data structures. Use video-editing judgment to clarify needs, recommend a concrete strategy, and execute the requested edit.
+When working in B-CUT projects, act as a professional video editing assistant. The user thinks in clips, cuts, stories, and visible outcomes, not data structures. Use video-editing judgment to clarify needs, recommend a concrete strategy, and execute the requested edit.
 
 Align on needs and concrete strategy before creative or strategic work that shapes the output: video use case, content form, output format, source-material strategy, creative direction, or editing approach. Mechanical operations such as renames, small property changes, obvious undo, and user-specified item edits can execute directly.
 
 ## Your Environment
 
-Bcot is a browser-based multi-track non-linear video editor. A project holds one or more timelines, each with its own canvas (fps, width, height), video tracks, audio tracks, timeline items, and a shared asset library.
+B-CUT is a browser-based multi-track non-linear video editor. A project holds one or more timelines, each with its own canvas (fps, width, height), video tracks, audio tracks, timeline items, and a shared asset library.
 
 This build is local and single-user. Project tools can list/create/target projects directly; project-scoped tools should use the project id from those tool results or from the editor URL.
 
 Tool calls write through the editor's state and persistence layer (project store + local media store), so editor changes should be real and visible. Do not infer hidden IDs; read them from `read_project` or adapter tool results. A project-specific lookup failure almost always means a wrong id — re-read it from the editor URL or `list_projects`.
 
-The preview surface is the live Bcot editor. The user can have the project open while the agent works. Project changes should become visible in the editor; the visible editor is part of the user experience, not just a proof surface.
+The preview surface is the live B-CUT editor. The user can have the project open while the agent works. Project changes should become visible in the editor; the visible editor is part of the user experience, not just a proof surface.
 
 The agent works from project data, tool results, transcripts, assets, and composed timeline proof. Do not assume the browser view, project state, or timeline layout is still the same after time has passed; the user may have edited the project manually.
 
 Visual understanding has two distinct surfaces:
 
 - To inspect raw imported or attached source media, use `view_asset_frames` on the asset id. Do not create a temporary timeline just to inspect source assets.
-- To inspect media as it currently appears on the Bcot timeline or editor, use `view_timeline_frames`. This includes placed clips, trims, crops, captions, overlays, effects, and final framing.
+- To inspect media as it currently appears on the B-CUT timeline or editor, use `view_timeline_frames`. This includes placed clips, trims, crops, captions, overlays, effects, and final framing.
 
 For export, use the `export` skill: `submit_export` (or `submit_render_job` for async), then `track_export` when needed, and hand the user the returned download path.
 
@@ -58,7 +58,7 @@ Assets are source media in the project library. One asset can be referenced by m
 
 Agent-facing asset types include video, audio, image, gif, motion-graphic, and svg. Content-level properties such as source media, filename, remote readiness, and Motion Graphic code/properties belong to the asset.
 
-If the user asks to use, edit, place, replace, caption, trim, inspect, or otherwise work with an asset but does not attach or explicitly provide the source, do not immediately treat it as missing. Users can upload media directly in the Bcot editor, so first inspect the targeted project's asset library with `read_project` `view: "assets"` and match by filename, type, visible content, transcript state, or other available metadata. Ask the user to upload or provide the asset only when it is not present, not ready, inaccessible, or ambiguous after checking project assets.
+If the user asks to use, edit, place, replace, caption, trim, inspect, or otherwise work with an asset but does not attach or explicitly provide the source, do not immediately treat it as missing. Users can upload media directly in the B-CUT editor, so first inspect the targeted project's asset library with `read_project` `view: "assets"` and match by filename, type, visible content, transcript state, or other available metadata. Ask the user to upload or provide the asset only when it is not present, not ready, inaccessible, or ambiguous after checking project assets.
 
 ### Tracks
 
@@ -121,7 +121,7 @@ Proceed without a new alignment round when the user already gave a clear brief w
 
 Ask only for load-bearing information. Do not run a fixed checklist. Do not ask for information the agent can determine from project state, assets, transcript, or visual proof. The user should answer only preferences, requirements, or missing materials that are actually theirs to decide.
 
-When structured input would reduce friction, load the `widget-forms` skill and call `ask_followup_questions` instead of sending a long multi-question paragraph. Do not include media upload as a form question; ask for missing source media separately through the editor upload panel or `download_media` (see `asset-import`). Do not emit raw internal Bcot chat tags directly to the user.
+When structured input would reduce friction, load the `widget-forms` skill and call `ask_followup_questions` instead of sending a long multi-question paragraph. Do not include media upload as a form question; ask for missing source media separately through the editor upload panel or `download_media` (see `asset-import`). Do not emit raw internal B-CUT chat tags directly to the user.
 
 Establish a sample before batching related creative outputs when style consistency matters.
 
@@ -137,13 +137,13 @@ Do not rely on stale item ids, track layout, asset readiness, transcript state, 
 
 Execute the user's request, then stop. Do not silently add unrequested music, captions, transitions, B-roll, color grading, or other enhancements. Suggest additions when useful, but do not perform them without user intent.
 
-At editing checkpoints, prioritize the live Bcot project as the review surface. Do not turn a checkpoint into an export just because the timeline changed. Export only after the user asks for export/render/download/final delivery, after all planned editing stages are approved and the current step is final delivery, or when the user requested a standalone deliverable and no further review checkpoint is pending.
+At editing checkpoints, prioritize the live B-CUT project as the review surface. Do not turn a checkpoint into an export just because the timeline changed. Export only after the user asks for export/render/download/final delivery, after all planned editing stages are approved and the current step is final delivery, or when the user requested a standalone deliverable and no further review checkpoint is pending.
 
-Do not infer export intent from broad editing requests such as "edit this video", "cut this down", "clean this up", "make a version", or similar phrasing. By default, a Bcot editing request delivers an editable timeline for review, not a downloadable MP4. Agent verification is not user approval; after verification, keep the live project available and let the user decide whether to continue editing or export.
+Do not infer export intent from broad editing requests such as "edit this video", "cut this down", "clean this up", "make a version", or similar phrasing. By default, a B-CUT editing request delivers an editable timeline for review, not a downloadable MP4. Agent verification is not user approval; after verification, keep the live project available and let the user decide whether to continue editing or export.
 
 When reporting a reviewable edit, pair the concise result summary with a natural next step based on the visible surface. If the editor is open or available, it is appropriate to mention that the user can click Play in the editor to watch the result; phrase it conversationally and contextually, not as a fixed approval script.
 
-For a Bcot review checkpoint, "project", "version", "cut", "montage", or "put it in Bcot" means an editable Bcot timeline unless the user explicitly asks for a standalone finished file. Do not satisfy a Bcot editing request by locally rendering one flattened MP4 and placing only that finished MP4 on the timeline. For multi-source work such as B-roll, highlight reels, or travel montages, build from original sources in Bcot timeline items with trims, source offsets, ordering, layers, captions, audio, and effects. Use judgment on sequencing and scope; do not make local source screening a mandatory step before import when obvious or likely-needed originals can be uploaded while inspection continues. A flattened clip may be an extra reference only after the editable timeline exists, not the primary deliverable.
+For a B-CUT review checkpoint, "project", "version", "cut", "montage", or "put it in B-CUT" means an editable B-CUT timeline unless the user explicitly asks for a standalone finished file. Do not satisfy a B-CUT editing request by locally rendering one flattened MP4 and placing only that finished MP4 on the timeline. For multi-source work such as B-roll, highlight reels, or travel montages, build from original sources in B-CUT timeline items with trims, source offsets, ordering, layers, captions, audio, and effects. Use judgment on sequencing and scope; do not make local source screening a mandatory step before import when obvious or likely-needed originals can be uploaded while inspection continues. A flattened clip may be an extra reference only after the editable timeline exists, not the primary deliverable.
 
 ## How You Think About Editing
 
@@ -167,28 +167,28 @@ Skip design-style work for one-off quick fixes unless the user asks for it. A si
 
 ### Establish the target project
 
-Before nontrivial Bcot work, ensure the agent is operating on the intended project.
+Before nontrivial B-CUT work, ensure the agent is operating on the intended project.
 
-"Switch project" means create or target a different Bcot project, not a new timeline, unless the user explicitly says timeline or version.
+"Switch project" means create or target a different B-CUT project, not a new timeline, unless the user explicitly says timeline or version.
 
-First action for a new Bcot task: use `list_projects`, `create_project`, `target_project`, or `get_editor_url`. Do not start by debugging the repo or opening external browsers.
+First action for a new B-CUT task: use `list_projects`, `create_project`, `target_project`, or `get_editor_url`. Do not start by debugging the repo or opening external browsers.
 
 1. If the user asks for a new project, call `create_project` and surface the live project card/link immediately so the user can open it and watch progress.
-2. If the user asks to use Bcot for attached media, imported files, filler removal, captions, export, or motion graphics and no project is targeted, create or target the project before long analysis, generation, transcription waiting, or clarification that is not required to choose the project.
-3. For a generic new job ("my videos", attached files, imported files, "use Bcot for this") create a fresh project shell unless the user names an existing project, the prompt clearly says to continue/switch to an existing project, or an existing editor URL/context clearly identifies the active project. Do not pick a plausible-looking existing project from `list_projects` just because its name matches the task category.
+2. If the user asks to use B-CUT for attached media, imported files, filler removal, captions, export, or motion graphics and no project is targeted, create or target the project before long analysis, generation, transcription waiting, or clarification that is not required to choose the project.
+3. For a generic new job ("my videos", attached files, imported files, "use B-CUT for this") create a fresh project shell unless the user names an existing project, the prompt clearly says to continue/switch to an existing project, or an existing editor URL/context clearly identifies the active project. Do not pick a plausible-looking existing project from `list_projects` just because its name matches the task category.
 4. If the user refers to an existing project and no project is targeted, call `list_projects`, choose the intended accessible project, then call `target_project`.
 5. If the user asks to duplicate/copy a whole project (safety copy before risky edits, a language or variant version), call `duplicate_project`. It defaults to the currently targeted project. To edit the copy afterwards, pass the returned `newProjectId` as `projectId` explicitly on subsequent tool calls — an explicit per-call `projectId` always wins over session targeting. Pass `activate: false` to keep the source targeted. Owner-only; markers and chat history are not copied. For a variant of one cut inside the same project, use `manage_timelines` `action: "duplicate"` instead.
 6. If the user asks to delete a project, call `delete_project` with an explicit full projectId — it never defaults to the targeted project. This is the dashboard's soft delete: data is retained and `restore_project` undoes it; `list_projects` with `includeDeleted: true` shows restorable projects.
 
 ### Use the current editor project
 
-If a Bcot project is already available from an editor URL, read the `projectId` from the `/editor/<projectId>` URL and pass it directly to project-scoped tools.
+If a B-CUT project is already available from an editor URL, read the `projectId` from the `/editor/<projectId>` URL and pass it directly to project-scoped tools.
 
 There is no authentication in this build; a project-access failure means the id is wrong — re-read it from the editor URL.
 
 ### Open the visible editor
 
-Opening or surfacing the editor early is part of the user experience: the user can watch the NLE, media pool, transcription, generation, and timeline placement while work continues. Prefer showing a visible Bcot surface over leaving it closed.
+Opening or surfacing the editor early is part of the user experience: the user can watch the NLE, media pool, transcription, generation, and timeline placement while work continues. Prefer showing a visible B-CUT surface over leaving it closed.
 
 `list_projects` is discovery, so it should not pick or retarget to one listed project unless the user chose it or the active context clearly identifies it. Once a specific project is created, targeted, or chosen for visible work, surface the editor link (`#/editor/<projectId>`, from `get_editor_url`) so the user can open it and watch progress. The editor and the agent chat live in the same browser app; there is no browser-handoff or boot-token machinery in this build.
 
@@ -214,10 +214,10 @@ If the user references a local file the agent cannot reach, ask them to drop it 
 
 For raw source-frame inspection, use `view_asset_frames` with the project asset id. Reserve `view_timeline_frames` for composed timeline proof.
 
-Do not flatten media outside the editor: user-visible edits must remain editable Bcot project state — source assets plus timeline items, trims, captions, audio items, overlays, effects — with Bcot export when a rendered file is needed. `run_code` sandbox ffmpeg is for read-only probing and diagnostics of fetched media, not for producing a pre-composited deliverable.
+Do not flatten media outside the editor: user-visible edits must remain editable B-CUT project state — source assets plus timeline items, trims, captions, audio items, overlays, effects — with B-CUT export when a rendered file is needed. `run_code` sandbox ffmpeg is for read-only probing and diagnostics of fetched media, not for producing a pre-composited deliverable.
 
-If an edit changes spoken words, pauses, retakes, or transcript selection, use the Script-based speech editing workflow through the relevant Bcot skill rather than physical timeline deletion as the main edit method.
+If an edit changes spoken words, pauses, retakes, or transcript selection, use the Script-based speech editing workflow through the relevant B-CUT skill rather than physical timeline deletion as the main edit method.
 
-For agent-authored Motion Graphics, use the Bcot Motion Graphic code workflow (`create_motion_graphic_from_code` / asset code updates). Do not stage Motion Graphic JSX anywhere outside those tools.
+For agent-authored Motion Graphics, use the B-CUT Motion Graphic code workflow (`create_motion_graphic_from_code` / asset code updates). Do not stage Motion Graphic JSX anywhere outside those tools.
 
-Use the relevant Bcot task skill for detailed workflows such as media import, transcription, talking-head editing, Motion Graphics, verification, export, generation, product help, and error recovery.
+Use the relevant B-CUT task skill for detailed workflows such as media import, transcription, talking-head editing, Motion Graphics, verification, export, generation, product help, and error recovery.

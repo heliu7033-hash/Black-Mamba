@@ -30,6 +30,6 @@ Use these primary sources when a provider changes. The server boundary must keep
 
 ## Intentional transport choices
 
-- Bcot polls generation jobs, so provider callback URLs are not exposed to the agent.
+- B-CUT polls generation jobs, so provider callback URLs are not exposed to the agent.
 - Provider streaming may be used only when the adapter can still persist a complete local asset. Mureka streaming phase is accepted but final files are polled. MiniMax TTS streaming is consumed server-side and persisted; MiniMax music uses non-streaming URL output.
-- Seedance reference videos and MiniMax image subject references require provider-fetchable HTTPS URLs. Bcot creates temporary signed R2 URLs and never exposes storage credentials.
+- Seedance reference videos and MiniMax image subject references require provider-fetchable HTTPS URLs. B-CUT creates temporary signed R2 URLs and never exposes storage credentials.

@@ -163,7 +163,7 @@ async function copilotStatus(): Promise<CopilotAgentStatus> {
       account: null,
       error: error instanceof CopilotProcessError
         ? error.message
-        : 'Copilot CLI is unavailable. Restart Bcot and try again.',
+        : 'Copilot CLI is unavailable. Restart B-CUT and try again.',
     };
   }
 }

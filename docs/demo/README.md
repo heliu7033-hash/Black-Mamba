@@ -29,7 +29,7 @@ http://localhost:5199/#/laohei
 
 1. 打开检查器「语义配卡」→ **打开 OpenAI 设置**（路由 `llm/openai`）。
 2. 填写 **API Key**（`LLM_OPENAI_API_KEY` 或兼容的 `OPENAI_API_KEY`），可选 Base URL / 模型。
-3. 密钥只写在本机设置存储（与 Bcot 其它密钥相同），**不会写入仓库**。
+3. 密钥只写在本机设置存储（与 B-CUT 其它密钥相同），**不会写入仓库**。
 4. 也可在 `.env.local` 里设 `LLM_OPENAI_API_KEY=...`（同样勿提交）。
 
 配好后点 **按语义推荐** → **采用**：会改卡型，并在动效轨落一条带 S/M/F 的标注片段。

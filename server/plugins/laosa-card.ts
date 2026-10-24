@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot 老黑剪辑台 semantic-card route.
+// B-CUT 老黑剪辑台 semantic-card route.
 // Upstream: Claude via SSXZ (OpenAI-compatible /v1/chat/completions).
 // Credentials are read from ~/.claude/settings.json or ANTHROPIC_* env — never returned to the browser.
 

@@ -177,7 +177,7 @@ async function codexStatus(): Promise<CodexAgentStatus> {
       version: installation.version,
       account: null,
       loginPending: activeClient?.loginPending ?? false,
-      error: 'Codex app-server is unavailable. Restart Bcot and try again.',
+      error: 'Codex app-server is unavailable. Restart B-CUT and try again.',
     };
   }
 }

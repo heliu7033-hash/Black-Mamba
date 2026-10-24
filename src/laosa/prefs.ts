@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — 老黑剪辑台 preferences. Browser-local, same class of data as session chrome.
+// B-CUT — 老黑剪辑台 preferences. Browser-local, same class of data as session chrome.
 
 import { DEFAULT_LAOSA_STYLE, styleById } from './styles';
 import type { CardSize, DeskLanguage, ItemPackaging, LaosaPrefs, NineAnchor, RailClip, RailKind, VoMedia } from './types';

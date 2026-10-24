@@ -98,7 +98,7 @@ export function installUploadVerifierFixture(): UploadVerifierFixture {
   globalThis.fetch = async (input, init) => {
     const url = String(input);
     const headers = new Headers(init?.headers);
-    assert.equal(headers.get('X-Bcot-Editor-Credential'), null,
+    assert.equal(headers.get('X-B-CUT-Editor-Credential'), null,
       'no editor credential header may be attached');
     if (url === '/api/external-agent/import-token') {
       const body = JSON.parse(String(init?.body)) as Record<string, unknown>;

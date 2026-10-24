@@ -31,7 +31,7 @@ Use this workflow to plan the ad first, then execute only the assets and edits t
 - Prefer clear benefits over feature lists.
 - Keep hooks concrete and viewer-facing.
 - If required information is missing and affects truthfulness or positioning, ask or label the assumption.
-- Match the visual plan to what Bcot can make now; do not prescribe external-only steps unless the user asks.
+- Match the visual plan to what B-CUT can make now; do not prescribe external-only steps unless the user asks.
 - Do not add transitions, effects, music, or voiceover unless the selected script calls for them.
 
 ## Output

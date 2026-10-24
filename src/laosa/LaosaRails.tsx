@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — timeline rails. Drop auto-lands; smart fill uses captions / semantic size.
+// B-CUT — timeline rails. Drop auto-lands; smart fill uses captions / semantic size.
 
 import { useT } from '../i18n/locale';
 import { showAppToast } from '../ui/appToast';

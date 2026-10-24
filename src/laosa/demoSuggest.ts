@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Bcot — offline S/M/F suggestion for the 老黑剪辑台 demo.
+// B-CUT — offline S/M/F suggestion for the 老黑剪辑台 demo.
 // No network. The real model path stays in semanticClient.ts.
 
 import type { CardRecommendation } from '../../shared/laosa-card';

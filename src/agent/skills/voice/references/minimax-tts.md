@@ -2,7 +2,7 @@
 
 Read this before `submit_voice({ provider: "minimax", … })`.
 
-Grounded in Bcot’s voice tool + server adapter (`server/plugins/voice.ts` → MiniMax `t2a_v2`). Preset table: [voices.md](voices.md) § MiniMax.
+Grounded in B-CUT’s voice tool + server adapter (`server/plugins/voice.ts` → MiniMax `t2a_v2`). Preset table: [voices.md](voices.md) § MiniMax.
 
 ## Capabilities (as wired)
 
@@ -16,7 +16,7 @@ Grounded in Bcot’s voice tool + server adapter (`server/plugins/voice.ts` → 
 | `volume` | Optional, **>0–10** (default 1) → `voice_setting.vol` |
 | `emotion` | Optional: happy, sad, angry, fearful, disgusted, surprised, calm, fluent, whisper |
 | Audio settings | sampleRate; mp3/pcm/flac/wav/pcmu/opus; channel. `bitrate` is MP3-only |
-| Streaming | `stream`; `excludeAggregatedAudio`; `forceCbr` only with streamed MP3. Bcot still persists one local asset |
+| Streaming | `stream`; `excludeAggregatedAudio`; `forceCbr` only with streamed MP3. B-CUT still persists one local asset |
 | Language/text | languageBoost, textNormalization, latexRead, pronunciation tone entries |
 | Voice composition | timbreWeights (1–4 voices, weights 1–100), voiceModify pitch/intensity/timbre/effect |
 | Subtitle | `subtitleEnable` + sentence/word/word_streaming; downloaded as a durable JSON sidecar |
@@ -49,7 +49,7 @@ submit_voice({
   languageBoost: "Chinese",
   subtitleEnable: true,
   subtitleType: "word",
-  pronunciations: ["Bcot/(open chat cut)"],
+  pronunciations: ["B-CUT/(open chat cut)"],
   voiceModify: { intensity: 10, effect: "spacious_echo" },
   name: "VO · intro",
 });

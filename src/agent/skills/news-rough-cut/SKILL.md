@@ -7,7 +7,7 @@ description: 新闻素材智能粗剪——把新闻素材粗剪为一条内容�
 
 把新闻素材粗剪为一条内容完整、逻辑清晰、节奏紧凑的新闻短视频。忠实于原始素材，不加任何外部声音，保持客观、正式、紧凑、清晰的信息型新闻风格。
 
-This is an Bcot-native workflow. Use the current project's assets, transcript, word-level editing, timeline, and editing tools. Do not depend on external download or transcode pipelines.
+This is an B-CUT-native workflow. Use the current project's assets, transcript, word-level editing, timeline, and editing tools. Do not depend on external download or transcode pipelines.
 
 ## 工作流总览
 
@@ -104,7 +104,7 @@ This is an Bcot-native workflow. Use the current project's assets, transcript, w
 - 保证每一个保留片段都有明确的信息价值，在内容完整的前提下提高信息密度。
 - 不添加花字/滤镜/转场特效；可用基础叠化避免硬切，但以新闻克制为原则。
 
-## Bcot 工具对应
+## B-CUT 工具对应
 
 - `read_project` / `read_timeline`：先读工程与时间线状态，按上述范围记录允许来源的 `sourceAssetId` 与 `src`；禁止把媒体池全部资产自动列入。
 - `transcribe_track` + 文字稿词级编辑：讲话语义完整切割、删口头语/重复。

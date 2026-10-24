@@ -1,7 +1,7 @@
 // Italian translations for the external agent (MCP) guide.
 export default {
   '外部 Agent 接入 (MCP)': 'Accesso Agent esterno (MCP)',
-  'Bcot 暴露一个 Streamable HTTP MCP 端点。Claude Code / Codex / Cursor 等外部 Agent 接入后,与内置 Agent 共用同一套编辑工具,可直接读写当前工程。': 'Bcot espone un endpoint MCP HTTP streamable. Agent esterni come Claude Code, Codex e Cursor condividono gli stessi strumenti dell’Agent integrato e possono leggere/modificare il progetto corrente.',
+  'B-CUT 暴露一个 Streamable HTTP MCP 端点。Claude Code / Codex / Cursor 等外部 Agent 接入后,与内置 Agent 共用同一套编辑工具,可直接读写当前工程。': 'B-CUT espone un endpoint MCP HTTP streamable. Agent esterni come Claude Code, Codex e Cursor condividono gli stessi strumenti dell’Agent integrato e possono leggere/modificare il progetto corrente.',
   '端点地址': 'Endpoint',
   '内置 Agent 与外部 MCP': 'Agent integrato e MCP esterno',
   '内置 Agent 会先生成可预览的修改提案，由你应用或拒绝；外部 MCP 使用独立编辑会话，manual 模式等待审核，auto 模式在 review 时直接应用。两者都只通过 EditorCore 命令修改工程。': 'L’Agent integrato crea prima una proposta verificabile da applicare o rifiutare. MCP esterno usa una sessione separata: manual attende revisione, auto applica in review. Entrambi modificano solo tramite comandi EditorCore.',

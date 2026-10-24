@@ -14,7 +14,7 @@ const llmPage = (preset: (typeof LLM_PROVIDER_PRESETS)[number]): SettingsVendorP
     title: preset.label,
     note: preset.id === 'anthropic'
       ? '内置 Agent 可使用 Anthropic API Key，也可以在下方「Anthropic · Claude Code」页用 Claude 订阅登录（无需 API Key）。'
-        + '独立运行的 Claude Code 会话也可以通过「外部 Agent 接入 (MCP)」驱动 Bcot。'
+        + '独立运行的 Claude Code 会话也可以通过「外部 Agent 接入 (MCP)」驱动 B-CUT。'
       : '每个厂商独立保存地址、密钥与模型。先测试连接，成功后可从接口返回的模型中选择。',
     ...(preset.id === 'anthropic'
       ? { noteAction: { label: '外部 Agent 接入 (MCP)', action: 'open-mcp-guide' } }
@@ -54,7 +54,7 @@ const CODEX_PAGE: SettingsVendorPage = {
   vendor: 'openai',
   title: 'OpenAI · Codex',
   connection: 'codex',
-  note: '使用 ChatGPT 订阅登录，由官方 Codex CLI 管理凭据、续期与退出。Bcot 不会读取或显示 OAuth 凭据。',
+  note: '使用 ChatGPT 订阅登录，由官方 Codex CLI 管理凭据、续期与退出。B-CUT 不会读取或显示 OAuth 凭据。',
   fields: [
     {
       name: 'CODEX_MODEL', label: 'Codex 模型', kind: 'text',
@@ -75,7 +75,7 @@ const COPILOT_PAGE: SettingsVendorPage = {
   title: 'GitHub Copilot',
   connection: 'copilot',
   note: '使用 GitHub Copilot 订阅：官方 Copilot CLI 管理登录与凭据（终端运行 copilot login），'
-    + 'Bcot 通过 Copilot SDK 直接驱动编辑工具，不会读取或显示凭据。'
+    + 'B-CUT 通过 Copilot SDK 直接驱动编辑工具，不会读取或显示凭据。'
     + '会话状态隔离在 ~/.openchatcut/copilot，不影响你自己的 ~/.copilot。',
   fields: [
     {
@@ -96,7 +96,7 @@ const CLAUDE_CODE_PAGE: SettingsVendorPage = {
   vendor: 'anthropic',
   title: 'Anthropic · Claude Code',
   connection: 'claude-code',
-  note: '使用 Claude 订阅登录，由官方 Claude Code CLI 管理凭据、续期与退出，Bcot 不会读取或显示 OAuth 凭据。'
+  note: '使用 Claude 订阅登录，由官方 Claude Code CLI 管理凭据、续期与退出，B-CUT 不会读取或显示 OAuth 凭据。'
     + '在终端运行 claude auth login（或 claude setup-token 获取长期令牌）完成登录后，点击“重新检测”。',
   fields: [
     {
@@ -110,7 +110,7 @@ const CLAUDE_CODE_PAGE: SettingsVendorPage = {
 const XAI_OAUTH_PAGE: SettingsVendorPage = {
   key: 'llm/xai-oauth', vendor: 'xai-oauth', title: 'xAI · Grok (订阅登录)',
   connection: 'xai-oauth',
-  note: '使用 SuperGrok 或 X Premium+ 订阅登录：官方 Grok CLI 管理登录与凭据（终端运行 grok login），Bcot 导入会话并自动续期，不会读取或显示 OAuth 凭据。',
+  note: '使用 SuperGrok 或 X Premium+ 订阅登录：官方 Grok CLI 管理登录与凭据（终端运行 grok login），B-CUT 导入会话并自动续期，不会读取或显示 OAuth 凭据。',
   fields: [{
     name: 'LLM_XAI_OAUTH_MODEL', label: '模型', kind: 'text', defaultLabel: 'grok-4.6',
     discoverableModel: true,

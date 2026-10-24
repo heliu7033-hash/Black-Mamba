@@ -29,7 +29,7 @@ Short map of cloud generation tools → providers. Use this when guiding setup o
 | `doubao` | CN curated voices plus any user-supplied speaker ID; seed-audio-1.0 via `/api/v3/tts/create`; speedRatio, loudnessRatio, native pitch_rate |
 | `elevenlabs` | Curated multilingual voices; complete voice settings, continuity/dictionaries, seed, normalization, logging/latency and official output formats |
 | `minimax` | Curated system voices; voice/audio settings, language/normalization, pronunciation, timbre mix, voice modify/effects, subtitles |
-| `inworld`, `fishaudio`, `speechify` | Account/provider voice ID plus optional model ID only; no bundled Bcot samples |
+| `inworld`, `fishaudio`, `speechify` | Account/provider voice ID plus optional model ID only; no bundled B-CUT samples |
 | `openai` | AI SDK speech; configured model defaults to `gpt-4o-mini-tts`; model/speed/output/instructions |
 | `gemini` | AI SDK speech; configured model defaults to `gemini-2.5-flash-preview-tts`; model/output/instructions |
 | `mistral` | AI SDK speech; configured model defaults to `voxtral-mini-tts-2603`; model/output |

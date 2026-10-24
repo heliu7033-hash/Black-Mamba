@@ -6,7 +6,7 @@ import { resolveCopilotCli } from './installation.ts';
 
 /**
  * Isolated Copilot home, mirroring `CODEX_HOME = ~/.openchatcut/codex`. Keeps
- * Bcot's session state, config and logs out of the user's own
+ * B-CUT's session state, config and logs out of the user's own
  * `~/.copilot` so an in-app run can never disturb their terminal CLI.
  */
 const COPILOT_HOME = join(homedir(), '.openchatcut', 'copilot');
@@ -124,7 +124,7 @@ function numeric(value: unknown): number | null {
 }
 
 /**
- * Project the SDK model catalog onto Bcot's model-picker shape. The
+ * Project the SDK model catalog onto B-CUT's model-picker shape. The
  * limits map straight onto `ModelCapabilities` (contextWindowTokens /
  * maxOutputTokens), which is what the `api` and `codex` backends already feed.
  */
